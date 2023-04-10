@@ -50,20 +50,19 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('/') }}"><i class="fa fa-flask"></i> <span
+                        <a href="{{ url('/') }}"><i class="fa fa-car" aria-hidden="true"></i> <span
                                 class="nav-label">Vehículo</span></a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-code" aria-hidden="true"></i> <span class="nav-label">Mantenimiento
-                                Dev</span><span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-label">Mantenimiento</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="search_results.html">Realizados</a></li>
-                            <li><a href="lockscreen.html">Programados</a></li>
+                            <li><a href="search_results.html"><i class="fa fa-list-alt" aria-hidden="true"></i> Realizados</a></li>
+                            <li><a href="lockscreen.html"><i class="fa fa-calendar" aria-hidden="true"></i> Programados</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ url('/') }}"><i class="fa fa-flask"></i> <span
+                        <a href="{{ url('/') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> <span
                                 class="nav-label">Reportes</span></a>
                     </li>
                     {{-- <li>
