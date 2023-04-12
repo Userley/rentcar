@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VehiculoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
+
+
+Route::controller(VehiculoController::class)->group(function () {
+    Route::get('vehiculo', 'index');
+    Route::get('vehiculo/crear', 'crear');
+    // Route::get('contactos/{id}', 'show');
+    // Route::post('contactos', 'save')->name('contactos.save');
+});
