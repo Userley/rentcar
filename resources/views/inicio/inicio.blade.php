@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="{!! asset('../resources/img/ico/devtools.ico') !!}">
+    {{-- <link rel="shortcut icon" href="{!! asset('../resources/img/ico/devtools.ico') !!}"> --}}
     <title>RentCar</title>
 
     <link href="{!! asset('../resources/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -104,8 +104,8 @@
     <script src="{!! asset('../resources/js/popper.min.js') !!}"></script>
     <script src="{!! asset('../resources/js/bootstrap.js') !!}"></script>
     <script src="{!! asset('../resources/js/bootstrap.min.js') !!}"></script>
-     <script src="{!! asset('../resources/js/plugins/metisMenu/jquery.metisMenu.js') !!}"></script>
-    <script src="{!! asset('../resources/js/plugins/slimscroll/jquery.slimscroll.min.js') !!}"></script>
+     {{-- <script src="{!! asset('../resources/js/plugins/metisMenu/jquery.metisMenu.js') !!}"></script>
+    <script src="{!! asset('../resources/js/plugins/slimscroll/jquery.slimscroll.min.js') !!}"></script> --}}
 {{-- 
 
    <!-- blueimp gallery -->
