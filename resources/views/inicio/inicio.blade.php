@@ -12,20 +12,22 @@
     <link href="{!! asset('../resources/css/bootstrap.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/font-awesome/css/font-awesome.css') !!}" rel="stylesheet">
 
-    <link href="{!! asset('../resources/css/plugins/footable/footable.core.css" ') !!}" rel="stylesheet">
+    {{-- <link href="{!! asset('../resources/css/plugins/footable/footable.core.css" ') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/css/plugins/blueimp/css/blueimp-gallery.min.css') !!}" rel="stylesheet">
     <!-- Toastr style -->
     <link href="{!! asset('../resources/css/plugins/toastr/toastr.min.css') !!}" rel="stylesheet">
 
-    <link href="{!! asset('../resources/css/animate.css') !!}" rel="stylesheet">
+    <link href="{!! asset('../resources/css/animate.css') !!}" rel="stylesheet"> --}}
     <link href="{!! asset('../resources/css/style.css') !!}" rel="stylesheet">
 
-    <!-- Gritter -->
+    <link rel="stylesheet" href="{!! asset('../resources/css/plugins/switchery/switchery.css') !!}">
+
+    {{-- <!-- Gritter -->
     <link href="{!! asset('../resources/js/plugins/gritter/jquery.gritter.css') !!}" rel="stylesheet">
 
     <link href="{!! asset('../resources/css/plugins/iCheck/custom.css') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/css/plugins/steps/jquery.steps.css') !!}" rel="stylesheet">
-    <link href="{!! asset('../resources/css/plugins/sweetalert/sweetalert.css') !!}" rel="stylesheet">
+    <link href="{!! asset('../resources/css/plugins/sweetalert/sweetalert.css') !!}" rel="stylesheet"> --}}
 
 </head>
 
@@ -37,8 +39,8 @@
                     <li class="nav-header">
                         <div class="dropdown profile-element">
                             <img alt="image" class="rounded-circle" width="100px" src="{!! asset('../resources/img/logo3.png') !!}" />
-                                <span class="block m-t-xs font-bold">RentCar</span>
-                                <span class="text-muted text-xs block">Sistema de gestión</span>
+                            <span class="block m-t-xs font-bold">RentCar</span>
+                            <span class="text-muted text-xs block">Sistema de gestión</span>
                         </div>
                         <div class="logo-element">
                             RC+
@@ -55,10 +57,13 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-label">Mantenimiento</span><span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span
+                                class="nav-label">Mantenimiento</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="search_results.html"><i class="fa fa-list-alt" aria-hidden="true"></i> Realizados</a></li>
-                            <li><a href="lockscreen.html"><i class="fa fa-calendar" aria-hidden="true"></i> Programados</a></li>
+                            <li><a href="search_results.html"><i class="fa fa-list-alt" aria-hidden="true"></i>
+                                    Realizados</a></li>
+                            <li><a href="lockscreen.html"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                    Programados</a></li>
                         </ul>
                     </li>
                     <li>
@@ -73,7 +78,8 @@
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                class="fa fa-bars" aria-hidden="true"></i></a>
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
@@ -104,9 +110,14 @@
     <script src="{!! asset('../resources/js/popper.min.js') !!}"></script>
     <script src="{!! asset('../resources/js/bootstrap.js') !!}"></script>
     <script src="{!! asset('../resources/js/bootstrap.min.js') !!}"></script>
-     {{-- <script src="{!! asset('../resources/js/plugins/metisMenu/jquery.metisMenu.js') !!}"></script>
+
+
+    <!-- Checks -->
+    <script src="{!! asset('../resources/js/plugins/switchery/switchery.js') !!}"></script>
+
+    {{-- <script src="{!! asset('../resources/js/plugins/metisMenu/jquery.metisMenu.js') !!}"></script>
     <script src="{!! asset('../resources/js/plugins/slimscroll/jquery.slimscroll.min.js') !!}"></script> --}}
-{{-- 
+    {{-- 
 
    <!-- blueimp gallery -->
     <script src="{!! asset('../resources/js/plugins/blueimp/jquery.blueimp-gallery.min.js') !!}"></script>
@@ -156,67 +167,70 @@
     <script src="{!! asset('../resources/js/plugins/footable/footable.all.min.js') !!}"></script> --}}
 
     <script>
-        // $(document).ready(function() {
-        //     $(".loader").fadeOut("slow");
+        var base64URL = "";
+        var base64URLx = "";
 
-        //     $('.footable').footable();
-        //     $('.footable2').footable();
+
+        $(document).ready(function() {
+            //     $(".loader").fadeOut("slow");
+
+            //     $('.footable').footable();
+            //     $('.footable2').footable();
 
             @yield('ready')
-        // });
+        });
 
-        // var base64URL = "";
-        // var base64URLx = "";
 
-        // function round(value, decimals) {
-        //     return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
-        // }
+        function round(value, decimals) {
+            return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+        }
 
-        // async function encodeFileAsBase64URL(file) {
-        //     return new Promise((resolve) => {
-        //         // debugger;
-        //         const reader = new FileReader();
-        //         reader.addEventListener('loadend', () => {
-        //             resolve(reader.result);
-        //         });
-        //         reader.readAsDataURL(file);
-        //     });
-        // };
+        async function encodeFileAsBase64URL(file) {
+            return new Promise((resolve) => {
+                // debugger;
+                const reader = new FileReader();
+                reader.addEventListener('loadend', () => {
+                    resolve(reader.result);
+                });
+                reader.readAsDataURL(file);
+            });
+        };
 
-        // const comprimirImagen = (imagenComoArchivo, porcentajeCalidad) => {
+        const comprimirImagen = (imagenComoArchivo, porcentajeCalidad) => {
 
-        //     return new Promise((resolve, reject) => {
-        //         const $canvas = document.createElement("canvas");
-        //         const imagen = new Image();
-        //         imagen.onload = () => {
-        //             $canvas.width = imagen.width;
-        //             $canvas.height = imagen.height;
-        //             $canvas.getContext("2d").drawImage(imagen, 0, 0);
-        //             $canvas.toBlob(
-        //                 (blob) => {
-        //                     if (blob === null) {
-        //                         return reject(blob);
-        //                     } else {
-        //                         resolve(blob);
-        //                     }
-        //                 },
-        //                 "image/jpeg",
-        //                 porcentajeCalidad / 100
-        //             );
-        //         };
-        //         imagen.src = URL.createObjectURL(imagenComoArchivo);
-        //     });
-        // };
+            return new Promise((resolve, reject) => {
+                const $canvas = document.createElement("canvas");
+                const imagen = new Image();
+                imagen.onload = () => {
+                    $canvas.width = imagen.width;
+                    $canvas.height = imagen.height;
+                    $canvas.getContext("2d").drawImage(imagen, 0, 0);
+                    $canvas.toBlob(
+                        (blob) => {
+                            if (blob === null) {
+                                return reject(blob);
+                            } else {
+                                resolve(blob);
+                            }
+                        },
+                        "image/jpeg",
+                        porcentajeCalidad / 100
+                    );
+                };
+                imagen.src = URL.createObjectURL(imagenComoArchivo);
+            });
+        };
 
-        // var images = $(".image");
+        var images = $(".image");
 
-        // $(images).on("load", function(event) {
-        //     $(event.target).css("display", "");
-        // });
+        $(images).on("load", function(event) {
+            $(event.target).css("display", "");
+        });
 
-        // $(images).on("error", function(event) {
-        //     $(event.target).css("display", "none");
-        // });
+        $(images).on("error", function(event) {
+            $(event.target).css("display", "none");
+        });
+
         @yield('functions')
     </script>
 </body>

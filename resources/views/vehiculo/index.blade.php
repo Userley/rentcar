@@ -60,7 +60,7 @@
         <div class="col-md-8">
             <div class="ibox float-e-margins animated fadeInRight">
                 <div class="ibox-title">
-                    <h5><i class="fa fa-globe" aria-hidden="true"></i> Datos Vehículo</h5>
+                    <h5><i class="fa fa-info-circle" aria-hidden="true"></i> Datos Vehículo</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -72,26 +72,25 @@
 
 
                         <div class="col-md-6">
-                            <div class="form-group text-center">
-
-                                <picture id="imgcar">
-                                    <source srcset="https://www.topgear.com/sites/default/files/2022/07/6_0.jpg"
-                                        media="(min-width: 600px)" class="rounded shadow">
-                                    <img src="https://www.topgear.com/sites/default/files/2022/07/6_0.jpg" alt="MDN"
-                                        style="width:300px;" class="rounded shadow">
-                                </picture>
+                            <div class="text-center mb-3">
+                                <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
+                                <input type="checkbox" class="js-switch"/>
                             </div>
-                            <div class="input-group mb-3">
+
+                            <div class="form-group text-center">
+                                <img style="height: 145px;" class="rounded shadow image" src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg" id="imagenPrevisualizacion">
+                            </div>
+
+                            {{-- <div class="input-group mb-3">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile" accept=".png, .jpg">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="imgvehicle" accept="image/*">
+                                    <label class="custom-file-label" for="imgvehicle">Choose file</label>
                                 </div>
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-primary btn-lg"
                                         id="inputGroupFileAddon02">Subir</button>
-                                    {{-- <span class="input-group-text bg-primary" id="inputGroupFileAddon02">Subir</span> --}}
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
 
                                 <div class="col-6">
@@ -146,7 +145,7 @@
                         </div>
                         <div class="col-md-6">
                             <label><strong>Actividad en el tiempo</strong></label>
-                            <div style="overflow-y: scroll; height:460px; border:1px solid #e9ecef">
+                            <div style="overflow-y: scroll; height:450px; border:1px solid #e9ecef">
                                 <div id="vertical-timeline" class="vertical-container dark-timeline">
                                     <div class="vertical-timeline-block">
                                         <div class="vertical-timeline-icon gray-bg">
@@ -274,4 +273,37 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+
+@section('ready')
+
+    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+    var fileName = document.getElementById("imgvehicle").files[0].name;
+    var nextSibling = e.target.nextElementSibling
+    nextSibling.innerText = fileName
+    })
+
+@endsection
+
+
+@section('functions')
+
+    {{-- const inputFile = document.querySelector('#imgvehicle');
+    const image = document.querySelector('#imagenPrevisualizacion');
+
+    inputFile.addEventListener('input', async (event) => {
+    let imgblob = await comprimirImagen(inputFile.files[0], 25);
+    let srcimg = URL.createObjectURL(imgblob);
+    base64URL = await encodeFileAsBase64URL(imgblob);
+    image.setAttribute('src', base64URL);
+    }); --}}
+
+
+    var elem = document.querySelector('.js-switch');
+    var switchery = new Switchery(elem, {
+        color: '#1AB394'
+    });
+
 @endsection
