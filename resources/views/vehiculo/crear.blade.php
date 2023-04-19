@@ -21,7 +21,7 @@
 
 @section('content')
 <div class="d-flex align-content-center">
-    <a href="{{ url('/vehiculo/') }}"> <button class="btn btn-primary col-md-1">Volver</button></a>
+    <a href="{{ url('/vehiculo/') }}"> <button class="btn btn-primary">Volver</button></a>
 </div>
 
 <hr>
