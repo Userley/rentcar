@@ -12,20 +12,20 @@
     <link href="{!! asset('../resources/css/bootstrap.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/font-awesome/css/font-awesome.css') !!}" rel="stylesheet">
 
-    {{-- <link href="{!! asset('../resources/css/plugins/footable/footable.core.css" ') !!}" rel="stylesheet">
+    <link href="{!! asset('../resources/css/plugins/footable/footable.core.css" ') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/css/plugins/blueimp/css/blueimp-gallery.min.css') !!}" rel="stylesheet">
     <!-- Toastr style -->
     <link href="{!! asset('../resources/css/plugins/toastr/toastr.min.css') !!}" rel="stylesheet">
 
-    <link href="{!! asset('../resources/css/animate.css') !!}" rel="stylesheet"> --}}
+    <link href="{!! asset('../resources/css/animate.css') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/css/style.css') !!}" rel="stylesheet">
 
-    {{-- <!-- Gritter -->
+    <!-- Gritter -->
     <link href="{!! asset('../resources/js/plugins/gritter/jquery.gritter.css') !!}" rel="stylesheet">
 
     <link href="{!! asset('../resources/css/plugins/iCheck/custom.css') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/css/plugins/steps/jquery.steps.css') !!}" rel="stylesheet">
-    <link href="{!! asset('../resources/css/plugins/sweetalert/sweetalert.css') !!}" rel="stylesheet"> --}}
+    <link href="{!! asset('../resources/css/plugins/sweetalert/sweetalert.css') !!}" rel="stylesheet">
 
 </head>
 

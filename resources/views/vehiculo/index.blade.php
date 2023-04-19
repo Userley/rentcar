@@ -73,41 +73,47 @@
                         <div class="col-md-4">
                         </div>
                         <div class="col-md-3">
-                            <div class="">
+                            <div class="mb-2">
                                 <label for="idplaca" class="label label-success">Placa:</label>
                                 <input type="text" class="form-control inputData" id="idplaca" placeholder="placa"
                                     value="F2N - 960" disabled>
                             </div>
-                            <div class="m-5">
+                            <div class="mb-2">
                                 <label for="idmarca" class="label label-success">Marca:</label>
                                 <input type="text" class="form-control inputData" id="idmarca" placeholder="placa"
                                     value="MITSUBISHI" disabled>
                             </div>
-                            <div class="">
+                            <div class="mb-2">
                                 <label for="idmodelo" class="label label-success">Modelo:</label>
                                 <input type="text" class="form-control inputData" id="idmodelo" placeholder="placa"
                                     value="ROSA" disabled>
                             </div>
-                            <div class="">
+                            <div class="mb-2">
                                 <label for="idproveedor" class="label label-success">Proveedor:</label>
                                 <input type="text" class="form-control inputData" id="idproveedor" placeholder="placa"
                                     value="AUTOGESA" disabled>
                             </div>
-                            <div class="">
+                            <div class="mb-2">
                                 <label for="idproyecto" class="label label-success">Proyecto:</label>
                                 <input type="text" class="form-control inputData" id="idproyecto" placeholder="placa"
                                     value="Proyecto 1" disabled>
                             </div>
                             <div class="">
                                 <label for="idlugar" class="label label-success">Lugar Trabajo:</label>
-                                <button type="button" style="height: 28px;" class="btn btn-primary btn-sm"
-                                    data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                <input type="text" class="form-control inputData" id="idlugar" placeholder="placa"
-                                    value="CUSCO" disabled>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control inputData" style="height: 34px;" id="idlugar" placeholder="placa"
+                                        value="CUSCO" disabled>
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                                            data-target="#exampleModal">Cambiar</button>
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
                         <div class="col-md-5">
-                            <div style="overflow-y: scroll; height:280px" class="border">
+                            <div style="overflow-y: scroll; height:180px" class="border">
                                 <ul class="list-group" id="listafechas">
                                     <li class="list-group-item list-group-item-action" id="" onclick="">
                                         <strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
@@ -121,34 +127,5 @@
             </div>
         </div>
     </div>
-
-    {{-- <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-   --}}
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            {{-- <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div> --}}
-        </div>
-    </div>
-
-
 
 @endsection
