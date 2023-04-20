@@ -38,19 +38,42 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-md-12">
-                            <div style="overflow-y: scroll; height:280px" class="border">
-                                <ul class="list-group" id="listafechas">
+                            <div style="overflow-y: scroll; overflow-x:hidden; height:300px" >
+                                {{-- <ul class="list-group" id="listafechas">
                                     <li class="list-group-item list-group-item-action" id="" onclick="">
                                         <strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                                         </strong> -
 
                                     </li>
-                                </ul>
+                                </ul> --}}
+                                <div class="row p-3">
+                                    <div class="col-md-12 m-1">
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                    </div>
+                                    <div class="col-md-12 m-1">
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                    </div>
+                                    <div class="col-md-12 m-1">
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                    </div>
+                                    <div class="col-md-12 m-1">
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                    </div>
+                                    <div class="col-md-12 m-1">
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                    </div>
+                                    <div class="col-md-12 m-1">
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                    </div>
+                                    <div class="col-md-12 m-1">
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 pt-2">
                             <div class="button-group text-center">
-                                <button class="btn btn-warning" id="btndelinternet">Editar</button>
+                                <button class="btn btn-warning" id="btnEditVehiculo"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Vehículo</button>
                             </div>
                         </div>
                     </div>
@@ -74,11 +97,13 @@
                         <div class="col-md-6">
                             <div class="text-center mb-3">
                                 <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
-                                <input type="checkbox" class="js-switch"/>
+                                <input type="checkbox" class="js-switch" />
                             </div>
 
                             <div class="form-group text-center">
-                                <img style="height: 145px;" class="rounded shadow image" src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg" id="imagenPrevisualizacion">
+                                <img style="height: 145px;" class="rounded shadow image"
+                                    src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
+                                    id="imagenPrevisualizacion">
                             </div>
 
                             {{-- <div class="input-group mb-3">
@@ -279,11 +304,11 @@
 
 @section('ready')
 
-    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+    {{-- document.querySelector('.custom-file-input').addEventListener('change', function(e) {
     var fileName = document.getElementById("imgvehicle").files[0].name;
     var nextSibling = e.target.nextElementSibling
     nextSibling.innerText = fileName
-    })
+    }) --}}
 
 @endsection
 
@@ -303,7 +328,7 @@
 
     var elem = document.querySelector('.js-switch');
     var switchery = new Switchery(elem, {
-        color: '#1AB394'
+    color: '#1AB394'
     });
 
 @endsection

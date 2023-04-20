@@ -57,14 +57,16 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span
-                                class="nav-label">Mantenimiento</span><span class="fa arrow"></span></a>
+                        <a href="{{ url('/mantenimiento/') }}"><i class="fa fa-list-alt" aria-hidden="true"></i> <span
+                            class="nav-label">Mantenimientos</span></a>
+                        {{-- <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span
+                                class="nav-label">Mantenimientos</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="search_results.html"><i class="fa fa-list-alt" aria-hidden="true"></i>
                                     Realizados</a></li>
                             <li><a href="lockscreen.html"><i class="fa fa-calendar" aria-hidden="true"></i>
                                     Programados</a></li>
-                        </ul>
+                        </ul> --}}
                     </li>
                     <li>
                         <a href="{{ url('/') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> <span

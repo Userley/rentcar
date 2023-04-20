@@ -43,43 +43,43 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="txtPlaca">Placa:</label>
+                                        <label for="txtPlaca" class="font-weight-bold">Placa:</label>
                                         <input type="text" class="form-control" id="txtPlaca">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="txtMarca">Marca:</label>
+                                        <label for="txtMarca" class="font-weight-bold">Marca:</label>
                                         <input type="text" class="form-control" id="txtMarca">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="txtModelo">Modelo:</label>
+                                        <label for="txtModelo" class="font-weight-bold">Modelo:</label>
                                         <input type="text" class="form-control" id="txtModelo">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="cboProveedor">Proveedor:</label>
+                                        <label for="cboProveedor" class="font-weight-bold">Proveedor:</label>
                                         <select name="" id="cboProveedor" class="form-control"></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="txtKilometraje">Kilometraje:</label>
+                                        <label for="txtKilometraje" class="font-weight-bold">Kilometraje:</label>
                                         <input type="text" class="form-control" id="txtKilometraje">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="txtProyecto">Proyecto:</label>
+                                        <label for="txtProyecto" class="font-weight-bold">Proyecto:</label>
                                         <input type="text" class="form-control" id="txtProyecto">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="">
-                                        <label for="lugarTrabajo">Lugar Trabajo:</label>
+                                        <label for="lugarTrabajo" class="font-weight-bold">Lugar Trabajo:</label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" style="height: 34px;"
                                                 id="lugarTrabajo" placeholder="placa" value="CUSCO" disabled>
@@ -92,28 +92,29 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="txtDescripcion">Descripción:</label>
+                                        <label for="txtDescripcion" class="font-weight-bold">Descripción:</label>
                                         <textarea name="" id="txtDescripcion" class="form-control" cols="1" rows="2"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="form-group text-center">
+                            <div class="form-group text-center mb-4">
                                 <img style="height: 145px;" class="rounded shadow image"
                                     src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
                                     id="imagenPrevisualizacion">
                             </div>
 
-                            <div class="input-group mt-5">
+                            <label class="font-weight-bold">Imágen:</label>
+                            <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="imgvehicle" accept="image/*">
-                                    <label class="custom-file-label" for="imgvehicle">Choose file</label>
+                                    <label class="custom-file-label" for="imgvehicle">Seleccionar</label>
                                 </div>
-                                <div class="input-group-append">
+                                {{-- <div class="input-group-append">
                                     <button type="button" class="btn btn-primary btn-lg"
                                         id="inputGroupFileAddon02">Subir</button>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
