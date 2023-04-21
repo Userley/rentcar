@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mantenimiento_programado', function (Blueprint $table) {
-            $table->id();
+        Schema::create('repuesto', function (Blueprint $table) {
+            $table->id('idrepuesto');
+            $table->string('descripcion');
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mantenimiento_programado');
+        Schema::dropIfExists('repuesto');
     }
 };

@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('vehiculo_lugar', function (Blueprint $table) {
+            $table->id('idvehiculolugar');
+            $table->integer('idvehiculo');
+            $table->integer('idproyecto');
+            $table->integer('iddepartamento');
+            $table->integer('idprovincia');
+            $table->integer('iddistrito');
+            $table->date('fechainicio');
+            $table->date('fechafin')->nullable(true);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('vehiculo_lugar');
+    }
+};

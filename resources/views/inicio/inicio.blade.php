@@ -12,6 +12,8 @@
     <link href="{!! asset('../resources/css/bootstrap.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/font-awesome/css/font-awesome.css') !!}" rel="stylesheet">
 
+    <link href="{!! asset('../resources/css/plugins/dataTables/datatables.min.css') !!}" rel="stylesheet">
+
     {{-- <link href="{!! asset('../resources/css/plugins/footable/footable.core.css" ') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/css/plugins/blueimp/css/blueimp-gallery.min.css') !!}" rel="stylesheet">
     <!-- Toastr style -->
@@ -68,10 +70,10 @@
                                     Programados</a></li>
                         </ul> --}}
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{ url('/') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> <span
                                 class="nav-label">Reportes</span></a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </nav>
@@ -113,12 +115,13 @@
     <script src="{!! asset('../resources/js/bootstrap.js') !!}"></script>
     <script src="{!! asset('../resources/js/bootstrap.min.js') !!}"></script>
 
+    <script src="{!! asset('../resources/js/plugins/metisMenu/jquery.metisMenu.js') !!}"></script>
+    <script src="{!! asset('../resources/js/plugins/slimscroll/jquery.slimscroll.min.js') !!}"></script>
 
+    <script src="{!! asset('../resources/js/plugins/dataTables/datatables.min.js') !!}"></script>
     <!-- Checks -->
     <script src="{!! asset('../resources/js/plugins/switchery/switchery.js') !!}"></script>
 
-    {{-- <script src="{!! asset('../resources/js/plugins/metisMenu/jquery.metisMenu.js') !!}"></script>
-    <script src="{!! asset('../resources/js/plugins/slimscroll/jquery.slimscroll.min.js') !!}"></script> --}}
     {{-- 
 
    <!-- blueimp gallery -->

@@ -17,12 +17,6 @@
 @endsection
 
 @section('content')
-    <div>
-        <a href="{{ url('/vehiculo/crear/') }}"> <button class="btn btn-success">Nuevo Vehículo</button></a>
-    </div>
-
-    <hr>
-
     <div class="row">
         <div class="col-md-4">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -38,7 +32,7 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-md-12">
-                            <div style="overflow-y: scroll; overflow-x:hidden; height:300px" >
+                            <div style="overflow-y: scroll; overflow-x:hidden; height:300px">
                                 {{-- <ul class="list-group" id="listafechas">
                                     <li class="list-group-item list-group-item-action" id="" onclick="">
                                         <strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
@@ -48,32 +42,43 @@
                                 </ul> --}}
                                 <div class="row p-3">
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                            1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                            1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                            1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                            1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                            1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                            1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto 1 / CUSCO</button>
+                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                            1 / CUSCO</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 pt-2">
                             <div class="button-group text-center">
-                                <button class="btn btn-warning" id="btnEditVehiculo"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Vehículo</button>
+                                <a href="{{ url('/vehiculo/crear/') }}"> <button class="btn btn-success"><i
+                                            class="fa fa-plus" aria-hidden="true"></i> Nuevo
+                                        Vehículo</button></a>
+                                <button class="btn btn-warning" id="btnEditVehiculo"><i class="fa fa-pencil-square-o"
+                                        aria-hidden="true"></i> Editar Vehículo</button>
                             </div>
                         </div>
                     </div>
@@ -132,7 +137,7 @@
                                             placeholder="placa" value="MITSUBISHI" disabled>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6">
                                     <div class="mb-2">
                                         <label for="idmodelo" class="label label-success">Modelo:</label>
                                         <input type="text" class="form-control inputData" id="idmodelo"
@@ -151,6 +156,13 @@
                                         <label for="idproyecto" class="label label-success">Proyecto:</label>
                                         <input type="text" class="form-control inputData" id="idproyecto"
                                             placeholder="placa" value="Proyecto 1" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-2">
+                                        <label for="idfechaIni" class="label label-success">Fecha Inicio:</label>
+                                        <input type="text" class="form-control inputData" id="idfechaIni"
+                                            placeholder="placa" value="01/01/2013" disabled>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -254,10 +266,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-4">
-
+                        <div class="col-12">
                             <div class="form-group">
-                                <label for="cboDepartamento">Departamento:</label>
+                                <label for="txtProyectoModal" class="font-weight-bold">Proyecto:</label>
+                                <input type="text" class="form-control" id="txtProyectoModal">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="cboDepartamento" class="font-weight-bold">Departamento:</label>
                                 <select class="custom-select" id="cboDepartamento">
                                     <option selected>Open this select menu</option>
                                     <option value="1">One</option>
@@ -265,11 +282,10 @@
                                     <option value="3">Three</option>
                                 </select>
                             </div>
-
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="cboProvincia">Provincia:</label>
+                                <label for="cboProvincia" class="font-weight-bold">Provincia:</label>
                                 <select class="custom-select" id="cboProvincia">
                                     <option selected>Open this select menu</option>
                                     <option value="1">One</option>
@@ -280,7 +296,7 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="cboDistrito">Distrito:</label>
+                                <label for="cboDistrito" class="font-weight-bold">Distrito:</label>
                                 <select class="custom-select" id="cboDistrito">
                                     <option selected>Open this select menu</option>
                                     <option value="1">One</option>
@@ -288,7 +304,6 @@
                                     <option value="3">Three</option>
                                 </select>
                             </div>
-
                         </div>
                     </div>
                 </div>

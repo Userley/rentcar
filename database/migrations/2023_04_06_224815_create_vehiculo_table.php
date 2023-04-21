@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vehiculo', function (Blueprint $table) {
-            $table->id();
+            $table->id('idvehiculo');
+            $table->string('marca');
+            $table->string('modelo');
+            $table->integer('idproveedor')->nullable(false);
+            $table->decimal('kilometraje',10,4)->nullable(true);
             $table->timestamps();
         });
     }

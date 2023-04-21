@@ -72,9 +72,15 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="txtProyecto" class="font-weight-bold">Proyecto:</label>
-                                        <input type="text" class="form-control" id="txtProyecto">
+                                    <label for="txtProyecto" class="font-weight-bold">Proyecto:</label>
+                                    <div class="input-group">
+                                        <input type="text" id="txtProyecto" class="form-control" aria-label="Username"
+                                            aria-describedby="basic-addon1">
+                                        <div class="input-group-prepend" data-toggle="modal"
+                                        data-target="#proyectoModal">
+                                            <button type="button" class="btn btn-warning"><i class="fa fa-plus"
+                                                    aria-hidden="true" ></i></button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -127,14 +133,35 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="proyectoModal" tabindex="-1" role="dialog" aria-labelledby="proyectoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Proyecto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="txtProyectoAdd" class="font-weight-bold">Ingrese Nombre Proyecto</label>
+                        <input type="text" name="" class="form-control" id="txtProyectoAdd">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveSite">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ubicaciones</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -142,9 +169,8 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-4">
-
                             <div class="form-group">
-                                <label for="cboDepartamento">Departamento:</label>
+                                <label for="cboDepartamento" class="font-weight-bold">Departamento:</label>
                                 <select class="custom-select" id="cboDepartamento">
                                     <option selected>Open this select menu</option>
                                     <option value="1">One</option>
@@ -152,11 +178,10 @@
                                     <option value="3">Three</option>
                                 </select>
                             </div>
-
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="cboProvincia">Provincia:</label>
+                                <label for="cboProvincia" class="font-weight-bold">Provincia:</label>
                                 <select class="custom-select" id="cboProvincia">
                                     <option selected>Open this select menu</option>
                                     <option value="1">One</option>
@@ -167,7 +192,7 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="cboDistrito">Distrito:</label>
+                                <label for="cboDistrito" class="font-weight-bold">Distrito:</label>
                                 <select class="custom-select" id="cboDistrito">
                                     <option selected>Open this select menu</option>
                                     <option value="1">One</option>
@@ -175,7 +200,6 @@
                                     <option value="3">Three</option>
                                 </select>
                             </div>
-
                         </div>
                     </div>
                 </div>
