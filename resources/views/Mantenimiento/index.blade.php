@@ -36,7 +36,80 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cboPlaca" class="font-weight-bold">Placa:</label>
+                                <select class="custom-select" id="cboPlaca">
+                                    <option selected>-- Todos --</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cboMarca" class="font-weight-bold">Marca:</label>
+                                <select class="custom-select" id="cboMarca">
+                                    <option selected>-- Todos --</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cboProveedor" class="font-weight-bold">Proveedor:</label>
+                                <select class="custom-select" id="cboProveedor">
+                                    <option selected>-- Todos --</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cboProyecto" class="font-weight-bold">Proyecto:</label>
+                                <select class="custom-select" id="cboProyecto">
+                                    <option selected>-- Todos --</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cboRepuesto" class="font-weight-bold">Repuesto:</label>
+                                <select class="custom-select" id="cboRepuesto">
+                                    <option selected>-- Todos --</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtdateini" class="font-weight-bold">Fecha Ini:</label>
+                                <input type="date" class="form-control" id="txtdateini">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtdatefin" class="font-weight-bold">Fecha Fin:</label>
+                                <input type="date" class="form-control" id="txtdatefin">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group text-center">
+                                <button type="button" style="margin-top: 28px" class="btn btn-primary w-75 shadow-sm">Filtrar </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -143,10 +216,5 @@
     image.setAttribute('src', base64URL);
     }); --}}
 
-
-    var elem = document.querySelector('.js-switch');
-    var switchery = new Switchery(elem, {
-    color: '#1AB394'
-    });
 
 @endsection
