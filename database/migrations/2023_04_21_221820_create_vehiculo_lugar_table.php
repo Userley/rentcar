@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('iddistrito');
             $table->date('fechainicio');
             $table->date('fechafin')->nullable(true);
+            $table->bigInteger('activo');
             $table->timestamps();
         });
     }

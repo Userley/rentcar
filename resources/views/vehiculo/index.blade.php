@@ -42,31 +42,31 @@
                                 </ul> --}}
                                 <div class="row p-3">
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                 </div>
@@ -154,8 +154,14 @@
                                 <div class="col-6">
                                     <div class="mb-2">
                                         <label for="idproyecto" class="label label-success">Proyecto:</label>
-                                        <input type="text" class="form-control inputData" id="idproyecto"
-                                            placeholder="placa" value="Proyecto 1" disabled>
+                                        <div class="input-group">
+                                            <input type="text" id="idproyecto" class="form-control" disabled>
+                                            <div class="input-group-prepend" data-toggle="modal"
+                                                data-target="#proyectoModalIni">
+                                                <button type="button" class="btn btn-outline-warning"><i class="fa fa-plus"
+                                                        aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -253,6 +259,28 @@
         </div>
     </div>
 
+    <div class="modal fade" id="proyectoModalIni" tabindex="-1" role="dialog" aria-labelledby="proyectoModalIniLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Proyecto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="txtProyectoAdd" class="font-weight-bold">Ingrese Nombre Proyecto</label>
+                        <input type="text" name="" class="form-control" id="txtProyectoAdd">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveSite">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -266,31 +294,25 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="txtProyectoModal" class="font-weight-bold">Proyecto:</label>
-                                <input type="text" class="form-control" id="txtProyectoModal">
-                            </div>
-                        </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="cboDepartamento" class="font-weight-bold">Departamento:</label>
-                                <select class="custom-select" id="cboDepartamento">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="custom-select" id="cboDepartamento"
+                                    onchange="ObtenerProvincias(event.target.value);">
+                                    <option selected>-- Todos --</option>
+                                    @foreach ($Departamentos as $Departamento)
+                                        <option value="{{ $Departamento->iddepartamento }}">
+                                            {{ $Departamento->descripcion }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="cboProvincia" class="font-weight-bold">Provincia:</label>
-                                <select class="custom-select" id="cboProvincia">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="custom-select" id="cboProvincia"
+                                    onchange="ObtenerDistritos(event.target.value)">
+                                    <option selected>-- Todos --</option>
                                 </select>
                             </div>
                         </div>
@@ -298,17 +320,15 @@
                             <div class="form-group">
                                 <label for="cboDistrito" class="font-weight-bold">Distrito:</label>
                                 <select class="custom-select" id="cboDistrito">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected>-- Todos --</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveSite">Guardar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveSite"
+                        onclick="GuardarLugar();">Guardar</button>
                 </div>
             </div>
         </div>
@@ -327,10 +347,10 @@
 
 @endsection
 
+<script>
+    @section('functions')
 
-@section('functions')
-
-    {{-- const inputFile = document.querySelector('#imgvehicle');
+        {{-- const inputFile = document.querySelector('#imgvehicle');
     const image = document.querySelector('#imagenPrevisualizacion');
 
     inputFile.addEventListener('input', async (event) => {
@@ -341,9 +361,69 @@
     }); --}}
 
 
-    var elem = document.querySelector('.js-switch');
-    var switchery = new Switchery(elem, {
-    color: '#1AB394'
-    });
+        var elem = document.querySelector('.js-switch');
+        var switchery = new Switchery(elem, {
+            color: '#1AB394'
+        });
 
-@endsection
+        const ObtenerProvincias = (id) => {
+            $.ajax({
+                url: "{{ route('vehiculo.getProvincias') }}",
+                method: 'Get',
+                data: {
+                    '_token': $("input[name='_token']").val(),
+                    'iddepartamento': id
+                }
+            }).done(function(data) {
+                let ver = JSON.parse(data);
+                let comboProvincia = document.getElementById('cboProvincia');
+                let options = '';
+                ver.forEach(element => {
+                    options += '<option value="' + element.idprovincia + '">' +
+                        decodeURI(element.descripcion) + '</option>';
+                });
+                comboProvincia.innerHTML = options;
+
+                if (data) {
+                    ObtenerDistritos(comboProvincia.options[comboProvincia.selectedIndex].value);
+                }
+
+            });
+        };
+
+        const ObtenerDistritos = (id) => {
+            $.ajax({
+                url: "{{ route('vehiculo.getDistritos') }}",
+                method: 'Get',
+                data: {
+                    '_token': $("input[name='_token']").val(),
+                    'idprovincia': id
+                }
+            }).done(function(data) {
+                let ver = JSON.parse(data);
+                let comboDistrito = document.getElementById('cboDistrito');
+                let options = '';
+                ver.forEach(element => {
+                    options += '<option value="' + element.iddistrito + '">' +
+                        decodeURI(element.descripcion) + '</option>';
+                });
+                comboDistrito.innerHTML = options;
+            });
+
+        }
+
+
+        const GuardarLugar = () => {
+            let comboDepartamento = document.getElementById('cboDepartamento');
+            let comboProvincia = document.getElementById('cboProvincia');
+            let comboDistrito = document.getElementById('cboDistrito');
+            let LugarTrabajo = document.getElementById('idlugar');
+
+            LugarTrabajo.value = comboDepartamento.options[comboDepartamento.selectedIndex].text + " / " +
+                comboProvincia.options[comboProvincia.selectedIndex].text + " / " + comboDistrito.options[
+                    comboDistrito.selectedIndex].text;
+
+            $('#exampleModal').modal('hide');
+        }
+    @endsection
+</script>

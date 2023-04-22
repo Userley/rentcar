@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; utf-8">
     {{-- <link rel="shortcut icon" href="{!! asset('../resources/img/ico/devtools.ico') !!}"> --}}
     <title>RentCar</title>
 
@@ -60,7 +61,7 @@
 
                     <li>
                         <a href="{{ url('/mantenimiento/') }}"><i class="fa fa-list-alt" aria-hidden="true"></i> <span
-                            class="nav-label">Mantenimientos</span></a>
+                                class="nav-label">Mantenimientos</span></a>
                         {{-- <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span
                                 class="nav-label">Mantenimientos</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -122,10 +123,8 @@
     <!-- Checks -->
     <script src="{!! asset('../resources/js/plugins/switchery/switchery.js') !!}"></script>
 
-    {{-- 
-
    <!-- blueimp gallery -->
-    <script src="{!! asset('../resources/js/plugins/blueimp/jquery.blueimp-gallery.min.js') !!}"></script>
+    {{--  <script src="{!! asset('../resources/js/plugins/blueimp/jquery.blueimp-gallery.min.js') !!}"></script>
 
     <!-- Flot -->
     <script src="{!! asset('../resources/js/plugins/flot/jquery.flot.js') !!}"></script>
@@ -136,13 +135,15 @@
 
     <!-- Peity -->
     <script src="{!! asset('../resources/js/plugins/peity/jquery.peity.min.js') !!}"></script>
-    <script src="{!! asset('../resources/js/demo/peity-demo.js') !!}"></script>
+    <script src="{!! asset('../resources/js/demo/peity-demo.js') !!}"></script> --}}
 
     <!-- Custom and plugin javascript -->
     <script src="{!! asset('../resources/js/inspinia.js') !!}"></script>
     <script src="{!! asset('../resources/js/plugins/pace/pace.min.js') !!}"></script>
 
-    <!-- Steps -->
+    <script src="{!! asset('../resources/js/plugins/typehead/bootstrap3-typeahead.min.js') !!}"></script>
+
+   {{--   <!-- Steps -->
     <script src="{!! asset('../resources/js/plugins/steps/jquery.steps.min.js') !!}"></script>
 
     <!-- Jquery Validate -->
