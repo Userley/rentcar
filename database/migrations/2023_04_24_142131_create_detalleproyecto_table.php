@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('detalleproyecto', function (Blueprint $table) {
             $table->id('iddetalleproyecto');
+            $table->integer('idproyecto');
             $table->integer('idvehiculo');
+            $table->bigInteger('estado');
             $table->timestamps();
         });
     }
