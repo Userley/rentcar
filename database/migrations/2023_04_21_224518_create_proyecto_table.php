@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('proyecto', function (Blueprint $table) {
             $table->id('idproyecto');
             $table->string('descripcion');
+            $table->integer('idcliente');
+            $table->integer('iddepartamento');
+            $table->integer('idprovincia');
+            $table->integer('iddistrito');
+            $table->date('fechaini');
+            $table->date('fechafin')->nullable(true);
+            $table->bigInteger('estado');
             $table->timestamps();
         });
     }

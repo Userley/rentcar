@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DistritoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\ProvinciaController;
+use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\VehiculoController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +43,24 @@ Route::controller(VehiculoController::class)->group(function () {
     Route::get('vehiculo/getDistritos', 'getDistritos')->name('vehiculo.getDistritos');
     // Route::get('contactos/{id}', 'show');
     Route::post('vehiculo/saveProyecto', 'saveProyecto')->name('vehiculo.saveProyecto');
+});
+
+Route::controller(ClienteController::class)->group(function () {
+    Route::get('cliente', 'index');
+    Route::get('cliente/crear', 'crear');
+    Route::get('cliente/getProvincias', 'getProvincias')->name('cliente.getProvincias');
+    Route::get('cliente/getDistritos', 'getDistritos')->name('cliente.getDistritos');
+    // Route::get('contactos/{id}', 'show');
+    Route::post('cliente/saveProyecto', 'saveProyecto')->name('cliente.saveProyecto');
+});
+
+Route::controller(ProyectoController::class)->group(function () {
+    Route::get('proyecto', 'index');
+    Route::get('proyecto/crear', 'crear');
+    Route::get('proyecto/getProvincias', 'getProvincias')->name('proyecto.getProvincias');
+    Route::get('proyecto/getDistritos', 'getDistritos')->name('proyecto.getDistritos');
+    // Route::get('contactos/{id}', 'show');
+    Route::post('proyecto/saveProyecto', 'saveProyecto')->name('proyecto.saveProyecto');
 });
 
 Route::controller(MantenimientoController::class)->group(function () {

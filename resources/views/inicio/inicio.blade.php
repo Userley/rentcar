@@ -56,7 +56,16 @@
 
                     <li>
                         <a href="{{ url('/vehiculo/') }}"><i class="fa fa-car" aria-hidden="true"></i> <span
-                                class="nav-label">Vehículo</span></a>
+                                class="nav-label">Vehículos</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/cliente/') }}"><i class="fa fa-users" aria-hidden="true"></i><span
+                                class="nav-label">Clientes</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url('/proyecto/') }}"><i class="fa fa-cubes" aria-hidden="true"></i><span
+                                class="nav-label">Proyectos</span></a>
                     </li>
 
                     <li>
@@ -123,7 +132,7 @@
     <!-- Checks -->
     <script src="{!! asset('../resources/js/plugins/switchery/switchery.js') !!}"></script>
 
-   <!-- blueimp gallery -->
+    <!-- blueimp gallery -->
     {{--  <script src="{!! asset('../resources/js/plugins/blueimp/jquery.blueimp-gallery.min.js') !!}"></script>
 
     <!-- Flot -->
@@ -143,7 +152,7 @@
 
     <script src="{!! asset('../resources/js/plugins/typehead/bootstrap3-typeahead.min.js') !!}"></script>
 
-   {{--   <!-- Steps -->
+    {{--   <!-- Steps -->
     <script src="{!! asset('../resources/js/plugins/steps/jquery.steps.min.js') !!}"></script>
 
     <!-- Jquery Validate -->

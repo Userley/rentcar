@@ -96,10 +96,9 @@
                                                 <option value="{{ $Proyecto->idProyecto }}">
                                                     {{ $Proyecto->descripcion }}</option>
                                             @endforeach
-                                            <option value="000">Nuevo</option>
                                         </select>
                                         <div class="input-group-prepend" id="btnAddProy" data-toggle="modal"
-                                            data-target="#proyectoModal" style="display: none">
+                                            data-target="#proyectoModal">
                                             <button type="button" class="btn btn-warning"><i class="fa fa-plus"
                                                     aria-hidden="true"></i></button>
                                         </div>
@@ -245,13 +244,6 @@
         // $('#txtProyecto').typeahead({
         //     source: lstProyecto
         // });
-        document.querySelector('#cboProyecto').addEventListener('change', function(e) {
-            if (e.target.value == '000') {
-                document.getElementById('btnAddProy').setAttribute('style', 'display:inline');
-            } else {
-                document.getElementById('btnAddProy').setAttribute('style', 'display:none');
-            }
-        })
 
         document.querySelector('.custom-file-input').addEventListener('change', function(e) {
             var fileName = document.getElementById("imgvehicle").files[0].name;
@@ -354,11 +346,6 @@
                     option.text = x.descripcion;
                     $select.appendChild(option);
                 });
-
-                const option = document.createElement('option');
-                option.value = "000";
-                option.text = "Nuevo";
-                $select.appendChild(option);
 
                 // $('#txtProyecto').typeahead({
                 //     source: lstProys
