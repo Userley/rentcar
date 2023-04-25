@@ -17,6 +17,14 @@
 @endsection
 
 @section('content')
+    @csrf
+    <div class="d-flex align-content-center">
+        <a href="{{ url('/vehiculo/crear/') }}"> <button class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
+                Nuevo
+                Vehículo</button></a>
+    </div>
+
+    <hr>
     <div class="row">
         <div class="col-md-4">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -42,31 +50,38 @@
                                 </ul> --}}
                                 <div class="row p-3">
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
+                                            Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
+                                            Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
+                                            Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
+                                            Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
+                                            Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
+                                            Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                     <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 / Proyecto
+                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
+                                            Proyecto
                                             1 / CUSCO</button>
                                     </div>
                                 </div>
@@ -74,9 +89,7 @@
                         </div>
                         <div class="col-12 pt-2">
                             <div class="button-group text-center">
-                                <a href="{{ url('/vehiculo/crear/') }}"> <button class="btn btn-success"><i
-                                            class="fa fa-plus" aria-hidden="true"></i> Nuevo
-                                        Vehículo</button></a>
+
                                 <button class="btn btn-warning" id="btnEditVehiculo"><i class="fa fa-pencil-square-o"
                                         aria-hidden="true"></i> Editar Vehículo</button>
                             </div>
@@ -158,8 +171,8 @@
                                             <input type="text" id="idproyecto" class="form-control" disabled>
                                             <div class="input-group-prepend" data-toggle="modal"
                                                 data-target="#proyectoModalIni">
-                                                <button type="button" class="btn btn-outline-warning"><i class="fa fa-plus"
-                                                        aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-outline-warning"><i
+                                                        class="fa fa-plus" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </div>

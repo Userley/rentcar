@@ -22,7 +22,8 @@
 @section('content')
     @csrf
     <div class="d-flex align-content-center">
-        <a href="{{ url('/vehiculo/') }}"> <button class="btn btn-primary">Volver</button></a>
+        <a href="{{ url('/vehiculo/') }}"> <button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Volver</button></a>
     </div>
 
     <hr>
@@ -97,12 +98,12 @@
                                                     {{ $Proyecto->descripcion }}</option>
                                             @endforeach
                                         </select>
-                                        <div class="input-group-prepend" id="btnAddProy" data-toggle="modal"
-                                            data-target="#proyectoModal">
+                                        <div class="input-group-prepend" data-toggle="modal" data-target="#proyectoModal">
                                             <button type="button" class="btn btn-warning"><i class="fa fa-plus"
                                                     aria-hidden="true"></i></button>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="col-md-4">
                                     <div class="">
@@ -147,8 +148,10 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <button class="btn btn-success">Guardar</button>
-                        <button class="btn btn-secondary">Limpiar</button>
+                        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                            Guardar</button>
+                        <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i>
+                            Limpiar</button>
                     </div>
                 </div>
             </div>

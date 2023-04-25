@@ -21,7 +21,7 @@
 
 @section('content')
     <div class="d-flex align-content-center">
-        <a href="{{ url('/mantenimiento/') }}"> <button class="btn btn-primary">Volver</button></a>
+        <a href="{{ url('/mantenimiento/') }}"> <button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
     </div>
 
     <hr>
@@ -119,8 +119,8 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <button class="btn btn-success">Guardar</button>
-                        <button class="btn btn-secondary">Limpiar</button>
+                        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                        <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i> Limpiar</button>
                     </div>
                 </div>
             </div>

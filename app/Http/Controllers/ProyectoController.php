@@ -10,4 +10,9 @@ class ProyectoController extends Controller
     {
         return view('proyecto.index');
     }
+
+    public function crear()
+    {
+        return view('proyecto.crear');
+    }
 }

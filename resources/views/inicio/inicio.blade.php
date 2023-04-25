@@ -212,7 +212,6 @@
         };
 
         const comprimirImagen = (imagenComoArchivo, porcentajeCalidad) => {
-
             return new Promise((resolve, reject) => {
                 const $canvas = document.createElement("canvas");
                 const imagen = new Image();
