@@ -42,26 +42,33 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-md-9">
+
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="txtPlaca" class="font-weight-bold">Placa:</label>
                                         <input type="text" class="form-control" id="txtPlaca">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="txtMarca" class="font-weight-bold">Marca:</label>
                                         <input type="text" class="form-control" id="txtMarca">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="txtModelo" class="font-weight-bold">Modelo:</label>
                                         <input type="text" class="form-control" id="txtModelo">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtKilometraje" class="font-weight-bold">Kilometraje:</label>
+                                        <input type="text" class="form-control" id="txtKilometraje">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="cboProveedor" class="font-weight-bold">Proveedor:</label>
                                         <select name="" id="cboProveedor" class="form-control">
@@ -75,21 +82,17 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="txtKilometraje" class="font-weight-bold">Kilometraje:</label>
-                                        <input type="text" class="form-control" id="txtKilometraje">
+                                        <label for="btnDocumentos" class="font-weight-bold">Documentos:</label>
+                                        <div class="text-center">
+                                            <button class="btn btn-warning w-75" id="btnDocumentos" data-toggle="modal"
+                                                data-target="#DocumentoModal" data-backdrop="static"
+                                                data-keyboard="false"><i class="fa fa-files-o" aria-hidden="true"></i>
+                                                Agregar </button>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    {{-- <label for="txtProyecto" class="font-weight-bold">Proyecto:</label>
-                                    <div class="input-group">
-                                        <input type="text" id="txtProyecto" class="form-control" aria-label="Username"
-                                            aria-describedby="basic-addon1">
-                                        <div class="input-group-prepend" data-toggle="modal" data-target="#proyectoModal">
-                                            <button type="button" class="btn btn-warning"><i class="fa fa-plus"
-                                                    aria-hidden="true"></i></button>
-                                        </div>
-                                    </div> --}}
-
+                                {{-- <div class="col-md-4">
                                     <label for="cboProyecto" class="font-weight-bold">Proyecto:</label>
                                     <div class="input-group">
                                         <select name="" id="cboProyecto" class="form-control">
@@ -98,7 +101,8 @@
                                                     {{ $Proyecto->descripcion }}</option>
                                             @endforeach
                                         </select>
-                                        <div class="input-group-prepend" data-toggle="modal" data-target="#proyectoModal">
+                                        <div class="input-group-prepend" data-toggle="modal" data-target="#proyectoModal"
+                                            data-backdrop="static" data-keyboard="false">
                                             <button type="button" class="btn btn-warning"><i class="fa fa-plus"
                                                     aria-hidden="true"></i></button>
                                         </div>
@@ -113,17 +117,20 @@
                                                 id="lugarTrabajo" placeholder="placa" value="CUSCO" disabled>
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-outline-success" data-toggle="modal"
-                                                    data-target="#exampleModal">Cambiar</button>
+                                                    data-target="#exampleModal" data-backdrop="static"
+                                                    data-keyboard="false">Cambiar</button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txtDescripcion" class="font-weight-bold">Descripción:</label>
                                         <textarea name="" id="txtDescripcion" class="form-control" cols="1" rows="2"></textarea>
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -157,12 +164,104 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="DocumentoModal" tabindex="-1" role="dialog" aria-labelledby="DocumentoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Registro de documentos</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtDocumentoAdd" class="font-weight-bold">Nombre Documento</label>
+                                <input type="text" name="" class="form-control" id="txtDocumentoAdd">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtDocumentoIni" class="font-weight-bold">Fecha Inicio:</label>
+                                <input type="date" name="" class="form-control" id="txtDocumentoIni">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtDocumentoFin" class="font-weight-bold">Fecha Fin:</label>
+                                <input type="date" name="" class="form-control" id="txtDocumentoFin">
+                            </div>
+                        </div>
+                        <div class="col-md-3 align-bottom">
+                            <div class="form-group ">
+                                <button type="button" name="" class="btn btn-success w-100 mt-4" 
+                                    id="btnDocumentoSave"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <table class="table table-sm table-striped" style="font-size: 12px">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">Eliminar</th>
+                                <th style="width: 10%">Editar</th>
+                                <th style="width: 50%">Documento</th>
+                                <th style="width: 15%">Fecha Inicio</th>
+                                <th style="width: 15%">Fecha Fin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><button class="btn btn-sm btn-danger"><i class="fa fa-trash"
+                                            aria-hidden="true"></i></button></td>
+                                <td><button class="btn btn-sm btn-secondary"><i class="fa fa-pencil"
+                                            aria-hidden="true"></i></button></td>
+                                <td>SOAT</td>
+                                <td>01/01/2023</td>
+                                <td>01/01/2024</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-sm btn-danger"><i class="fa fa-trash"
+                                            aria-hidden="true"></i></button></td>
+                                <td><button class="btn btn-sm btn-secondary"><i class="fa fa-pencil"
+                                            aria-hidden="true"></i></button></td>
+                                <td>Seguro</td>
+                                <td>01/01/2023</td>
+                                <td>01/01/2024</td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-sm btn-danger"><i class="fa fa-trash"
+                                            aria-hidden="true"></i></button></td>
+                                <td><button class="btn btn-sm btn-secondary"><i class="fa fa-pencil"
+                                            aria-hidden="true"></i></button></td>
+                                <td>Revisión Técnica</td>
+                                <td>01/01/2023</td>
+                                <td>01/01/2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="" id="saveSite"><i class="fa fa-floppy-o" aria-hidden="true"></i> Registrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="modal fade" id="proyectoModal" tabindex="-1" role="dialog" aria-labelledby="proyectoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Proyecto</h5>
+                    <h3 class="modal-title" id="exampleModalLabel">Nuevo Proyecto</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -186,7 +285,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ubicaciones</h5>
+                    <h3 class="modal-title" id="exampleModalLabel">Ubicaciones</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

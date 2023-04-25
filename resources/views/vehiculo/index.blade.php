@@ -26,7 +26,7 @@
 
     <hr>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="ibox float-e-margins animated fadeInRight">
                 <div class="ibox-title">
                     <h5><i class="fa fa-car" aria-hidden="true"></i>
@@ -38,67 +38,63 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div style="overflow-y: scroll; overflow-x:hidden; height:300px">
-                                {{-- <ul class="list-group" id="listafechas">
-                                    <li class="list-group-item list-group-item-action" id="" onclick="">
-                                        <strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                                        </strong> -
 
-                                    </li>
-                                </ul> --}}
-                                <div class="row p-3">
-                                    <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
-                                            Proyecto
-                                            1 / CUSCO</button>
-                                    </div>
-                                    <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
-                                            Proyecto
-                                            1 / CUSCO</button>
-                                    </div>
-                                    <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
-                                            Proyecto
-                                            1 / CUSCO</button>
-                                    </div>
-                                    <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
-                                            Proyecto
-                                            1 / CUSCO</button>
-                                    </div>
-                                    <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
-                                            Proyecto
-                                            1 / CUSCO</button>
-                                    </div>
-                                    <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
-                                            Proyecto
-                                            1 / CUSCO</button>
-                                    </div>
-                                    <div class="col-md-12 m-1">
-                                        <button type="button" class="btn btn-default w-100 shadow-sm h-100">F2N - 960 /
-                                            Proyecto
-                                            1 / CUSCO</button>
-                                    </div>
+
+                    <div style="overflow-y: scroll; overflow-x:hidden; height:250px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
+                                        style="height: 40px;">F2N -
+                                        960</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
+                                        style="height: 40px;">F2N -
+                                        960</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
+                                        style="height: 40px;">F2N -
+                                        960</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
+                                        style="height: 40px;">F2N -
+                                        960</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
+                                        style="height: 40px;">F2N -
+                                        960</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
+                                        style="height: 40px;">F2N -
+                                        960</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 pt-2">
-                            <div class="button-group text-center">
+                    </div>
+                    <div class="button-group text-center">
 
-                                <button class="btn btn-warning" id="btnEditVehiculo"><i class="fa fa-pencil-square-o"
-                                        aria-hidden="true"></i> Editar Vehículo</button>
-                            </div>
-                        </div>
+                        <button class="btn btn-warning" id="btnEditVehiculo"><i class="fa fa-pencil-square-o"
+                                aria-hidden="true"></i> Editar Vehículo</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="ibox float-e-margins animated fadeInRight">
                 <div class="ibox-title">
                     <h5><i class="fa fa-info-circle" aria-hidden="true"></i> Datos Vehículo</h5>
@@ -112,17 +108,8 @@
                     <div class="row">
 
 
-                        <div class="col-md-6">
-                            <div class="text-center mb-3">
-                                <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
-                                <input type="checkbox" class="js-switch" />
-                            </div>
+                        <div class="col-md-8">
 
-                            <div class="form-group text-center">
-                                <img style="height: 145px;" class="rounded shadow image"
-                                    src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
-                                    id="imagenPrevisualizacion">
-                            </div>
 
                             {{-- <div class="input-group mb-3">
                                 <div class="custom-file">
@@ -199,9 +186,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label><strong>Actividad en el tiempo</strong></label>
-                            <div style="overflow-y: scroll; height:450px; border:1px solid #e9ecef">
+                        <div class="col-md-4">
+                            <div class="text-center mb-3">
+                                <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
+                                <input type="checkbox" class="js-switch" />
+                            </div>
+
+                            <div class="form-group text-center">
+                                <img style="height: 145px;" class="rounded shadow image"
+                                    src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
+                                    id="imagenPrevisualizacion">
+                            </div>
+
+                            {{-- <label><strong>Actividad en el tiempo</strong></label>
+                            <div style="overflow-y: scroll; height:250px; border:1px solid #e9ecef">
                                 <div id="vertical-timeline" class="vertical-container dark-timeline">
                                     <div class="vertical-timeline-block">
                                         <div class="vertical-timeline-icon gray-bg">
@@ -264,7 +262,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
