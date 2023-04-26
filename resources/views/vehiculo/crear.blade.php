@@ -69,8 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="cboProveedor" class="font-weight-bold">Proveedor:</label>
+                                    <label for="cboProveedor" class="font-weight-bold">Proveedor:</label>
+                                    <div class="input-group mb-3">
                                         <select name="" id="cboProveedor" class="form-control">
                                             @foreach ($Proveedores as $Proveedor)
                                                 <option value="{{ $Proveedor->idproveedor }}">
@@ -78,18 +78,22 @@
                                             @endforeach
 
                                         </select>
+                                        <div class="input-group-prepend" data-toggle="modal" data-target="#ProveedorModal"
+                                            data-backdrop="static" data-keyboard="false">
+                                            <button type="button" class="btn btn-outline-warning h-100"><i
+                                                    class="fa fa-plus" aria-hidden="true"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="btnDocumentos" class="font-weight-bold">Documentos:</label>
                                         <div class="text-center">
-                                            <button class="btn btn-warning w-75" id="btnDocumentos" data-toggle="modal"
+                                            <button class="btn btn-danger w-75" id="btnDocumentos" data-toggle="modal"
                                                 data-target="#DocumentoModal" data-backdrop="static"
                                                 data-keyboard="false"><i class="fa fa-files-o" aria-hidden="true"></i>
                                                 Agregar </button>
                                         </div>
-
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-4">
@@ -135,7 +139,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group text-center mb-4">
-                                <img style="height: 145px;" class="rounded shadow image"
+                                <img style="height: 150px;" class="rounded shadow image"
                                     src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
                                     id="imagenPrevisualizacion">
                             </div>
@@ -197,7 +201,7 @@
                         </div>
                         <div class="col-md-3 align-bottom">
                             <div class="form-group ">
-                                <button type="button" name="" class="btn btn-success w-100 mt-4" 
+                                <button type="button" name="" class="btn btn-success w-100 mt-4"
                                     id="btnDocumentoSave"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</button>
                             </div>
                         </div>
@@ -243,12 +247,10 @@
                             </tr>
                         </tbody>
                     </table>
-
-
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="" id="saveSite"><i class="fa fa-floppy-o" aria-hidden="true"></i> Registrar</button>
+                    <button type="button" class="btn btn-primary" onclick="" id="saveSite"><i
+                            class="fa fa-floppy-o" aria-hidden="true"></i> Registrar</button>
                 </div>
             </div>
         </div>
@@ -256,30 +258,29 @@
 
 
 
-    <div class="modal fade" id="proyectoModal" tabindex="-1" role="dialog" aria-labelledby="proyectoModalLabel"
+    <div class="modal fade" id="ProveedorModal" tabindex="-1" role="dialog" aria-labelledby="ProveedorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Nuevo Proyecto</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Nuevo Proveedor</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="txtProyectoAdd" class="font-weight-bold">Ingrese Nombre Proyecto</label>
-                        <input type="text" name="" class="form-control" id="txtProyectoAdd">
+                        <label for="txtProveedorADD" class="font-weight-bold">Nombre Proveedor</label>
+                        <input type="text" name="" class="form-control" id="txtProveedorADD">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="GuardarProyecto();"
+                    <button type="button" class="btn btn-primary" onclick="GuardarProveedor();"
                         id="saveSite">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -427,33 +428,30 @@
             $('#exampleModal').modal('hide');
         }
 
-        const GuardarProyecto = () => {
-            let txtProyectoADD = document.getElementById('txtProyectoAdd');
+        const GuardarProveedor = () => {
+            let txtProveedorADD = document.getElementById('txtProveedorADD');
 
             $.ajax({
-                url: "{{ route('vehiculo.saveProyecto') }}",
+                url: "{{ route('proveedor.saveProveedor') }}",
                 method: 'POST',
                 data: {
                     _token: $("input[name='_token']").val(),
-                    proyecto: txtProyectoADD.value
+                    proyecto: txtProveedorADD.value
                 }
             }).done(function(data) {
                 let datos = HtmlEncode(data);
-                $select = document.querySelector("#cboProyecto");
-                $('#cboProyecto option').remove();
+                $select = document.querySelector("#cboProveedor");
+                $('#cboProveedor option').remove();
 
                 JSON.parse(HtmlEncode(datos)).forEach(x => {
                     const option = document.createElement('option');
-                    option.value = x.idproyecto;
+                    option.value = x.idproveedor;
                     option.text = x.descripcion;
                     $select.appendChild(option);
                 });
-
-                // $('#txtProyecto').typeahead({
-                //     source: lstProys
-                // });
             });
-            $('#proyectoModal').modal('hide');
+            $('#ProveedorModal').modal('hide');
+            txtProveedorADD.value = '';
         }
 
         const HtmlEncode = (s) => {

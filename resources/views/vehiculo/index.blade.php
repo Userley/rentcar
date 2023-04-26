@@ -151,37 +151,55 @@
                                             placeholder="placa" value="AUTOGESA" disabled>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                {{-- <div class="col-6">
                                     <div class="mb-2">
                                         <label for="idproyecto" class="label label-success">Proyecto:</label>
                                         <div class="input-group">
                                             <input type="text" id="idproyecto" class="form-control" disabled>
                                             <div class="input-group-prepend" data-toggle="modal"
                                                 data-target="#proyectoModalIni">
-                                                <button type="button" class="btn btn-outline-warning"><i
+                                                <button type="button" class="btn btn-outline-warning h-100"><i
                                                         class="fa fa-plus" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-6">
                                     <div class="mb-2">
-                                        <label for="idfechaIni" class="label label-success">Fecha Inicio:</label>
-                                        <input type="text" class="form-control inputData" id="idfechaIni"
+                                        <label for="idfechaRegistro" class="label label-success">Fecha Registro:</label>
+                                        <input type="text" class="form-control inputData" id="idfechaRegistro"
                                             placeholder="placa" value="01/01/2013" disabled>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                {{-- <div class="col-9">
                                     <div class="">
                                         <label for="idlugar" class="label label-success">Lugar Trabajo:</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control inputData" style="height: 34px;"
+                                            <input type="text" class="form-control inputData"
                                                 id="idlugar" placeholder="placa" value="CUSCO" disabled>
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-success"
+                                                <button type="button" class="btn btn-outline-success h-100"
                                                     data-toggle="modal" data-target="#exampleModal">Cambiar</button>
                                             </div>
                                         </div>
+                                    </div>
+                                </div> --}}
+                                <div class="col-3">
+                                    <div class="mb-2">
+                                        <label for="btnDocumentos" class="label label-success">Documentos:</label>
+                                        <div>
+                                            <button class="btn btn-info w-100" id="btnDocumentos" data-toggle="modal"
+                                                data-target="#DocumentosModal" data-backdrop="static"
+                                                data-keyboard="false"><i class="fa fa-eye" aria-hidden="true"></i>
+                                                Ver </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="mb-2">
+                                        <label for="txtareaComentarios" class="label label-success">Comentarios:</label>
+                                        <textarea id="txtareaComentarios" class="form-control" rows="2" disabled></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -193,82 +211,60 @@
                             </div>
 
                             <div class="form-group text-center">
-                                <img style="height: 145px;" class="rounded shadow image"
+                                <img style="height: 200px;" class="rounded shadow image"
                                     src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
                                     id="imagenPrevisualizacion">
                             </div>
-
-                            {{-- <label><strong>Actividad en el tiempo</strong></label>
-                            <div style="overflow-y: scroll; height:250px; border:1px solid #e9ecef">
-                                <div id="vertical-timeline" class="vertical-container dark-timeline">
-                                    <div class="vertical-timeline-block">
-                                        <div class="vertical-timeline-icon gray-bg">
-                                            <i class="fa fa-coffee"></i>
-                                        </div>
-                                        <div class="vertical-timeline-content">
-                                            <p>Conference on the sales results for the previous year.
-                                            </p>
-                                            <span class="vertical-date small text-muted"> 2:10 pm - 12.06.2014 </span>
-                                        </div>
-                                    </div>
-                                    <div class="vertical-timeline-block">
-                                        <div class="vertical-timeline-icon gray-bg">
-                                            <i class="fa fa-briefcase"></i>
-                                        </div>
-                                        <div class="vertical-timeline-content">
-                                            <p>Many desktop publishing packages and web page editors now use Lorem.
-                                            </p>
-                                            <span class="vertical-date small text-muted"> 4:20 pm - 10.05.2014 </span>
-                                        </div>
-                                    </div>
-                                    <div class="vertical-timeline-block">
-                                        <div class="vertical-timeline-icon gray-bg">
-                                            <i class="fa fa-bolt"></i>
-                                        </div>
-                                        <div class="vertical-timeline-content">
-                                            <p>There are many variations of passages of Lorem Ipsum available.
-                                            </p>
-                                            <span class="vertical-date small text-muted"> 06:10 pm - 11.03.2014 </span>
-                                        </div>
-                                    </div>
-                                    <div class="vertical-timeline-block">
-                                        <div class="vertical-timeline-icon navy-bg">
-                                            <i class="fa fa-warning"></i>
-                                        </div>
-                                        <div class="vertical-timeline-content">
-                                            <p>The generated Lorem Ipsum is therefore.
-                                            </p>
-                                            <span class="vertical-date small text-muted"> 02:50 pm - 03.10.2014 </span>
-                                        </div>
-                                    </div>
-                                    <div class="vertical-timeline-block">
-                                        <div class="vertical-timeline-icon gray-bg">
-                                            <i class="fa fa-coffee"></i>
-                                        </div>
-                                        <div class="vertical-timeline-content">
-                                            <p>Conference on the sales results for the previous year.
-                                            </p>
-                                            <span class="vertical-date small text-muted"> 2:10 pm - 12.06.2014 </span>
-                                        </div>
-                                    </div>
-                                    <div class="vertical-timeline-block">
-                                        <div class="vertical-timeline-icon gray-bg">
-                                            <i class="fa fa-briefcase"></i>
-                                        </div>
-                                        <div class="vertical-timeline-content">
-                                            <p>Many desktop publishing packages and web page editors now use Lorem.
-                                            </p>
-                                            <span class="vertical-date small text-muted"> 4:20 pm - 10.05.2014 </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="DocumentosModal" tabindex="-1" role="dialog" aria-labelledby="DocumentosModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Documentos de vehículo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm table-striped border" style="font-size: 12px">
+                        <thead>
+                            <tr>
+                                <th style="width: 60%">Documento</th>
+                                <th style="width: 20%">Fecha Inicio</th>
+                                <th style="width: 20%">Fecha Fin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SOAT</td>
+                                <td>01/01/2023</td>
+                                <td>01/01/2024</td>
+                            </tr>
+                            <tr>
+                                <td>Seguro</td>
+                                <td>01/01/2023</td>
+                                <td>01/01/2024</td>
+                            </tr>
+                            <tr>
+                                <td>Revisión Técnica</td>
+                                <td>01/01/2023</td>
+                                <td>01/01/2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="modal fade" id="proyectoModalIni" tabindex="-1" role="dialog" aria-labelledby="proyectoModalIniLabel"
         aria-hidden="true">

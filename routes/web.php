@@ -5,6 +5,7 @@ use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DistritoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MantenimientoController;
+use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ProvinciaController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\VehiculoController;
@@ -52,6 +53,15 @@ Route::controller(ClienteController::class)->group(function () {
     Route::get('cliente/getDistritos', 'getDistritos')->name('cliente.getDistritos');
     // Route::get('contactos/{id}', 'show');
     Route::post('cliente/saveProyecto', 'saveProyecto')->name('cliente.saveProyecto');
+});
+
+Route::controller(ProveedorController::class)->group(function () {
+    Route::get('proveedor', 'index');
+    Route::get('proveedor/crear', 'crear');
+    Route::get('proveedor/getProvincias', 'getProvincias')->name('proveedor.getProvincias');
+    Route::get('proveedor/getDistritos', 'getDistritos')->name('proveedor.getDistritos');
+    // Route::get('contactos/{id}', 'show');
+    Route::post('proveedor/saveProveedor', 'saveProveedor')->name('proveedor.saveProveedor');
 });
 
 Route::controller(ProyectoController::class)->group(function () {

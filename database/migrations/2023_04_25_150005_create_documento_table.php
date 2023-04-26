@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->date('fechaini');
             $table->date('fechafin');
+            $table->bigInteger('estado');
             $table->timestamps();
         });
     }

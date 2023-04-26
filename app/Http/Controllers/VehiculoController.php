@@ -40,21 +40,6 @@ class VehiculoController extends Controller
         return response($Distritos, 200)->header('Content-type', 'text/plain');
     }
 
-    public function getProyectos()
-    {
-        $Proyectos = Proyecto::all();
 
-        return response($Proyectos, 200)->header('Content-type', 'text/plain');
-    }
 
-    public function saveProyecto(Request $request)
-    {
-        $Proyecto =  new Proyecto();
-        $Proyecto->descripcion = $request->proyecto;
-        $Proyecto->save();
-
-        $Proyectos = Proyecto::all();
-
-        return response($Proyectos, 200)->header('Content-type', 'text/plain');
-    }
 }
