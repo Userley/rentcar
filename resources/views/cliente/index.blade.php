@@ -20,7 +20,7 @@
 
     @csrf
     <div class="d-flex align-content-center">
-        <a href="{{ url('/cliente/crear/') }}"> <button class="btn btn-success"> <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Cliente</button></a>
+        <a href="{{ url('/cliente/crear/') }}"> <button class="btn btn-sm btn-success"> <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Cliente</button></a>
     </div>
 
     <hr>

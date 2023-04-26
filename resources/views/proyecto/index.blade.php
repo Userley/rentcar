@@ -19,7 +19,8 @@
 @section('content')
     @csrf
     <div class="d-flex align-content-center">
-        <a href="{{ url('/proyecto/crear/') }}"> <button class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
+        <a href="{{ url('/proyecto/crear/') }}"> <button class="btn btn-sm btn-success"><i class="fa fa-plus"
+                    aria-hidden="true"></i>
                 Nuevo
                 Proyecto</button></a>
     </div>
@@ -38,6 +39,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
+
                 </div>
             </div>
         </div>
@@ -55,19 +57,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    {{-- <div class="row m-b-sm m-t-sm">
-                        <div class="col-md-1">
-                            <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i
-                                    class="fa fa-refresh"></i>
-                                Refresh</button>
-                        </div>
-                        <div class="col-md-11">
-                            <div class="input-group"><input type="text" placeholder="Search"
-                                    class="input-sm form-control"> <span class="input-group-btn">
-                                    <button type="button" class="btn btn-sm btn-primary"> Go!</button>
-                                </span></div>
-                        </div>
-                    </div> --}}
+
                     <div class="project-list table-responsive">
 
                         <table class="table table-hover">
@@ -105,9 +95,11 @@
                                     <td class="project-actions">
                                         <a href="#" class="btn btn-success btn-sm"><i class="fa fa-folder"></i> Ver
                                         </a>
-                                        <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Editar
+                                        <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
+                                            Editar
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Anular
+                                        <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
+                                            Anular
                                         </a>
                                     </td>
                                 </tr>
@@ -311,5 +303,7 @@
                 }, 2000);
             }
         }
+
+
     @endsection
 </script>

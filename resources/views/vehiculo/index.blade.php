@@ -19,9 +19,9 @@
 @section('content')
     @csrf
     <div class="d-flex align-content-center">
-        <a href="{{ url('/vehiculo/crear/') }}"> <button class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
-                Nuevo
-                Vehículo</button></a>
+        <a href="{{ url('/vehiculo/crear/') }}"> <button class="btn btn-sm btn-success"><i class="fa fa-plus"
+                    aria-hidden="true"></i>
+                Nuevo Vehículo</button></a>
     </div>
 
     <hr>
@@ -38,51 +38,37 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-
-
-                    <div style="overflow-y: scroll; overflow-x:hidden; height:250px;">
+                    <div style="overflow-y: scroll; overflow-x:hidden; height:250px;" class="p-2">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
-                                        style="height: 40px;">F2N -
-                                        960</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
+                                    style="height: 40px;">F2N -
+                                    960</button>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
-                                        style="height: 40px;">F2N -
-                                        960</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
+                                    style="height: 40px;">F2N -
+                                    960</button>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
-                                        style="height: 40px;">F2N -
-                                        960</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
+                                    style="height: 40px;">F2N -
+                                    960</button>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
-                                        style="height: 40px;">F2N -
-                                        960</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
+                                    style="height: 40px;">F2N -
+                                    960</button>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
-                                        style="height: 40px;">F2N -
-                                        960</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
+                                    style="height: 40px;">F2N -
+                                    960</button>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-outline-success shadow-sm w-75"
-                                        style="height: 40px;">F2N -
-                                        960</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
+                                    style="height: 40px;">F2N -
+                                    960</button>
                             </div>
                         </div>
                     </div>
@@ -125,35 +111,35 @@
 
                                 <div class="col-6">
                                     <div class="mb-2">
-                                        <label for="idplaca" class="label label-success">Placa:</label>
+                                        <label for="idplaca" class="label label-primary">Placa:</label>
                                         <input type="text" class="form-control inputData" id="idplaca"
                                             placeholder="placa" value="F2N - 960" disabled>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-2">
-                                        <label for="idmarca" class="label label-success">Marca:</label>
+                                        <label for="idmarca" class="label label-primary">Marca:</label>
                                         <input type="text" class="form-control inputData" id="idmarca"
                                             placeholder="placa" value="MITSUBISHI" disabled>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-2">
-                                        <label for="idmodelo" class="label label-success">Modelo:</label>
+                                        <label for="idmodelo" class="label label-primary">Modelo:</label>
                                         <input type="text" class="form-control inputData" id="idmodelo"
                                             placeholder="placa" value="ROSA" disabled>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-2">
-                                        <label for="idproveedor" class="label label-success">Proveedor:</label>
+                                        <label for="idproveedor" class="label label-primary">Proveedor:</label>
                                         <input type="text" class="form-control inputData" id="idproveedor"
                                             placeholder="placa" value="AUTOGESA" disabled>
                                     </div>
                                 </div>
                                 {{-- <div class="col-6">
                                     <div class="mb-2">
-                                        <label for="idproyecto" class="label label-success">Proyecto:</label>
+                                        <label for="idproyecto" class="label label-primary">Proyecto:</label>
                                         <div class="input-group">
                                             <input type="text" id="idproyecto" class="form-control" disabled>
                                             <div class="input-group-prepend" data-toggle="modal"
@@ -166,7 +152,7 @@
                                 </div> --}}
                                 <div class="col-6">
                                     <div class="mb-2">
-                                        <label for="idfechaRegistro" class="label label-success">Fecha Registro:</label>
+                                        <label for="idfechaRegistro" class="label label-primary">Fecha Registro:</label>
                                         <input type="text" class="form-control inputData" id="idfechaRegistro"
                                             placeholder="placa" value="01/01/2013" disabled>
                                     </div>
@@ -186,9 +172,9 @@
                                 </div> --}}
                                 <div class="col-3">
                                     <div class="mb-2">
-                                        <label for="btnDocumentos" class="label label-success">Documentos:</label>
+                                        <label for="btnDocumentos" class="label label-primary">Documentos:</label>
                                         <div>
-                                            <button class="btn btn-info w-100" id="btnDocumentos" data-toggle="modal"
+                                            <button class="btn btn-danger w-100" id="btnDocumentos" data-toggle="modal"
                                                 data-target="#DocumentosModal" data-backdrop="static"
                                                 data-keyboard="false"><i class="fa fa-eye" aria-hidden="true"></i>
                                                 Ver </button>
@@ -198,7 +184,7 @@
 
                                 <div class="col-12">
                                     <div class="mb-2">
-                                        <label for="txtareaComentarios" class="label label-success">Comentarios:</label>
+                                        <label for="txtareaComentarios" class="label label-primary">Comentarios:</label>
                                         <textarea id="txtareaComentarios" class="form-control" rows="2" disabled></textarea>
                                     </div>
                                 </div>
@@ -357,15 +343,15 @@
 <script>
     @section('functions')
 
-        {{-- const inputFile = document.querySelector('#imgvehicle');
-    const image = document.querySelector('#imagenPrevisualizacion');
+        const inputFile = document.querySelector('#imgvehicle');
+        const image = document.querySelector('#imagenPrevisualizacion');
 
-    inputFile.addEventListener('input', async (event) => {
-    let imgblob = await comprimirImagen(inputFile.files[0], 25);
-    let srcimg = URL.createObjectURL(imgblob);
-    base64URL = await encodeFileAsBase64URL(imgblob);
-    image.setAttribute('src', base64URL);
-    }); --}}
+        inputFile.addEventListener('input', async (event) => {
+            let imgblob = await comprimirImagen(inputFile.files[0], 25);
+            let srcimg = URL.createObjectURL(imgblob);
+            base64URL = await encodeFileAsBase64URL(imgblob);
+            image.setAttribute('src', base64URL);
+        });
 
 
         var elem = document.querySelector('.js-switch');
@@ -373,64 +359,18 @@
             color: '#1AB394'
         });
 
-        const ObtenerProvincias = (id) => {
-            $.ajax({
-                url: "{{ route('vehiculo.getProvincias') }}",
-                method: 'Get',
-                data: {
-                    '_token': $("input[name='_token']").val(),
-                    'iddepartamento': id
-                }
-            }).done(function(data) {
-                let ver = JSON.parse(data);
-                let comboProvincia = document.getElementById('cboProvincia');
-                let options = '';
-                ver.forEach(element => {
-                    options += '<option value="' + element.idprovincia + '">' +
-                        decodeURI(element.descripcion) + '</option>';
-                });
-                comboProvincia.innerHTML = options;
 
-                if (data) {
-                    ObtenerDistritos(comboProvincia.options[comboProvincia.selectedIndex].value);
-                }
+        // const GuardarLugar = () => {
+        //     let comboDepartamento = document.getElementById('cboDepartamento');
+        //     let comboProvincia = document.getElementById('cboProvincia');
+        //     let comboDistrito = document.getElementById('cboDistrito');
+        //     let LugarTrabajo = document.getElementById('idlugar');
 
-            });
-        };
+        //     LugarTrabajo.value = comboDepartamento.options[comboDepartamento.selectedIndex].text + " / " +
+        //         comboProvincia.options[comboProvincia.selectedIndex].text + " / " + comboDistrito.options[
+        //             comboDistrito.selectedIndex].text;
 
-        const ObtenerDistritos = (id) => {
-            $.ajax({
-                url: "{{ route('vehiculo.getDistritos') }}",
-                method: 'Get',
-                data: {
-                    '_token': $("input[name='_token']").val(),
-                    'idprovincia': id
-                }
-            }).done(function(data) {
-                let ver = JSON.parse(data);
-                let comboDistrito = document.getElementById('cboDistrito');
-                let options = '';
-                ver.forEach(element => {
-                    options += '<option value="' + element.iddistrito + '">' +
-                        decodeURI(element.descripcion) + '</option>';
-                });
-                comboDistrito.innerHTML = options;
-            });
-
-        }
-
-
-        const GuardarLugar = () => {
-            let comboDepartamento = document.getElementById('cboDepartamento');
-            let comboProvincia = document.getElementById('cboProvincia');
-            let comboDistrito = document.getElementById('cboDistrito');
-            let LugarTrabajo = document.getElementById('idlugar');
-
-            LugarTrabajo.value = comboDepartamento.options[comboDepartamento.selectedIndex].text + " / " +
-                comboProvincia.options[comboProvincia.selectedIndex].text + " / " + comboDistrito.options[
-                    comboDistrito.selectedIndex].text;
-
-            $('#exampleModal').modal('hide');
-        }
+        //     $('#exampleModal').modal('hide');
+        // }
     @endsection
 </script>

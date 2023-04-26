@@ -26,19 +26,7 @@ class VehiculoController extends Controller
     }
 
 
-    public function getProvincias(Request $request)
-    {
-        $Provincias = Provincia::query()->where('iddepartamento', $request->iddepartamento)->get();
 
-        return response($Provincias, 200)->header('Content-type', 'text/plain');
-    }
-
-    public function getDistritos(Request $request)
-    {
-        $Distritos = Distrito::query()->where('idprovincia', $request->idprovincia)->get();
-
-        return response($Distritos, 200)->header('Content-type', 'text/plain');
-    }
 
 
 

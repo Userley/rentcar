@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departamento;
 use App\Models\Proyecto;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProyectoController extends Controller
 
     public function crear()
     {
-        return view('proyecto.crear');
+        $Departamentos = Departamento::all();
+        return view('proyecto.crear', compact('Departamentos'));
     }
 
     public function getProyectos()
