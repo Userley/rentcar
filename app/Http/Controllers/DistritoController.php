@@ -11,7 +11,7 @@ class DistritoController extends Controller
     {
         return view('');
     }
-    public function getDistritos(Request $request)
+    public function GetDistritos(Request $request)
     {
         $Distritos = Distrito::query()->where('idprovincia', $request->idprovincia)->get();
 

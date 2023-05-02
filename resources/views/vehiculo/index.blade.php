@@ -332,27 +332,10 @@
 
 @section('ready')
 
-    {{-- document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-    var fileName = document.getElementById("imgvehicle").files[0].name;
-    var nextSibling = e.target.nextElementSibling
-    nextSibling.innerText = fileName
-    }) --}}
-
 @endsection
 
 <script>
     @section('functions')
-
-        const inputFile = document.querySelector('#imgvehicle');
-        const image = document.querySelector('#imagenPrevisualizacion');
-
-        inputFile.addEventListener('input', async (event) => {
-            let imgblob = await comprimirImagen(inputFile.files[0], 25);
-            let srcimg = URL.createObjectURL(imgblob);
-            base64URL = await encodeFileAsBase64URL(imgblob);
-            image.setAttribute('src', base64URL);
-        });
-
 
         var elem = document.querySelector('.js-switch');
         var switchery = new Switchery(elem, {

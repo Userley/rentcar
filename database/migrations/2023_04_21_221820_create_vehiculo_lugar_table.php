@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vehiculo_lugar', function (Blueprint $table) {
-            $table->id('idvehiculolugar');
-            $table->integer('idvehiculo');
+            $table->string('idvehiculolugar',10)->primary();
+            $table->string('idvehiculo');
             $table->integer('idproyecto');
             $table->integer('iddepartamento');
             $table->integer('idprovincia');

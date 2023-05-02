@@ -11,7 +11,7 @@ class ProvinciaController extends Controller
     {
         return view('proyecto.index');
     }
-    public function getProvincias(Request $request)
+    public function GetProvincias(Request $request)
     {
         $Provincias = Provincia::query()->where('iddepartamento', $request->iddepartamento)->get();
 

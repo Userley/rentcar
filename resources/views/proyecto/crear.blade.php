@@ -17,12 +17,13 @@
 @endsection
 
 @section('content')
-@csrf
-<div class="d-flex align-content-center">
-    <a href="{{ url('/proyecto/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-            Volver</button></a>
-</div>
-<hr>
+    @csrf
+    <div class="d-flex align-content-center">
+        <a href="{{ url('/proyecto/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"
+                    aria-hidden="true"></i>
+                Volver</button></a>
+    </div>
+    <hr>
     <div class="row">
         <div class="col-md-12">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -163,7 +164,7 @@
 
         const ObtenerProvincias = (id) => {
             $.ajax({
-                url: "{{ route('vehiculo.getProvincias') }}",
+                url: "{{ route('provincia.GetProvincias') }}",
                 method: 'Get',
                 data: {
                     '_token': $("input[name='_token']").val(),
@@ -188,7 +189,7 @@
 
         const ObtenerDistritos = (id) => {
             $.ajax({
-                url: "{{ route('vehiculo.getDistritos') }}",
+                url: "{{ route('distrito.GetDistritos') }}",
                 method: 'Get',
                 data: {
                     '_token': $("input[name='_token']").val(),
@@ -206,5 +207,7 @@
             });
 
         }
+
+
     @endsection
 </script>

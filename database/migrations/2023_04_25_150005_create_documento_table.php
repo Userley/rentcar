@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('documento', function (Blueprint $table) {
             $table->id('iddocumento');
-            $table->integer('idvehiculo');
+            $table->string('idvehiculo',10);
             $table->string('descripcion');
             $table->date('fechaini');
             $table->date('fechafin');
-            $table->bigInteger('estado');
+            $table->bigInteger('estado')->default(1);
             $table->timestamps();
         });
     }

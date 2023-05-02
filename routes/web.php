@@ -30,11 +30,11 @@ Route::controller(DepartamentoController::class)->group(function () {
 });
 
 Route::controller(ProvinciaController::class)->group(function () {
-    Route::get('provincia', 'GetProvincias');
+    Route::get('provincia', 'GetProvincias')->name('provincia.GetProvincias');
 });
 
 Route::controller(DistritoController::class)->group(function () {
-    Route::get('distrito', 'GetDistritos');
+    Route::get('distrito', 'GetDistritos')->name('distrito.GetDistritos');
 });
 
 Route::controller(VehiculoController::class)->group(function () {
@@ -43,7 +43,7 @@ Route::controller(VehiculoController::class)->group(function () {
     Route::get('vehiculo/getProvincias', 'getProvincias')->name('vehiculo.getProvincias');
     Route::get('vehiculo/getDistritos', 'getDistritos')->name('vehiculo.getDistritos');
     // Route::get('contactos/{id}', 'show');
-    Route::post('vehiculo/saveProyecto', 'saveProyecto')->name('vehiculo.saveProyecto');
+    Route::post('vehiculo/SaveVehiculo', 'SaveVehiculo')->name('vehiculo.SaveVehiculo');
 });
 
 Route::controller(ClienteController::class)->group(function () {
