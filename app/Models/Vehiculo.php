@@ -10,4 +10,5 @@ class Vehiculo extends Model
     use HasFactory;
     protected $table = "Vehiculo";
     protected $primaryKey = 'idvehiculo';
+    protected $keyType = 'string';
 }

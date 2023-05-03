@@ -87,16 +87,40 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="btnDocumentos" class="font-weight-bold">Documentos:</label>
                                         <div class="text-center">
                                             <button class="btn btn-danger w-75" id="btnDocumentos" data-toggle="modal"
-                                                data-target="#DocumentoModal" data-backdrop="static"
-                                                data-keyboard="false"><i class="fa fa-files-o" aria-hidden="true"></i>
-                                                Agregar
+                                                data-target="#DocumentoModal" data-backdrop="static" data-keyboard="false">
                                                 <span class="badge badge-success" id="totaldoc">0</span>
+                                                <i class="fa fa-files-o" aria-hidden="true"></i>
+                                                Agregar
                                             </button>
                                         </div>
+                                    </div> --}}
+                                    <label class="font-weight-bold">Imágen:</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="imgvehicle"
+                                                accept="image/*">
+                                            <label class="custom-file-label" for="imgvehicle">Seleccionar</label>
+                                        </div>
+                                        {{-- <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary btn-lg"
+                                                id="inputGroupFileAddon02">Subir</button>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="btnDocumentos" class="font-weight-bold"><i class="fa fa-files-o"
+                                                aria-hidden="true"></i> Documentos: <span class="badge badge-success"
+                                                id="totaldoc">0</span></label>
+                                        <button class="btn btn-danger w-75" id="btnDocumentos" data-toggle="modal"
+                                            data-target="#DocumentoModal" data-backdrop="static" data-keyboard="false">
+                                            <i class="fa fa-plus" aria-hidden="true"></i> 
+                                            Agregar
+                                        </button>
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-4">
@@ -130,34 +154,76 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="txtDescripcion" class="font-weight-bold">Descripción:</label>
-                                        <textarea name="" id="txtDescripcion" class="form-control" cols="1" rows="2"></textarea>
-                                    </div>
-                                </div>
-
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group text-center mb-4">
-                                <img style="height: 150px;" class="rounded shadow image"
-                                    src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
+                                <img style="height: 150px;" class="rounded shadow image" src="{!! asset('../resources/img/noimagecar.png') !!}"
                                     id="imagenPrevisualizacion">
                             </div>
 
-                            <label class="font-weight-bold">Imágen:</label>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="imgvehicle" accept="image/*">
-                                    <label class="custom-file-label" for="imgvehicle">Seleccionar</label>
-                                </div>
-                                {{-- <div class="input-group-append">
-                                    <button type="button" class="btn btn-primary btn-lg"
-                                        id="inputGroupFileAddon02">Subir</button>
+
+                        </div>
+                        <div class="col-md-12">
+                            {{-- <div class="form-group">
+                                <label for="txtDescripcion" class="font-weight-bold">Descripción:</label>
+                                <textarea name="" id="txtDescripcion" class="form-control" cols="1" rows="2"></textarea>
+                            </div> --}}
+
+                            {{-- <div class="ibox-title">
+                                    <h4><i class="fa fa-car" aria-hidden="true"></i> Documentos</h4>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
                                 </div> --}}
-                            </div>
+                            {{-- <br>
+                            <h4><i class="fa fa-file-o" aria-hidden="true"></i>
+                                Documentos</h4>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="txtDocumentoAdd" class="font-weight-bold">Nombre
+                                                    Documento</label>
+                                                <input type="text" name="" class="form-control"
+                                                    id="txtDocumentoAdd">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="txtDocumentoIni" class="font-weight-bold">Fecha
+                                                    Inicio:</label>
+                                                <input type="date" name="" class="form-control"
+                                                    id="txtDocumentoIni">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="txtDocumentoFin" class="font-weight-bold">Fecha
+                                                    Fin:</label>
+                                                <input type="date" name="" class="form-control"
+                                                    id="txtDocumentoFin">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 align-bottom">
+                                            <div class="form-group ">
+                                                <button type="button" name="" class="btn btn-success w-100 mt-4"
+                                                    onclick="AddDocument();" id="btnDocumentoSave"><i class="fa fa-plus"
+                                                        aria-hidden="true"></i>
+                                                    Agregar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+
+                                </div>
+                            </div> --}}
                         </div>
                     </div>
                     <hr>
@@ -185,35 +251,38 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label for="txtDocumentoAdd" class="font-weight-bold">Nombre Documento</label>
-                                <input type="text" name="" class="form-control" id="txtDocumentoAdd">
+                                <input type="text" name="" class="form-control form-control-sm"
+                                    id="txtDocumentoAdd">
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label for="txtDocumentoIni" class="font-weight-bold">Fecha Inicio:</label>
-                                <input type="date" name="" class="form-control" id="txtDocumentoIni">
+                                <input type="date" name="" class="form-control form-control-sm"
+                                    id="txtDocumentoIni">
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label for="txtDocumentoFin" class="font-weight-bold">Fecha Fin:</label>
-                                <input type="date" name="" class="form-control" id="txtDocumentoFin">
+                                <input type="date" name="" class="form-control form-control-sm"
+                                    id="txtDocumentoFin">
                             </div>
                         </div>
-                        <div class="col-md-3 align-bottom">
+                        <div class="col-3 align-bottom">
                             <div class="form-group ">
-                                <button type="button" name="" class="btn btn-success w-100 mt-4"
+                                <button type="button" name="" class="btn btn-sm btn-success w-100 mt-4"
                                     onclick="AddDocument();" id="btnDocumentoSave"><i class="fa fa-plus"
                                         aria-hidden="true"></i> Agregar</button>
                             </div>
                         </div>
                     </div>
                     <hr>
-                    <table class="table table-sm table-striped" style="font-size: 12px">
-                        <thead>
+                    <table class="table table-striped table-bordered" style="font-size: 13px">
+                        <thead class="thead-dark">
                             <tr>
                                 <th style="width: 10%">Eliminar</th>
                                 <th style="width: 10%">Editar</th>
@@ -317,7 +386,7 @@
             let Modelo = document.getElementById('txtModelo').value;
             let Kilometraje = document.getElementById('txtKilometraje').value;
             let Proveedor = document.getElementById('cboProveedor').value;
-            let Descripcion = document.getElementById('txtDescripcion').value;
+            // let Descripcion = document.getElementById('txtDescripcion').value;
             let Imagen = base64URL;
             let Docs = document.getElementById('tblbodydocumentos').querySelectorAll('tr');
 
@@ -350,7 +419,7 @@
                     modelo: Modelo,
                     kilometraje: Kilometraje,
                     idproveedor: Proveedor,
-                    descripcion: Descripcion,
+                    // descripcion: Descripcion,
                     imagen: Imagen,
                     documentos: lstDoc
                 }

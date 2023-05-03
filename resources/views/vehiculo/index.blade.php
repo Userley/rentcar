@@ -38,38 +38,15 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div style="overflow-y: scroll; overflow-x:hidden; height:250px;" class="p-2">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
-                                    style="height: 40px;">F2N -
-                                    960</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
-                                    style="height: 40px;">F2N -
-                                    960</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
-                                    style="height: 40px;">F2N -
-                                    960</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
-                                    style="height: 40px;">F2N -
-                                    960</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
-                                    style="height: 40px;">F2N -
-                                    960</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-outline-success shadow-sm w-100"
-                                    style="height: 40px;">F2N -
-                                    960</button>
-                            </div>
+                    <div style="overflow-y: scroll; overflow-x:hidden; height:180px;" class="p-2">
+                        <div class="row" id="lstbtns">
+                            @foreach ($Vehiculos as $Vehiculo)
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-outline-success shadow-sm w-100"
+                                        id="{{ $Vehiculo->idvehiculo }}" style="height: 40px;"
+                                        onclick="Activar(event);">{{ $Vehiculo->idvehiculo }}</button>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="button-group text-center">
@@ -112,29 +89,29 @@
                                 <div class="col-6">
                                     <div class="mb-2">
                                         <label for="idplaca" class="label label-primary">Placa:</label>
-                                        <input type="text" class="form-control inputData" id="idplaca"
-                                            placeholder="placa" value="F2N - 960" disabled>
+                                        <input type="text" class="form-control inputData" id="idplaca" value=""
+                                            disabled>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-2">
                                         <label for="idmarca" class="label label-primary">Marca:</label>
-                                        <input type="text" class="form-control inputData" id="idmarca"
-                                            placeholder="placa" value="MITSUBISHI" disabled>
+                                        <input type="text" class="form-control inputData" id="idmarca" value=""
+                                            disabled>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-2">
                                         <label for="idmodelo" class="label label-primary">Modelo:</label>
-                                        <input type="text" class="form-control inputData" id="idmodelo"
-                                            placeholder="placa" value="ROSA" disabled>
+                                        <input type="text" class="form-control inputData" id="idmodelo" value=""
+                                            disabled>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-2">
                                         <label for="idproveedor" class="label label-primary">Proveedor:</label>
-                                        <input type="text" class="form-control inputData" id="idproveedor"
-                                            placeholder="placa" value="AUTOGESA" disabled>
+                                        <input type="text" class="form-control inputData" id="idproveedor" value=""
+                                            disabled>
                                     </div>
                                 </div>
                                 {{-- <div class="col-6">
@@ -154,7 +131,7 @@
                                     <div class="mb-2">
                                         <label for="idfechaRegistro" class="label label-primary">Fecha Registro:</label>
                                         <input type="text" class="form-control inputData" id="idfechaRegistro"
-                                            placeholder="placa" value="01/01/2013" disabled>
+                                            value="" disabled>
                                     </div>
                                 </div>
                                 {{-- <div class="col-9">
@@ -162,7 +139,7 @@
                                         <label for="idlugar" class="label label-success">Lugar Trabajo:</label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control inputData"
-                                                id="idlugar" placeholder="placa" value="CUSCO" disabled>
+                                                id="idlugar"  value="CUSCO" disabled>
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-outline-success h-100"
                                                     data-toggle="modal" data-target="#exampleModal">Cambiar</button>
@@ -181,25 +158,17 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <div class="mb-2">
-                                        <label for="txtareaComentarios" class="label label-primary">Comentarios:</label>
-                                        <textarea id="txtareaComentarios" class="form-control" rows="2" disabled></textarea>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="text-center mb-3">
+                            {{-- <div class="text-center mb-3">
                                 <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
-                                <input type="checkbox" class="js-switch" />
-                            </div>
+                                <input type="checkbox" class="js-switch" id="chkactivo" />
+                            </div> --}}
 
                             <div class="form-group text-center">
-                                <img style="height: 200px;" class="rounded shadow image"
-                                    src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
-                                    id="imagenPrevisualizacion">
+                                <img style="height: 150px;" class="rounded shadow image" src="{!! asset('../resources/img/noimagecar.png') !!}"
+                                    id="imgcar">
                             </div>
                         </div>
                     </div>
@@ -228,8 +197,8 @@
                                 <th style="width: 20%">Fecha Fin</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="tblbodydocs">
+                            {{-- <tr>
                                 <td>SOAT</td>
                                 <td>01/01/2023</td>
                                 <td>01/01/2024</td>
@@ -243,7 +212,7 @@
                                 <td>Revisión Técnica</td>
                                 <td>01/01/2023</td>
                                 <td>01/01/2024</td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>
@@ -252,7 +221,7 @@
     </div>
 
 
-    <div class="modal fade" id="proyectoModalIni" tabindex="-1" role="dialog" aria-labelledby="proyectoModalIniLabel"
+    {{-- <div class="modal fade" id="proyectoModalIni" tabindex="-1" role="dialog" aria-labelledby="proyectoModalIniLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -325,7 +294,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 
@@ -337,11 +306,78 @@
 <script>
     @section('functions')
 
-        var elem = document.querySelector('.js-switch');
-        var switchery = new Switchery(elem, {
-            color: '#1AB394'
-        });
+        // var elem = document.querySelector('.js-switch');
+        // var switchery = new Switchery(elem, {
+        //     color: '#1AB394'
+        // });
 
+
+        const Activar = (e) => {
+            let btn = e.target.id;
+            let contenedorbtn = document.getElementById('lstbtns').querySelectorAll('button');
+
+            contenedorbtn.forEach(element => {
+                // console.log(element.id);
+                if (element.id != btn) {
+                    element.classList.add('btn-outline-primary');
+                    element.classList.remove('btn-primary');
+                } else {
+                    element.classList.remove('btn-outline-primary');
+                    element.classList.add('btn-primary');
+                }
+            });
+
+            $.ajax({
+                url: "{{ route('vehiculo.obtener') }}",
+                method: 'GET',
+                data: {
+                    _token: $("input[name='_token']").val(),
+                    idvehiculo: btn
+                }
+            }).done(function(data) {
+                let JsonData = JSON.parse(data);
+                let bodydocs = $('#tblbodydocs');
+                bodydocs.empty();
+                JsonData[1].forEach(x => {
+                    bodydocs.append('<tr><td>' + x.descripcion + '</td><td>' + x.fechaini +
+                        '</td><td>' + x.fechafin + '</td></tr>');
+                })
+
+                let placa = document.getElementById('idplaca');
+                let marca = document.getElementById('idmarca');
+                let modelo = document.getElementById('idmodelo');
+                let proveedor = document.getElementById('idproveedor');
+                let fecha = document.getElementById('idfechaRegistro');
+                // let activo = document.getElementById('chkactivo');
+                let imagen = document.getElementById('imgcar');
+
+
+                placa.value = JsonData[0].idvehiculo;
+                marca.value = JsonData[0].marca;
+                modelo.value = JsonData[0].modelo;
+                proveedor.value = JsonData[0].descripcion;
+                fecha.value = JsonData[0].created_at;
+                imagen.setAttribute('src', JsonData[0].imagen)
+                let Estadocheck = JsonData[0].estado > 0
+                // activo.checked = Estadocheck;
+
+                // if (Estadocheck) {
+                //     document.getElementsByClassName('switchery')[0].classList.remove('DesactivarCheck');
+                //     document.getElementsByClassName('switchery')[0].classList.add('ActivarCheck');
+                //     document.getElementsByClassName('switchery')[0].childNodes[0].classList.remove(
+                //         'ChkOff');
+                //     document.getElementsByClassName('switchery')[0].childNodes[0].classList.add('ChkOn');
+
+                // } else {
+                //     document.getElementsByClassName('switchery')[0].classList.remove('ActivarCheck');
+                //     document.getElementsByClassName('switchery')[0].classList.add('DesactivarCheck');
+                //     document.getElementsByClassName('switchery')[0].childNodes[0].classList.remove('ChkOn');
+                //     document.getElementsByClassName('switchery')[0].childNodes[0].classList.add('ChkOff');
+                // }
+
+                console.log(JsonData[0].estado);
+            });
+        }
 
         // const GuardarLugar = () => {
         //     let comboDepartamento = document.getElementById('cboDepartamento');

@@ -17,7 +17,8 @@ class VehiculoController extends Controller
     public function index()
     {
         $Departamentos = Departamento::all();
-        return view('vehiculo.index', compact('Departamentos'));
+        $Vehiculos = Vehiculo::all();
+        return view('vehiculo.index', compact('Departamentos', 'Vehiculos'));
     }
 
     public function crear()
@@ -26,6 +27,15 @@ class VehiculoController extends Controller
         $Proyectos = Proyecto::all();
         $Proveedores = Proveedor::all();
         return view('vehiculo.crear', compact('Departamentos', 'Proyectos', 'Proveedores'));
+    }
+
+
+    public function obtener(Request $request)
+    {
+        $Vehiculos = Vehiculo::query()->select('proveedor.descripcion','vehiculo.idvehiculo','vehiculo.marca','vehiculo.modelo','vehiculo.imagen','vehiculo.created_at')->join('proveedor','proveedor.idproveedor','=','vehiculo.idproveedor')->where('vehiculo.idvehiculo', $request->idvehiculo)->get()->first();
+        $Documentos = Documento::query()->where('idvehiculo', $request->idvehiculo)->get();
+
+        return response([$Vehiculos, $Documentos], 200)->header('Content-type', 'text/plain');
     }
 
     public function SaveVehiculo(Request $request)
@@ -38,7 +48,7 @@ class VehiculoController extends Controller
         $vehiculo->kilometraje = $request->kilometraje;
         $vehiculo->imagen = $request->imagen;
         $vehiculo->save();
-        
+
         if (is_array($request->documentos) || is_object($request->documentos)) {
             foreach ($request->documentos as $doc) {
                 $documento =  new Documento();

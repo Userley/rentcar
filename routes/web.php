@@ -40,9 +40,7 @@ Route::controller(DistritoController::class)->group(function () {
 Route::controller(VehiculoController::class)->group(function () {
     Route::get('vehiculo', 'index');
     Route::get('vehiculo/crear', 'crear');
-    Route::get('vehiculo/getProvincias', 'getProvincias')->name('vehiculo.getProvincias');
-    Route::get('vehiculo/getDistritos', 'getDistritos')->name('vehiculo.getDistritos');
-    // Route::get('contactos/{id}', 'show');
+    Route::get('vehiculo/obtener', 'obtener')->name('vehiculo.obtener');
     Route::post('vehiculo/SaveVehiculo', 'SaveVehiculo')->name('vehiculo.SaveVehiculo');
 });
 
