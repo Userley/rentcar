@@ -19,7 +19,8 @@
 @section('content')
     @csrf
     <div class="d-flex align-content-center">
-        <a href="{{ url('/cliente/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <a href="{{ url('/cliente/') }}"> <button class="btn btn-sm btn-success"><i class="fa fa-arrow-left"
+                    aria-hidden="true"></i>
                 Volver</button></a>
     </div>
 
@@ -100,15 +101,17 @@
                                     <div class="form-group">
                                         <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
                                         <br>
-                                        <input type="checkbox" class="js-switch" />
+                                        <input type="checkbox" id="chkmaster">
+                                        {{-- <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
+                                        <br>
+                                        <input type="checkbox" class="form-control" /> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group text-center mb-4">
-                                <img style="height: 145px;" class="rounded shadow image"
-                                    src="https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/1f0d-18003616/thumbnails/large/19UUB7F94PA000857/6575a8108bbd401195a8aad82c3cc8b9.jpg"
+                                <img style="height: 145px;" class="rounded shadow image" src="{!! asset('../resources/img/noimagecar.png') !!}"
                                     id="imagenPrevisualizacion">
                             </div>
 
@@ -123,9 +126,10 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        <button class="btn btn-primary" onclick="GuardarCliente();"><i class="fa fa-floppy-o"
+                                aria-hidden="true"></i>
                             Guardar</button>
-                        <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i>
+                        <button class="btn btn-danger"><i class="fa fa-refresh" aria-hidden="true"></i>
                             Limpiar</button>
                     </div>
                 </div>
@@ -157,9 +161,42 @@
             image.setAttribute('src', base64URL);
         });
 
-        var elem = document.querySelector('.js-switch');
-        var switchery = new Switchery(elem, {
-            color: '#1AB394'
-        });
+        // var elem = document.querySelector('.js-switch');
+        // var switchery = new Switchery(elem, {
+        //     color: '#1AB394'
+        // });
+
+        const GuardarCliente = () => {
+
+            let Nombres = document.getElementById('txtNombreCliente');
+            let Apellidos = document.getElementById('txtApellidoCliente');
+            let RazonSocial = document.getElementById('txtRazonSocialCliente');
+            let Documento = document.getElementById('txtDocumentoCliente');
+            let Direccion = document.getElementById('txtDireccionCliente');
+            let Telefono = document.getElementById('txtTelefonoCliente');
+            let Celular = document.getElementById('txtCelularCliente');
+            let Activo = document.getElementById('chkmaster');
+            let Imagen = base64URL;
+
+
+            $.ajax({
+                url: "{{ route('cliente.saveCliente') }}",
+                method: 'POST',
+                data: {
+                    _token: $("input[name='_token']").val(),
+                    nombres: Nombres.value,
+                    apellidos: Apellidos.value,
+                    razonsocial: RazonSocial.value,
+                    documento: Documento.value,
+                    direccion: Direccion.value,
+                    telefono: Telefono.value,
+                    celular: Celular.value,
+                    activo: Activo.checked,
+                    imagen: Imagen
+                }
+            }).done(function(data) {
+                console.log(data);
+            });
+        }
     @endsection
 </script>

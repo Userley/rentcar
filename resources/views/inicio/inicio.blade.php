@@ -17,13 +17,14 @@
 
     {{-- <link href="{!! asset('../resources/css/plugins/footable/footable.core.css" ') !!}" rel="stylesheet">
     <link href="{!! asset('../resources/css/plugins/blueimp/css/blueimp-gallery.min.css') !!}" rel="stylesheet">
-    <!-- Toastr style -->
-    <link href="{!! asset('../resources/css/plugins/toastr/toastr.min.css') !!}" rel="stylesheet">
 
     <link href="{!! asset('../resources/css/animate.css') !!}" rel="stylesheet"> --}}
     <link href="{!! asset('../resources/css/style.css') !!}" rel="stylesheet">
 
     <link rel="stylesheet" href="{!! asset('../resources/css/plugins/switchery/switchery.css') !!}">
+
+    <!-- Toastr style -->
+    <link href="{!! asset('../resources/css/plugins/toastr/toastr.min.css') !!}" rel="stylesheet">
 
     {{-- <!-- Gritter -->
     <link href="{!! asset('../resources/js/plugins/gritter/jquery.gritter.css') !!}" rel="stylesheet">
@@ -152,6 +153,9 @@
 
     <script src="{!! asset('../resources/js/plugins/typehead/bootstrap3-typeahead.min.js') !!}"></script>
 
+    <!-- Toastr -->
+    <script src="{!! asset('../resources/js/plugins/toastr/toastr.min.js') !!}"></script>
+
     {{--   <!-- Steps -->
     <script src="{!! asset('../resources/js/plugins/steps/jquery.steps.min.js') !!}"></script>
 
@@ -173,8 +177,6 @@
     <!-- ChartJS-->
     <script src="{!! asset('../resources/js/plugins/chartJs/Chart.min.js') !!}"></script>
 
-    <!-- Toastr -->
-    <script src="{!! asset('../resources/js/plugins/toastr/toastr.min.js') !!}"></script>
 
     <script src="{!! asset('../resources/js/plugins/sweetalert/sweetalert.min.js') !!}"></script>
 

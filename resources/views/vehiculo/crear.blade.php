@@ -22,7 +22,7 @@
 @section('content')
     @csrf
     <div class="d-flex align-content-center">
-        <a href="{{ url('/vehiculo/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"
+        <a href="{{ url('/vehiculo/') }}"> <button class="btn btn-sm btn-success"><i class="fa fa-arrow-left"
                     aria-hidden="true"></i>
                 Volver</button></a>
     </div>
@@ -47,30 +47,35 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="txtPlaca" class="font-weight-bold">Placa:</label>
+                                        <label for="txtPlaca" class="font-weight-bold">Placa:<span
+                                                class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="txtPlaca">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="txtMarca" class="font-weight-bold">Marca:</label>
+                                        <label for="txtMarca" class="font-weight-bold">Marca:<span
+                                                class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="txtMarca">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="txtModelo" class="font-weight-bold">Modelo:</label>
+                                        <label for="txtModelo" class="font-weight-bold">Modelo:<span
+                                                class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="txtModelo">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="txtKilometraje" class="font-weight-bold">Kilometraje:</label>
+                                        <label for="txtKilometraje" class="font-weight-bold">Kilometraje:<span
+                                                class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="txtKilometraje">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="cboProveedor" class="font-weight-bold">Proveedor:</label>
+                                    <label for="cboProveedor" class="font-weight-bold">Proveedor:<span
+                                            class="text-danger">*</span></label>
                                     <div class="input-group mb-3">
                                         <select name="" id="cboProveedor" class="form-control">
                                             @foreach ($Proveedores as $Proveedor)
@@ -87,17 +92,6 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    {{-- <div class="form-group">
-                                        <label for="btnDocumentos" class="font-weight-bold">Documentos:</label>
-                                        <div class="text-center">
-                                            <button class="btn btn-danger w-75" id="btnDocumentos" data-toggle="modal"
-                                                data-target="#DocumentoModal" data-backdrop="static" data-keyboard="false">
-                                                <span class="badge badge-success" id="totaldoc">0</span>
-                                                <i class="fa fa-files-o" aria-hidden="true"></i>
-                                                Agregar
-                                            </button>
-                                        </div>
-                                    </div> --}}
                                     <label class="font-weight-bold">Imágen:</label>
                                     <div class="input-group">
                                         <div class="custom-file">
@@ -105,10 +99,6 @@
                                                 accept="image/*">
                                             <label class="custom-file-label" for="imgvehicle">Seleccionar</label>
                                         </div>
-                                        {{-- <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary btn-lg"
-                                                id="inputGroupFileAddon02">Subir</button>
-                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -116,45 +106,13 @@
                                         <label for="btnDocumentos" class="font-weight-bold"><i class="fa fa-files-o"
                                                 aria-hidden="true"></i> Documentos: <span class="badge badge-success"
                                                 id="totaldoc">0</span></label>
-                                        <button class="btn btn-danger w-75" id="btnDocumentos" data-toggle="modal"
+                                        <button class="btn btn-secondary w-75" id="btnDocumentos" data-toggle="modal"
                                             data-target="#DocumentoModal" data-backdrop="static" data-keyboard="false">
-                                            <i class="fa fa-plus" aria-hidden="true"></i> 
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
                                             Agregar
                                         </button>
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-4">
-                                    <label for="cboProyecto" class="font-weight-bold">Proyecto:</label>
-                                    <div class="input-group">
-                                        <select name="" id="cboProyecto" class="form-control">
-                                            @foreach ($Proyectos as $Proyecto)
-                                                <option value="{{ $Proyecto->idProyecto }}">
-                                                    {{ $Proyecto->descripcion }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="input-group-prepend" data-toggle="modal" data-target="#proyectoModal"
-                                            data-backdrop="static" data-keyboard="false">
-                                            <button type="button" class="btn btn-warning"><i class="fa fa-plus"
-                                                    aria-hidden="true"></i></button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="">
-                                        <label for="lugarTrabajo" class="font-weight-bold">Lugar Trabajo:</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" style="height: 34px;"
-                                                id="lugarTrabajo" placeholder="placa" value="CUSCO" disabled>
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-success" data-toggle="modal"
-                                                    data-target="#exampleModal" data-backdrop="static"
-                                                    data-keyboard="false">Cambiar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
-
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -165,73 +123,13 @@
 
 
                         </div>
-                        <div class="col-md-12">
-                            {{-- <div class="form-group">
-                                <label for="txtDescripcion" class="font-weight-bold">Descripción:</label>
-                                <textarea name="" id="txtDescripcion" class="form-control" cols="1" rows="2"></textarea>
-                            </div> --}}
-
-                            {{-- <div class="ibox-title">
-                                    <h4><i class="fa fa-car" aria-hidden="true"></i> Documentos</h4>
-                                    <div class="ibox-tools">
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                    </div>
-                                </div> --}}
-                            {{-- <br>
-                            <h4><i class="fa fa-file-o" aria-hidden="true"></i>
-                                Documentos</h4>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="txtDocumentoAdd" class="font-weight-bold">Nombre
-                                                    Documento</label>
-                                                <input type="text" name="" class="form-control"
-                                                    id="txtDocumentoAdd">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="txtDocumentoIni" class="font-weight-bold">Fecha
-                                                    Inicio:</label>
-                                                <input type="date" name="" class="form-control"
-                                                    id="txtDocumentoIni">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="txtDocumentoFin" class="font-weight-bold">Fecha
-                                                    Fin:</label>
-                                                <input type="date" name="" class="form-control"
-                                                    id="txtDocumentoFin">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 align-bottom">
-                                            <div class="form-group ">
-                                                <button type="button" name="" class="btn btn-success w-100 mt-4"
-                                                    onclick="AddDocument();" id="btnDocumentoSave"><i class="fa fa-plus"
-                                                        aria-hidden="true"></i>
-                                                    Agregar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-
-                                </div>
-                            </div> --}}
-                        </div>
                     </div>
                     <hr>
                     <div class="form-group">
-                        <button class="btn btn-success" onclick="Guardarvehiculo();"><i class="fa fa-floppy-o"
+                        <button class="btn btn-primary" onclick="Guardarvehiculo();"><i class="fa fa-floppy-o"
                                 aria-hidden="true"></i>
                             Guardar</button>
-                        <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i>
+                        <button class="btn btn-danger"><i class="fa fa-refresh" aria-hidden="true"></i>
                             Limpiar</button>
                     </div>
                 </div>
@@ -253,21 +151,24 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="txtDocumentoAdd" class="font-weight-bold">Nombre Documento</label>
+                                <label for="txtDocumentoAdd" class="font-weight-bold">Nombre Documento:<span
+                                        class="text-danger">*</span></label>
                                 <input type="text" name="" class="form-control form-control-sm"
                                     id="txtDocumentoAdd">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="txtDocumentoIni" class="font-weight-bold">Fecha Inicio:</label>
+                                <label for="txtDocumentoIni" class="font-weight-bold">Fecha Inicio:<span
+                                        class="text-danger">*</span></label>
                                 <input type="date" name="" class="form-control form-control-sm"
                                     id="txtDocumentoIni">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="txtDocumentoFin" class="font-weight-bold">Fecha Fin:</label>
+                                <label for="txtDocumentoFin" class="font-weight-bold">Fecha Fin:<span
+                                        class="text-danger">*</span></label>
                                 <input type="date" name="" class="form-control form-control-sm"
                                     id="txtDocumentoFin">
                             </div>
@@ -338,6 +239,9 @@
             var nextSibling = e.target.nextElementSibling;
             nextSibling.innerText = fileName;
         });
+
+        document.getElementById('txtDocumentoIni').value = GetDate();
+        document.getElementById('txtDocumentoFin').value = GetDate();
     @endsection
 
     @section('functions')
@@ -370,7 +274,7 @@
                 JSON.parse(HtmlEncode(datos)).forEach(x => {
                     const option = document.createElement('option');
                     option.value = x.idproveedor;
-                    option.text = x.descripcion;
+                    option.text = x.descripcion.toUpperCase();
                     $select.appendChild(option);
                 });
             });
@@ -387,6 +291,25 @@
             let Kilometraje = document.getElementById('txtKilometraje').value;
             let Proveedor = document.getElementById('cboProveedor').value;
             // let Descripcion = document.getElementById('txtDescripcion').value;
+
+
+            if (!Placa || !Marca || !Modelo || !Kilometraje || !Proveedor) {
+                setTimeout(function() {
+                    toastr.options = {
+                        closeButton: true,
+                        showMethod: 'slideDown',
+                        timeOut: 3000
+                    };
+                    toastr.warning('¡Debe completar todos los campos obligatorios!',
+                        'Registro de vehículo');
+
+                }, 500);
+                document.getElementById('txtPlaca').focus();
+                return;
+            }
+
+
+
             let Imagen = base64URL;
             let Docs = document.getElementById('tblbodydocumentos').querySelectorAll('tr');
 
@@ -435,26 +358,80 @@
             let nombreDocAdd = document.getElementById('txtDocumentoAdd').value;
             let iniDocAdd = document.getElementById('txtDocumentoIni').value;
             let finDocAdd = document.getElementById('txtDocumentoFin').value;
+            let filas = document.getElementById('tblbodydocumentos');
+
+
+            if (!nombreDocAdd || !iniDocAdd || !finDocAdd) {
+                setTimeout(function() {
+                    toastr.options = {
+                        closeButton: true,
+                        showMethod: 'slideDown',
+                        timeOut: 3000
+                    };
+                    toastr.warning('¡Debe completar todos los campos obligatorios!',
+                        'Registro de vehículo');
+
+                }, 500);
+                return;
+            }
+
+            let ContRep = 0;
+            filas.querySelectorAll('tr').forEach(fila => {
+                let textoDoc = fila.querySelectorAll('td')[2].innerText;
+
+                if (textoDoc.toUpperCase() == nombreDocAdd.toUpperCase()) {
+                    ContRep++;
+                }
+            })
+
+            if (ContRep > 0) {
+                setTimeout(function() {
+                    toastr.options = {
+                        closeButton: true,
+                        showMethod: 'slideDown',
+                        timeOut: 3000
+                    };
+                    toastr.warning('¡No se puede agregar un mismo registro 2 veces!',
+                        'Registro de documento');
+
+                }, 500);
+                document.getElementById('txtDocumentoAdd').focus();
+                return;
+            }
 
             let tabla = $('#tblbodydocumentos');
 
             let fila =
                 '<tr><td><button class="btn btn-sm btn-danger" onclick="DeleteDocument(event);"><i class="fa fa-trash" aria-hidden="true"></i></button></td><td><button class="btn btn-sm btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i></button></td><td>' +
-                nombreDocAdd.toString() + '</td><td>' + iniDocAdd.toString() + '</td><td>' + finDocAdd.toString() +
+                nombreDocAdd.toString().toUpperCase() + '</td><td>' + iniDocAdd.toString() + '</td><td>' + finDocAdd
+                .toString() +
                 '</td></tr>';
             tabla.append(fila);
 
-            document.getElementById('totaldoc').innerText = document.getElementById('tblbodydocumentos').rows
-                .length;
+            nombreDocAdd = '';
+            iniDocAdd = getDate();
+            finDocAdd = getDate();
+            document.getElementById('txtDocumentoAdd').focus();
+            document.getElementById('totaldoc').innerText = filas.rows.length;
         }
 
         const DeleteDocument = (e) => {
             e.target.closest('tr').remove();
-            document.getElementById('totaldoc').innerText = document.getElementById('tblbodydocumentos').rows
-                .length;
+            document.getElementById('totaldoc').innerText = filas.rows.length;
         }
 
+        const GetDate = () => {
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day = date.getDate();
+            if (day < 10)
+                day = '0' + day; //agrega cero si el menor de 10
+            if (month < 10)
+                month = '0' + month; //agrega cero si el menor de 10
 
+            return year + "-" + month + "-" + day;
+        }
 
         const HtmlEncode = (s) => {
             var el = document.createElement("div");

@@ -50,7 +50,7 @@ Route::controller(ClienteController::class)->group(function () {
     Route::get('cliente/getProvincias', 'getProvincias')->name('cliente.getProvincias');
     Route::get('cliente/getDistritos', 'getDistritos')->name('cliente.getDistritos');
     // Route::get('contactos/{id}', 'show');
-    Route::post('cliente/saveProyecto', 'saveProyecto')->name('cliente.saveProyecto');
+    Route::post('cliente/saveCliente', 'saveCliente')->name('cliente.saveCliente');
 });
 
 Route::controller(ProveedorController::class)->group(function () {
