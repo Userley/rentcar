@@ -2125,4 +2125,3 @@ insert into distrito (idprovincia,descripcion) values (2401,'SAN JUAN DE LA VIRG
 INSERT INTO proveedor (descripcion) VALUES ('AUTOGESA');
 INSERT INTO proveedor (descripcion) VALUES ('SONDIL');
 INSERT INTO proveedor (descripcion) VALUES ('SOLEDAD');
-

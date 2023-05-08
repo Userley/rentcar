@@ -51,8 +51,10 @@
                                     <div class="form-group">
                                         <label for="cboClientes" class="font-weight-bold">Cliente:</label>
                                         <select class="custom-select" name="" id="cboClientes">
-                                            <option selected>-- Ninguno --</option>
-                                            <option value="0">Erick Leyva</option>
+                                            @foreach ($Clientes as $Cliente)
+                                                <option value="{{ $Cliente->idcliente }}">{{ $Cliente->nombres }}
+                                                    {{ $Cliente->apellidos }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -111,27 +113,21 @@
                             <label for="cbovehiculo" class="font-weight-bold">Asignar Vehículos:</label>
                             <div class="input-group">
                                 <select name="" id="cbovehiculo" class="custom-select">
-                                    <option value="0">FN - 123</option>
-                                    <option value="0">FN - 456</option>
-                                    <option value="0">FN - 789</option>
-                                    <option value="0">FN - 101</option>
-                                    <option value="0">FN - 121</option>
+                                    @foreach ($Vehiculos as $Vehiculo)
+                                        <option value="{{ $Vehiculo->idvehiculo }}">{{ $Vehiculo->idvehiculo }}</option>
+                                    @endforeach
                                 </select>
                                 <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-primary h-100"><i class="fa fa-plus"
-                                            aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-primary h-100" id="AddCarPro"
+                                        onclick="AddCarPro();"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                 </div>
                                 <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-danger h-100"><i class="fa fa-minus"
-                                            aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-danger h-100" id="RemoveCarPro"
+                                        onclick="RemoveCarPro();"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                             <div class="form-group mt-2">
-                                <select class="custom-select" size="7">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="custom-select" size="7" id="CarProyect">
                                 </select>
                             </div>
                         </div>
@@ -206,8 +202,58 @@
                 comboDistrito.innerHTML = options;
             });
 
+        };
+
+        const AddCarPro = () => {
+            let Car = document.getElementById('cbovehiculo');
+            let listavehiculos = document.getElementById('CarProyect').options;
+
+            if (listavehiculos.length > 0) {
+
+                for (var option of listavehiculos) {
+
+                    if (Car.value == option.value) {
+                        setTimeout(function() {
+                            toastr.options = {
+                                closeButton: true,
+                                showMethod: 'slideDown',
+                                timeOut: 3000
+                            };
+                            toastr.warning('Ya existe el vehículo en la lista',
+                                'Agregar vehículo');
+
+                        }, 100);
+                        return;
+                    }
+                }
+            }
+            $('#CarProyect').append('<option value="' + Car.value + '">' + Car.value + '</option>');
         }
 
 
+        const RemoveCarPro = () => {
+            let Element = document.getElementById('CarProyect');
+            let Car = Element.options[Element.options.selectedIndex];
+            let Index = Element.options.selectedIndex;
+
+            if (Index < 0) {
+                setTimeout(function() {
+                    toastr.options = {
+                        closeButton: true,
+                        showMethod: 'slideDown',
+                        timeOut: 3000
+                    };
+                    toastr.warning('¡No existen vehículos para eliminar!',
+                        'Agregar vehículo');
+
+                }, 100);
+            } else {
+                Car.remove();
+                let Index2 = Element.options.selectedIndex;
+                if (Index >= 0) {
+                    Element.selectedIndex = 0;
+                }
+            }
+        };
     @endsection
 </script>
