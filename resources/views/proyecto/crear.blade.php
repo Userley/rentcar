@@ -94,13 +94,22 @@
                                         <input type="date" name="" id="idfechaini" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="idfechafin" class="font-weight-bold">Fecha Fin:</label>
-                                        <input type="text" name="" id="idfechafin" class="form-control">
+                                        <label class="mt-4">Indefinido
+                                            <input type="checkbox" class="" id="fechaindefinida"
+                                                onchange="valfechafin(event);" checked />
+                                        </label>
                                     </div>
+
                                 </div>
                                 <div class="col-md-4">
+                                    <div class="form-group" style="display: none;" id="ffinproy">
+                                        <label for="idfechafin" class="font-weight-bold">Fecha Fin:</label>
+                                        <input type="date" name="" id="idfechafin" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
                                         <br>
@@ -134,7 +143,8 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        <button class="btn btn-success" onclick="SaveProy();"><i class="fa fa-floppy-o"
+                                aria-hidden="true"></i>
                             Guardar</button>
                         <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i>
                             Limpiar</button>
@@ -148,6 +158,7 @@
 
 <script>
     @section('ready')
+        document.getElementById('idfechaini').value = GetDate();
     @endsection
 
 
@@ -254,6 +265,76 @@
                     Element.selectedIndex = 0;
                 }
             }
+        };
+
+
+        const valfechafin = (e) => {
+            let element = e.target;
+            let fechafin = document.getElementById('ffinproy');
+            if (element.checked) {
+                fechafin.style.display = 'none';
+            } else {
+                fechafin.style.display = 'inline';
+            }
+        };
+
+        const SaveProy = () => {
+
+            let nomProyecto = document.getElementById('idnombreproyecto').value;
+            let cliente = document.getElementById('cboClientes').value;
+            let departamento = document.getElementById('cboDepartamento').value;
+            let provincia = document.getElementById('cboProvincia').value;
+            let distrito = document.getElementById('cboDistrito').value;
+            let fechaIni = document.getElementById('idfechaini').value;
+            let fechaFin = document.getElementById('idfechafin').value;
+            let Indefinido = document.getElementById('fechaindefinida').checked;
+            let lstVehiculos = document.getElementById('CarProyect').querySelectorAll('option');
+            const vehiculos = Array.from(lstVehiculos).map(vehiculo => vehiculo.innerHTML).join(',');
+
+            console.log({
+                nomProyecto
+            }, {
+                cliente
+            }, {
+                departamento
+            }, {
+                provincia
+            }, {
+                distrito
+            }, {
+                fechaIni
+            }, {
+                fechaFin
+            }, {
+                vehiculos
+            });
+
+
+
+            // $.ajax({
+            //     url: "{{ route('proyecto.saveProyecto') }}",
+            //     method: 'POST',
+            //     data: {
+            //         _token: $("input[name='_token']").val(),
+            //         nombre: id,
+            //         cliente:,
+            //         departamento:,
+            //         provincia:,
+            //         distrito:,
+            //         fechaini:,
+            //         fechafin:,
+            //         vehiculos:
+            //     }
+            // }).done(function(data) {
+            //     let ver = JSON.parse(data);
+            //     let comboDistrito = document.getElementById('cboDistrito');
+            //     let options = '';
+            //     ver.forEach(element => {
+            //         options += '<option value="' + element.iddistrito + '">' +
+            //             decodeURI(element.descripcion) + '</option>';
+            //     });
+            //     comboDistrito.innerHTML = options;
+            // });
         };
     @endsection
 </script>

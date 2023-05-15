@@ -42,9 +42,9 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <img alt="image" class="rounded-circle" width="100px" src="{!! asset('../resources/img/logo3.png') !!}" />
-                            <span class="block m-t-xs font-bold">RentCar</span>
-                            <span class="text-muted text-xs block">Sistema de gestión</span>
+                            {{-- <img alt="image" class="rounded-circle" width="100px" src="{!! asset('../resources/img/logo3.png') !!}" /> --}}
+                            {{-- <span class="block m-t-xs font-bold">RentCar</span> --}}
+                            {{-- <span class="text-muted text-xs block">Sistema de gestión</span> --}}
                         </div>
                         <div class="logo-element">
                             RC+
@@ -187,7 +187,6 @@
         var base64URL = "";
         var base64URLx = "";
 
-
         $(document).ready(function() {
             //     $(".loader").fadeOut("slow");
 
@@ -197,12 +196,24 @@
             @yield('ready')
         });
 
+        const GetDate = () => {
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day = date.getDate();
+            if (day < 10)
+                day = '0' + day; //agrega cero si el menor de 10
+            if (month < 10)
+                month = '0' + month; //agrega cero si el menor de 10
 
-        function round(value, decimals) {
+            return year + "-" + month + "-" + day;
+        };
+
+        const round = (value, decimals) => {
             return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
-        }
+        };
 
-        async function encodeFileAsBase64URL(file) {
+         const encodeFileAsBase64URL = async (file) => {
             return new Promise((resolve) => {
                 // debugger;
                 const reader = new FileReader();

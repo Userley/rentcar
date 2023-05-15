@@ -420,19 +420,6 @@
             document.getElementById('totaldoc').innerText = filas.rows.length;
         }
 
-        const GetDate = () => {
-            let date = new Date();
-            let year = date.getFullYear();
-            let month = date.getMonth() + 1;
-            let day = date.getDate();
-            if (day < 10)
-                day = '0' + day; //agrega cero si el menor de 10
-            if (month < 10)
-                month = '0' + month; //agrega cero si el menor de 10
-
-            return year + "-" + month + "-" + day;
-        }
-
         const HtmlEncode = (s) => {
             var el = document.createElement("div");
             el.innerHTML = s;
