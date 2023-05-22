@@ -38,7 +38,7 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-8">
 
                             <div class="row">
                                 <div class="col-md-8">
@@ -111,15 +111,43 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
+                                        <label class="form-check-label" for="chkactive"><strong>Activo</strong></label>
                                         <br>
-                                        <input type="checkbox" class="js-switch" />
+                                        <input type="checkbox" class="js-switch" id="chkactive" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3" style="background-color:rgb(252, 247, 188)">
+                        {{-- <div class="col-md-4" style="background-color:rgb(252, 247, 188)"> --}}
+                            <div class="col-md-4">
                             <label for="cbovehiculo" class="font-weight-bold">Asignar Vehículos:</label>
+                            <div class="input-group">
+                                <select name="" id="cbovehiculo" class="custom-select">
+                                    @foreach ($Vehiculos as $Vehiculo)
+                                        <option value="{{ $Vehiculo->idvehiculo }}">{{ $Vehiculo->idvehiculo }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-primary h-100" id="AddCarPro"
+                                        onclick="AddCarPro();"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-danger h-100" id="RemoveCarPro"
+                                        onclick="RemoveCarPro();"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-sm w-100 text-center m-0 p-0">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Placa</th>
+                                        <th>Documentación</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblVehiculos">
+                                </tbody>
+                            </table>
+                            {{-- <label for="cbovehiculo" class="font-weight-bold">Asignar Vehículos:</label>
                             <div class="input-group">
                                 <select name="" id="cbovehiculo" class="custom-select">
                                     @foreach ($Vehiculos as $Vehiculo)
@@ -138,7 +166,7 @@
                             <div class="form-group mt-2">
                                 <select class="custom-select" size="7" id="CarProyect">
                                 </select>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <hr>
@@ -217,28 +245,33 @@
 
         const AddCarPro = () => {
             let Car = document.getElementById('cbovehiculo');
-            let listavehiculos = document.getElementById('CarProyect').options;
+            // let listavehiculos = document.getElementById('CarProyect').options;
 
-            if (listavehiculos.length > 0) {
+            // if (listavehiculos.length > 0) {
 
-                for (var option of listavehiculos) {
+            //     for (var option of listavehiculos) {
 
-                    if (Car.value == option.value) {
-                        setTimeout(function() {
-                            toastr.options = {
-                                closeButton: true,
-                                showMethod: 'slideDown',
-                                timeOut: 3000
-                            };
-                            toastr.warning('Ya existe el vehículo en la lista',
-                                'Agregar vehículo');
+            //         if (Car.value == option.value) {
+            //             setTimeout(function() {
+            //                 toastr.options = {
+            //                     closeButton: true,
+            //                     showMethod: 'slideDown',
+            //                     timeOut: 3000
+            //                 };
+            //                 toastr.warning('Ya existe el vehículo en la lista',
+            //                     'Agregar vehículo');
 
-                        }, 100);
-                        return;
-                    }
-                }
-            }
-            $('#CarProyect').append('<option value="' + Car.value + '">' + Car.value + '</option>');
+            //             }, 100);
+            //             return;
+            //         }
+            //     }
+            // }
+            // $('#CarProyect').append('<option value="' + Car.value + '">' + Car.value + '</option>');
+
+            let tblPlacas = document.getElementById('tblVehiculos');
+            tblPlacas.innerHTML +=
+                `<tr><td><button class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td><td>${Car.value}</td><td><button class="btn btn-sm btn-info"><i class="fa fa-file-image-o" aria-hidden="true"></i> Documentos</button></td></tr>`;
+
         }
 
 
