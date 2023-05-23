@@ -213,7 +213,7 @@
             return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
         };
 
-         const encodeFileAsBase64URL = async (file) => {
+        const encodeFileAsBase64URL = async (file) => {
             return new Promise((resolve) => {
                 // debugger;
                 const reader = new FileReader();
@@ -248,6 +248,36 @@
             });
         };
 
+        const validateControls = (container) => {
+            let estado = false;
+            let elements = container.querySelectorAll('input,select');
+
+            elements.forEach(x => {
+                let elemDiv = x.closest('.form-group')
+                if (x.required) {
+                    if (x.type == 'select-one') {
+                        if (x.selectedIndex < 0) {
+                            console.log(x);
+                            elemDiv.classList.add('border-danger');
+                            estado = true;
+                        } else {
+                            elemDiv.classList.remove('border-danger');
+                        }
+
+                    } else {
+                        if (x.value.trim() == '') {
+                            console.log(x);
+                            x.closest('.form-group').classList.add('has-error');
+                            estado = true;
+                        } else {
+                            x.closest('.form-group').classList.remove('has-error');
+                        }
+                    }
+                }
+            });
+            return estado;
+        }
+
         var images = $(".image");
 
         $(images).on("load", function(event) {
@@ -257,6 +287,8 @@
         $(images).on("error", function(event) {
             $(event.target).css("display", "none");
         });
+
+
 
         @yield('functions')
     </script>

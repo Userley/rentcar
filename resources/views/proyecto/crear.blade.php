@@ -3,7 +3,7 @@
 @section('title', 'Mantenimiento')
 
 @section('header')
-    <div class="col-lg-10">
+    <div class="col-lg-12">
         <h2>Proyecto</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -13,17 +13,18 @@
                 Proyecto
             </li>
         </ol>
+        <div class="pull-right">
+            <button class="btn btn-success" onclick="SaveProy();"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Guardar</button>
+            <a href="{{ url('/proyecto/') }}"> <button class="btn btn-primary"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i>
+                    Volver</button></a>
+        </div>
     </div>
 @endsection
 
 @section('content')
     @csrf
-    <div class="d-flex align-content-center">
-        <a href="{{ url('/proyecto/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"
-                    aria-hidden="true"></i>
-                Volver</button></a>
-    </div>
-    <hr>
     <div class="row">
         <div class="col-md-12">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -38,19 +39,21 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
 
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="idnombreproyecto" class="font-weight-bold">Nombre Proyecto:</label>
-                                        <input type="text" name="" id="idnombreproyecto" class="form-control">
+                                        <input type="text" name="" id="idnombreproyecto" class="form-control w-75"
+                                            required>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="cboClientes" class="font-weight-bold">Cliente:</label>
-                                        <select class="custom-select" name="" id="cboClientes">
+                                        <select class="custom-select" name="" id="cboClientes" required>
                                             @foreach ($Clientes as $Cliente)
                                                 <option value="{{ $Cliente->idcliente }}">{{ $Cliente->nombres }}
                                                     {{ $Cliente->apellidos }}</option>
@@ -58,11 +61,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="cboDepartamento" class="font-weight-bold">Departamento:</label>
                                         <select class="custom-select" id="cboDepartamento"
-                                            onchange="ObtenerProvincias(event.target.value);">
+                                            onchange="ObtenerProvincias(event.target.value);" required>
                                             <option selected>-- Todos --</option>
                                             @foreach ($Departamentos as $Departamento)
                                                 <option value="{{ $Departamento->iddepartamento }}">
@@ -71,30 +74,30 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="cboProvincia" class="font-weight-bold">Provincia:</label>
                                         <select class="custom-select" id="cboProvincia"
-                                            onchange="ObtenerDistritos(event.target.value)">
+                                            onchange="ObtenerDistritos(event.target.value)" required>
                                             <option selected>-- Todos --</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="cboDistrito" class="font-weight-bold">Distrito:</label>
-                                        <select class="custom-select" id="cboDistrito">
+                                        <select class="custom-select" id="cboDistrito" required>
                                             <option selected>-- Todos --</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="idfechaini" class="font-weight-bold">Fecha Inicio:</label>
-                                        <input type="date" name="" id="idfechaini" class="form-control">
+                                        <input type="date" name="" id="idfechaini" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="mt-4">Indefinido
                                             <input type="checkbox" class="" id="fechaindefinida"
@@ -103,13 +106,13 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group" style="display: none;" id="ffinproy">
+                                <div class="col-md-3">
+                                    <div class="form-group" id="ffinproy">
                                         <label for="idfechafin" class="font-weight-bold">Fecha Fin:</label>
-                                        <input type="date" name="" id="idfechafin" class="form-control">
+                                        <input type="date" name="" id="idfechafin" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="form-check-label" for="chkactive"><strong>Activo</strong></label>
                                         <br>
@@ -118,26 +121,42 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-md-4" style="background-color:rgb(252, 247, 188)"> --}}
-                            <div class="col-md-4">
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        <div class="col-md-2">
                             <label for="cbovehiculo" class="font-weight-bold">Asignar Vehículos:</label>
                             <div class="input-group">
                                 <select name="" id="cbovehiculo" class="custom-select">
                                     @foreach ($Vehiculos as $Vehiculo)
-                                        <option value="{{ $Vehiculo->idvehiculo }}">{{ $Vehiculo->idvehiculo }}</option>
+                                        <option value="{{ $Vehiculo->idvehiculo }}">{{ $Vehiculo->idvehiculo }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <div class="input-group-prepend">
                                     <button type="button" class="btn btn-primary h-100" id="AddCarPro"
                                         onclick="AddCarPro();"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                 </div>
-                                <div class="input-group-prepend">
+                                {{-- <div class="input-group-prepend">
                                     <button type="button" class="btn btn-danger h-100" id="RemoveCarPro"
                                         onclick="RemoveCarPro();"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                </div> --}}
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="tabs-container">
+                                <ul class="nav nav-tabs" id="litabs">
+
+                                </ul>
+                                <div class="tab-content" id="contenttabs">
                                 </div>
                             </div>
-                            <table class="table table-bordered table-sm w-100 text-center m-0 p-0">
-                                <thead>
+                        </div>
+                        {{-- <div class="col-md-4" style="background-color:rgb(252, 247, 188)"> --}}
+
+                        {{-- <div class="col-md-8">
+                            <table class="w-100 text-center m-0 p-0 table-bordered">
+                                <thead class="thead-success">
                                     <tr>
                                         <th>Item</th>
                                         <th>Placa</th>
@@ -147,35 +166,7 @@
                                 <tbody id="tblVehiculos">
                                 </tbody>
                             </table>
-                            {{-- <label for="cbovehiculo" class="font-weight-bold">Asignar Vehículos:</label>
-                            <div class="input-group">
-                                <select name="" id="cbovehiculo" class="custom-select">
-                                    @foreach ($Vehiculos as $Vehiculo)
-                                        <option value="{{ $Vehiculo->idvehiculo }}">{{ $Vehiculo->idvehiculo }}</option>
-                                    @endforeach
-                                </select>
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-primary h-100" id="AddCarPro"
-                                        onclick="AddCarPro();"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                </div>
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-danger h-100" id="RemoveCarPro"
-                                        onclick="RemoveCarPro();"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="form-group mt-2">
-                                <select class="custom-select" size="7" id="CarProyect">
-                                </select>
-                            </div> --}}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <button class="btn btn-success" onclick="SaveProy();"><i class="fa fa-floppy-o"
-                                aria-hidden="true"></i>
-                            Guardar</button>
-                        <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i>
-                            Limpiar</button>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -245,73 +236,112 @@
 
         const AddCarPro = () => {
             let Car = document.getElementById('cbovehiculo');
-            // let listavehiculos = document.getElementById('CarProyect').options;
+            let ListItemTab = document.getElementById('litabs');
+            let ListBodyTab = document.getElementById('contenttabs');
 
-            // if (listavehiculos.length > 0) {
+            let htmlLi = `<li class="" id="li-${Car.value}"><a data-toggle="tab" href="#tab-${Car.value}">
+              <span class="badge badge-danger" style="display:none" onclick="RemoveCarPro('${Car.value}');">x</span>
+              <i class="fa fa-car" ></i> ${Car.value} </a></li>`;
 
-            //     for (var option of listavehiculos) {
+            let htmlTab = `<div id="tab-${Car.value}" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <input type="file" class="form-control" multiple="multiple" accept="image/*">
+                                    </div>
+                                    <hr>
+                                        <div id="docs" class="row">
+                                        </div>
+                                </div>
+                            </div>`;
 
-            //         if (Car.value == option.value) {
-            //             setTimeout(function() {
-            //                 toastr.options = {
-            //                     closeButton: true,
-            //                     showMethod: 'slideDown',
-            //                     timeOut: 3000
-            //                 };
-            //                 toastr.warning('Ya existe el vehículo en la lista',
-            //                     'Agregar vehículo');
+            ListItemTab.innerHTML += htmlLi;
+            ListBodyTab.innerHTML += htmlTab;
+            TabsAction();
+            ListItemTab.querySelector('a').click();
+        };
 
-            //             }, 100);
-            //             return;
-            //         }
-            //     }
-            // }
-            // $('#CarProyect').append('<option value="' + Car.value + '">' + Car.value + '</option>');
+        const RemoveCarPro = (id) => {
+            document.getElementById(`li-${id}`).remove();
+            document.getElementById(`tab-${id}`).remove();
 
-            let tblPlacas = document.getElementById('tblVehiculos');
-            tblPlacas.innerHTML +=
-                `<tr><td><button class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td><td>${Car.value}</td><td><button class="btn btn-sm btn-info"><i class="fa fa-file-image-o" aria-hidden="true"></i> Documentos</button></td></tr>`;
+            let ListItemTab = document.getElementById('litabs');
+            let cantTabs = ListItemTab.querySelectorAll('li').length;
 
+            if (cantTabs > 0) {
+                TabsAction();
+                ListItemTab.querySelector('a').click();
+                document.getElementById('litabs').querySelector('li').click();
+            }
+        };
+
+        const TabsAction = () => {
+            let ListItemTab = document.getElementById('litabs');
+            ListItemTab.querySelectorAll('li').forEach(x => {
+                x.addEventListener('click', (e) => {
+                    ListItemTab.querySelectorAll('li').forEach(y => {
+                        y.classList.remove('active');
+                        y.querySelector('span').style.display = 'none';
+                    });
+                    x.classList.add('active');
+                    x.querySelector('span').style.display = 'inline';
+                })
+            });
+
+            let ListInputFile = document.getElementById('contenttabs').querySelectorAll('input[type="file"]');
+            ListInputFile.forEach(x => {
+                x.addEventListener('change', () => {
+                    Array.from(x.files).forEach(img => {
+                        let elementDiv = x.closest('.tab-pane').querySelector('#docs');
+                        convertToBase64(img, elementDiv);
+                    });
+                });
+            });
+        };
+
+        const DelImgCar = (e) => {
+            let element = e.target.closest('div');
+            element.remove();
+        };
+
+        function convertToBase64(file, element) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var base64String = event.target.result;
+                element.innerHTML +=
+                    `<div class="col-md-4"><input type="text" value="${base64String}"" style="display:none"><span class="badge badge-xs badge-danger" onclick="DelImgCar(event);"><i class="fa fa-trash-o fa-sm" aria-hidden="true"></i></span> <i class="fa fa-file-image-o fa-sm" aria-hidden="true"></i><span id="nombreimg"> ${file.name}</span></div>`;
+            };
+            reader.readAsDataURL(file);
         }
 
 
-        const RemoveCarPro = () => {
-            let Element = document.getElementById('CarProyect');
-            let Car = Element.options[Element.options.selectedIndex];
-            let Index = Element.options.selectedIndex;
+        const valfechafin = (e) => {
+            // let element = e.target;
+            // let fechafin = document.getElementById('ffinproy');
+            // if (element.checked) {
+            //     fechafin.style.display = 'none';
+            // } else {
+            //     fechafin.style.display = 'inline';
+            // }
 
-            if (Index < 0) {
+
+        };
+
+        const SaveProy = () => {
+
+            let seccion = document.querySelector('.ibox-content');
+            if (validateControls(seccion)) {
                 setTimeout(function() {
                     toastr.options = {
                         closeButton: true,
                         showMethod: 'slideDown',
                         timeOut: 3000
                     };
-                    toastr.warning('¡No existen vehículos para eliminar!',
-                        'Agregar vehículo');
+                    toastr.warning('¡Debe completar todos los campos obligatorios!',
+                        'Registro de proyecto');
 
-                }, 100);
-            } else {
-                Car.remove();
-                let Index2 = Element.options.selectedIndex;
-                if (Index >= 0) {
-                    Element.selectedIndex = 0;
-                }
+                }, 500);
+                return;
             }
-        };
-
-
-        const valfechafin = (e) => {
-            let element = e.target;
-            let fechafin = document.getElementById('ffinproy');
-            if (element.checked) {
-                fechafin.style.display = 'none';
-            } else {
-                fechafin.style.display = 'inline';
-            }
-        };
-
-        const SaveProy = () => {
 
             let nomProyecto = document.getElementById('idnombreproyecto').value;
             let cliente = document.getElementById('cboClientes').value;
@@ -321,8 +351,38 @@
             let fechaIni = document.getElementById('idfechaini').value;
             let fechaFin = document.getElementById('idfechafin').value;
             let Indefinido = document.getElementById('fechaindefinida').checked;
-            let lstVehiculos = document.getElementById('CarProyect').querySelectorAll('option');
-            const vehiculos = Array.from(lstVehiculos).map(vehiculo => vehiculo.innerHTML).join(',');
+            let lstVehiculos = document.getElementById('contenttabs').querySelectorAll('.tab-pane');
+
+
+
+
+
+            let vehiculos = Array();
+            lstVehiculos.forEach(x => {
+                let objVehiculo = Array();
+                x.querySelectorAll('.col-md-4').forEach(y => {
+                    Array.from(y.querySelectorAll('input')).map(z => {
+                        let jsonImg = {
+                            base64: z.value,
+                            nombre: y.querySelector('#nombreimg').innerText
+                        };
+                        console.log(z);
+                        objVehiculo.push(jsonImg)
+                    });
+                })
+                let json = {
+                    placa: x.id,
+                    imagenes: objVehiculo,
+
+                };
+                vehiculos.push(json);
+            });
+            // const vehiculos = Array.from(lstVehiculos).map(vehiculo => vehiculo.innerHTML).join(',');
+
+
+
+
+
 
             console.log({
                 nomProyecto

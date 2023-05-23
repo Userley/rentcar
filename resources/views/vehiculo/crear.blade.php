@@ -3,7 +3,7 @@
 @section('title', 'Vehículo')
 
 @section('header')
-    <div class="col-lg-10">
+    <div class="col-lg-12">
         <h2>Vehículo</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -16,19 +16,18 @@
                 Nuevo
             </li>
         </ol>
+        <div class="pull-right">
+            <button class="btn btn-primary" onclick="Guardarvehiculo();"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Guardar</button>
+            <a href="{{ url('/vehiculo/') }}"> <button class="btn btn-success"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i>
+                    Volver</button></a>
+        </div>
     </div>
 @endsection
 
 @section('content')
     @csrf
-    <div class="d-flex align-content-center">
-        <a href="{{ url('/vehiculo/') }}"> <button class="btn btn-sm btn-success"><i class="fa fa-arrow-left"
-                    aria-hidden="true"></i>
-                Volver</button></a>
-    </div>
-
-    <hr>
-
     <div class="row">
         <div class="col-md-12">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -120,17 +119,7 @@
                                 <img style="height: 150px;" class="rounded shadow image" src="{!! asset('../resources/img/noimagecar.png') !!}"
                                     id="imagenPrevisualizacion">
                             </div>
-
-
                         </div>
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <button class="btn btn-primary" onclick="Guardarvehiculo();"><i class="fa fa-floppy-o"
-                                aria-hidden="true"></i>
-                            Guardar</button>
-                        <button class="btn btn-danger"><i class="fa fa-refresh" aria-hidden="true"></i>
-                            Limpiar</button>
                     </div>
                 </div>
             </div>

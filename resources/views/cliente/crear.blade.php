@@ -3,7 +3,7 @@
 @section('title', 'Mantenimiento')
 
 @section('header')
-    <div class="col-lg-10">
+    <div class="col-lg-12">
         <h2>Clientes</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -13,18 +13,23 @@
                 Clientes
             </li>
         </ol>
+        <div class="pull-right">
+            <button class="btn btn-primary" onclick="GuardarCliente();"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Guardar</button>
+                <a href="{{ url('/cliente/') }}"> <button class="btn btn btn-success"><i class="fa fa-arrow-left"
+                    aria-hidden="true"></i>
+                Volver</button></a>
+        </div>
     </div>
 @endsection
 
 @section('content')
     @csrf
-    <div class="d-flex align-content-center">
-        <a href="{{ url('/cliente/') }}"> <button class="btn btn-sm btn-success"><i class="fa fa-arrow-left"
-                    aria-hidden="true"></i>
-                Volver</button></a>
-    </div>
+    {{-- <div class="d-flex align-content-center">
 
-    <hr>
+    </div> --}}
+
+    {{-- <hr> --}}
     <div class="row">
         <div class="col-md-12">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -32,6 +37,7 @@
                     <h5><i class="fa fa-user" aria-hidden="true"></i>
                         Datos Cliente</h5>
                     <div class="ibox-tools">
+
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
@@ -124,14 +130,8 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <div class="form-group">
-                        <button class="btn btn-primary" onclick="GuardarCliente();"><i class="fa fa-floppy-o"
-                                aria-hidden="true"></i>
-                            Guardar</button>
-                        <button class="btn btn-danger"><i class="fa fa-refresh" aria-hidden="true"></i>
-                            Limpiar</button>
-                    </div>
+                    {{-- <hr> --}}
+
                 </div>
             </div>
         </div>
