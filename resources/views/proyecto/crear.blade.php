@@ -329,6 +329,10 @@
         const SaveProy = () => {
 
             let seccion = document.querySelector('.ibox-content');
+            let ListItemTab = document.getElementById('litabs');
+            let cantTabs = ListItemTab.querySelectorAll('li').length;
+
+
             if (validateControls(seccion)) {
                 setTimeout(function() {
                     toastr.options = {
@@ -342,6 +346,21 @@
                 }, 500);
                 return;
             }
+
+            if (cantTabs <= 0) {
+                setTimeout(function() {
+                    toastr.options = {
+                        closeButton: true,
+                        showMethod: 'slideDown',
+                        timeOut: 3000
+                    };
+                    toastr.warning('¡Debe agregar al menos un vehículo!',
+                        'Registro de proyecto');
+
+                }, 500);
+                return;
+            }
+
 
             let nomProyecto = document.getElementById('idnombreproyecto').value;
             let cliente = document.getElementById('cboClientes').value;
