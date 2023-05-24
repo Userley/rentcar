@@ -385,12 +385,11 @@
                             base64: z.value,
                             nombre: y.querySelector('#nombreimg').innerText
                         };
-                        console.log(z);
                         objVehiculo.push(jsonImg)
                     });
                 })
                 let json = {
-                    placa: x.id,
+                    placa: x.id.substring(4, x.id.length),
                     imagenes: objVehiculo,
 
                 };
@@ -398,55 +397,43 @@
             });
             // const vehiculos = Array.from(lstVehiculos).map(vehiculo => vehiculo.innerHTML).join(',');
 
-
-
-
-
-
-            console.log({
-                nomProyecto
-            }, {
-                cliente
-            }, {
-                departamento
-            }, {
-                provincia
-            }, {
-                distrito
-            }, {
-                fechaIni
-            }, {
-                fechaFin
-            }, {
-                vehiculos
-            });
-
-
-
-            // $.ajax({
-            //     url: "{{ route('proyecto.saveProyecto') }}",
-            //     method: 'POST',
-            //     data: {
-            //         _token: $("input[name='_token']").val(),
-            //         nombre: id,
-            //         cliente:,
-            //         departamento:,
-            //         provincia:,
-            //         distrito:,
-            //         fechaini:,
-            //         fechafin:,
-            //         vehiculos:
-            //     }
-            // }).done(function(data) {
-            //     let ver = JSON.parse(data);
-            //     let comboDistrito = document.getElementById('cboDistrito');
-            //     let options = '';
-            //     ver.forEach(element => {
-            //         options += '<option value="' + element.iddistrito + '">' +
-            //             decodeURI(element.descripcion) + '</option>';
-            //     });
-            //     comboDistrito.innerHTML = options;
+            // console.log({
+            //     nomProyecto
+            // }, {
+            //     cliente
+            // }, {
+            //     departamento
+            // }, {
+            //     provincia
+            // }, {
+            //     distrito
+            // }, {
+            //     fechaIni
+            // }, {
+            //     fechaFin
+            // }, {
+            //     vehiculos
             // });
+
+
+            $.ajax({
+                url: "{{ route('proyecto.saveProyecto') }}",
+                method: 'POST',
+                data: {
+                    _token: $("input[name='_token']").val(),
+                    proyecto: nomProyecto,
+                    cliente: cliente,
+                    departamento: departamento,
+                    provincia: provincia,
+                    distrito: distrito,
+                    fechaini: fechaIni,
+                    fechafin: fechaFin,
+                    vehiculos: vehiculos
+                }
+            }).done(function(data) {
+
+                console.log(data);
+            });
         };
     @endsection
 </script>

@@ -93,13 +93,11 @@
                                         </span>
                                     </td>
                                     <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-folder"></i> Ver
+                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                            Editar
                                         </a>
                                         <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                            Anular
                                         </a>
                                     </td>
                                 </tr>
@@ -135,12 +133,12 @@
                                         </span>
                                     </td>
                                     <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-folder"></i> Ver
+                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                            Editar </a>
+                                        </a>
                                         <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                            Anular </a>
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -174,13 +172,11 @@
                                         </span>
                                     </td>
                                     <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-folder"></i> Ver
+                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                            Editar
                                         </a>
                                         <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                            Anular
                                         </a>
                                     </td>
                                 </tr>
@@ -216,12 +212,12 @@
                                         </span>
                                     </td>
                                     <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-folder"></i> Ver
+                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                            Editar </a>
+                                        </a>
                                         <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                            Anular </a>
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -255,13 +251,11 @@
                                         </span>
                                     </td>
                                     <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-folder"></i> Ver
+                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                            Editar
                                         </a>
                                         <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                            Anular
                                         </a>
                                     </td>
                                 </tr>
