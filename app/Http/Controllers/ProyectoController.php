@@ -15,9 +15,45 @@ class ProyectoController extends Controller
 {
     public function index()
     {
+        $Proyectos = Proyecto::query()->select(
+            'proyecto.idproyecto',
+            'proyecto.estado',
+            'cliente.imagen as Cliente',
+            'proyecto.descripcion as Proyecto',
+            'departamento.descripcion as Departamento',
+            'provincia.descripcion as Provincia',
+            'distrito.descripcion as Distrito',
+            'proyecto.fechaini',
+            'proyecto.fechafin'
+        )
+            ->join('cliente', 'cliente.idcliente', 'proyecto.idcliente')
+            ->join('departamento', 'departamento.iddepartamento', 'proyecto.iddepartamento')
+            ->join('provincia', 'provincia.idprovincia', 'proyecto.idprovincia')
+            ->join('distrito', 'distrito.iddistrito', 'proyecto.iddistrito')->paginate(10);
+
+        $lstProyectos = array();
+        for ($i = 0; $i < count($Proyectos); $i++) {
+
+            $obj = array(
+                'idproyecto' => $Proyectos[$i]->idproyecto,
+                'estado' => $Proyectos[$i]->estado,
+                'cliente' => $Proyectos[$i]->Cliente,
+                'proyecto' => $Proyectos[$i]->Proyecto,
+                'departamento' => $Proyectos[$i]->Departamento,
+                'provincia' => $Proyectos[$i]->Provincia,
+                'distrito' => $Proyectos[$i]->Distrito,
+                'fechaini' => $Proyectos[$i]->fechaini,
+                'fechafin' => $Proyectos[$i]->fechafin,
+                'procentaje' => '',
+                'autos' => ''
+            );
+            // array_push($lstProyectos, json_encode($obj));
+        }
 
 
-        return view('proyecto.index');
+
+
+        return view('proyecto.index', compact("lstProyectos"));
     }
 
     public function crear()
@@ -50,7 +86,7 @@ class ProyectoController extends Controller
 
         if ($Proyecto->save()) {
             $arrayVehiculos = $request->vehiculos;
-             for ($i = 0; $i < count($arrayVehiculos); $i++) {
+            for ($i = 0; $i < count($arrayVehiculos); $i++) {
                 $DetalleProyecto = new DetalleProyecto();
                 $idProy = $Proyecto->idproyecto;
                 $DetalleProyecto->idproyecto = $idProy;
@@ -68,7 +104,7 @@ class ProyectoController extends Controller
                         $DetalleProyectoImages->save();
                     }
                 }
-             }
+            }
         }
 
         // return response($request->vehiculos[0]["imagenes"][0], 200)->header('Content-type', 'application/json');
