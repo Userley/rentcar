@@ -45,7 +45,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="idnombreproyecto" class="font-weight-bold">Nombre Proyecto:</label>
-                                        <input type="text" name="" id="idnombreproyecto" class="form-control w-75"
+                                        <input type="text" name="" id="idnombreproyecto" class="form-control w-50"
                                             required>
                                     </div>
                                 </div>
@@ -98,19 +98,19 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="mt-4">Indefinido
-                                            <input type="checkbox" class="" id="fechaindefinida"
-                                                onchange="valfechafin(event);" checked />
-                                        </label>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-3">
                                     <div class="form-group" id="ffinproy">
                                         <label for="idfechafin" class="font-weight-bold">Fecha Fin:</label>
                                         <input type="date" name="" id="idfechafin" class="form-control" required>
                                     </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mt-4">Indefinido
+                                            <input type="checkbox" class="" id="fechaindefinida"
+                                                onchange="valfechafin(event);" />
+                                        </label>
+                                    </div>
+
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -239,6 +239,31 @@
             let ListItemTab = document.getElementById('litabs');
             let ListBodyTab = document.getElementById('contenttabs');
 
+            let tabs = document.getElementById('litabs').querySelectorAll('li');
+            let coincidencia = 0;
+            
+            tabs.forEach(x => {
+                let placa = x.id.substring(3, x.id.length);
+                if (placa == Car.value) {
+                    coincidencia++;
+                }
+            });
+
+            if (coincidencia > 0) {
+                setTimeout(function() {
+                    toastr.options = {
+                        closeButton: true,
+                        showMethod: 'slideDown',
+                        timeOut: 3000
+                    };
+                    toastr.warning('¡No puede agregar 2 vehículos con la misma placa!',
+                        'Agregar Vehículo');
+
+                }, 500);
+                return;
+            }
+
+
             let htmlLi = `<li class="" id="li-${Car.value}"><a data-toggle="tab" href="#tab-${Car.value}">
               <span class="badge badge-danger" style="display:none" onclick="RemoveCarPro('${Car.value}');">x</span>
               <i class="fa fa-car" ></i> ${Car.value} </a></li>`;
@@ -315,13 +340,13 @@
 
 
         const valfechafin = (e) => {
-            // let element = e.target;
-            // let fechafin = document.getElementById('ffinproy');
-            // if (element.checked) {
-            //     fechafin.style.display = 'none';
-            // } else {
-            //     fechafin.style.display = 'inline';
-            // }
+            let element = e.target;
+            let fechafin = document.getElementById('idfechafin');
+            if (element.checked) {
+                fechafin.disabled = true;
+            } else {
+                fechafin.disabled = false;
+            }
 
 
         };

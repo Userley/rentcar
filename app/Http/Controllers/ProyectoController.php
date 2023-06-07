@@ -31,7 +31,7 @@ class ProyectoController extends Controller
             ->join('provincia', 'provincia.idprovincia', 'proyecto.idprovincia')
             ->join('distrito', 'distrito.iddistrito', 'proyecto.iddistrito')->paginate(10);
 
-        $lstProyectos = array();
+        $lstProyectos =  array();
         for ($i = 0; $i < count($Proyectos); $i++) {
 
             $obj = array(
@@ -47,11 +47,12 @@ class ProyectoController extends Controller
                 'procentaje' => '',
                 'autos' => ''
             );
-            // array_push($lstProyectos, json_encode($obj));
+            array_push($lstProyectos, json_encode($obj));
         }
 
-
-
+        if (count($Proyectos) <= 0) {
+            $lstProyectos = "[]";
+        }
 
         return view('proyecto.index', compact("lstProyectos"));
     }
@@ -74,6 +75,7 @@ class ProyectoController extends Controller
 
     public function saveProyecto(Request $request)
     {
+        $contOk = 0;
         $Proyecto = new Proyecto();
         $Proyecto->descripcion = $request->proyecto;
         $Proyecto->idcliente = $request->cliente;
@@ -92,6 +94,7 @@ class ProyectoController extends Controller
                 $DetalleProyecto->idproyecto = $idProy;
                 $DetalleProyecto->idvehiculo = $arrayVehiculos[$i]["placa"];
                 $DetalleProyecto->estado = 1;
+                $contOk++;
 
                 if ($DetalleProyecto->save()) {
                     $arrayImagenes = $arrayVehiculos[$i]["imagenes"];
@@ -107,7 +110,12 @@ class ProyectoController extends Controller
             }
         }
 
+        $resp = 0;
+        if ($contOk == count($arrayVehiculos)) {
+            $resp = 1;
+        }
+
         // return response($request->vehiculos[0]["imagenes"][0], 200)->header('Content-type', 'application/json');
-        return response($DetalleProyectoImages, 200)->header('Content-type', 'text/plain');
+        return response($resp, 200)->header('Content-type', 'text/plain');
     }
 }

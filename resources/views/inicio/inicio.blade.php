@@ -255,18 +255,16 @@
             elements.forEach(x => {
                 let elemDiv = x.closest('.form-group')
                 if (x.required) {
+                    // console.log(x);
                     if (x.type == 'select-one') {
                         if (x.selectedIndex < 0) {
-                            console.log(x);
-                            elemDiv.classList.add('border-danger');
+                            x.classList.add('border-danger');
                             estado = true;
                         } else {
-                            elemDiv.classList.remove('border-danger');
+                            x.classList.remove('border-danger');
                         }
-
                     } else {
                         if (x.value.trim() == '') {
-                            console.log(x);
                             x.closest('.form-group').classList.add('has-error');
                             estado = true;
                         } else {

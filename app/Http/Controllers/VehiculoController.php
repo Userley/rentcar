@@ -60,6 +60,6 @@ class VehiculoController extends Controller
             }
         }
 
-        return response($request->placa, 200)->header('Content-type', 'text/plain');
+        return response($vehiculo->idvehiculo, 200)->header('Content-type', 'text/plain');
     }
 }

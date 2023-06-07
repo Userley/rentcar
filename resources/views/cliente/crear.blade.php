@@ -16,9 +16,9 @@
         <div class="pull-right">
             <button class="btn btn-primary" onclick="GuardarCliente();"><i class="fa fa-floppy-o" aria-hidden="true"></i>
                 Guardar</button>
-                <a href="{{ url('/cliente/') }}"> <button class="btn btn btn-success"><i class="fa fa-arrow-left"
-                    aria-hidden="true"></i>
-                Volver</button></a>
+            <a href="{{ url('/cliente/') }}"> <button class="btn btn btn-success"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i>
+                    Volver</button></a>
         </div>
     </div>
 @endsection
@@ -65,21 +65,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="txtRazonSocialCliente" class="font-weight-bold">
-                                            Razón Social:
-                                        </label>
-                                        <input type="text" id="txtRazonSocialCliente" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <label for="txtDocumentoCliente" class="font-weight-bold">
-                                            DNI / RUC:
+                                            DNI:
                                         </label>
                                         <input type="number" id="txtDocumentoCliente" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="txtDireccionCliente" class="font-weight-bold">
                                             Dirección:
@@ -103,14 +95,29 @@
                                         <input type="number" id="txtCelularCliente" class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <hr class="divider">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="txtRazonSocialCliente" class="font-weight-bold">
+                                            Razón Social:
+                                        </label>
+                                        <input type="text" id="txtRazonSocialCliente" class="form-control">
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
-                                        <br>
-                                        <input type="checkbox" id="chkmaster">
-                                        {{-- <label class="form-check-label" for="chkmaster"><strong>Activo</strong></label>
-                                        <br>
-                                        <input type="checkbox" class="form-control" /> --}}
+                                        <label for="txtRazonSocialCliente" class="font-weight-bold">
+                                            RUC:
+                                        </label>
+                                        <input type="text" id="txtRUC" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mt-4">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="chkmaster">
+                                        <label class="form-check-label" for="chkmaster">Activo</label>
                                     </div>
                                 </div>
                             </div>
