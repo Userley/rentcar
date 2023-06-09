@@ -104,19 +104,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="mt-4">Indefinido
-                                            <input type="checkbox" class="" id="fechaindefinida"
-                                                onchange="valfechafin(event);" />
-                                        </label>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="form-check-label" for="chkactive"><strong>Activo</strong></label>
-                                        <br>
-                                        <input type="checkbox" class="js-switch" id="chkactive" />
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="fechaindefinida"
+                                            onchange="valfechafin(event);">
+                                        <label class="form-check-label" for="fechaindefinida">Activo</label>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +115,7 @@
                         <div class="col-md-12">
                             <hr>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <label for="cbovehiculo" class="font-weight-bold">Asignar Vehículos:</label>
                             <div class="input-group">
                                 <select name="" id="cbovehiculo" class="custom-select">
@@ -143,7 +134,7 @@
                                 </div> --}}
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <div class="tabs-container">
                                 <ul class="nav nav-tabs" id="litabs">
 
@@ -182,13 +173,26 @@
 
 
     @section('functions')
+        const _get = (name) => {
 
-        var elem = document.querySelector('.js-switch');
-        var switchery = new Switchery(elem, {
-            color: '#1AB394'
-        });
+            let indicador = name.substring(0, 1)
+
+            if (indicador == ".") {
+                return document.getElementoByName(name.substring(1, name.length));
+            } else if (indicador == "#") {
+                return document.getElementById(name.substring(1, name.length));
+            }
+
+        }
+        // var elem = document.querySelector('.js-switch');
+        // var switchery = new Switchery(elem, {
+        //     color: '#1AB394'
+        // });
 
         const ObtenerProvincias = (id) => {
+
+            console.log(_get('#cbovehiculo').value);
+
             $.ajax({
                 url: "{{ route('provincia.GetProvincias') }}",
                 method: 'Get',
@@ -241,7 +245,7 @@
 
             let tabs = document.getElementById('litabs').querySelectorAll('li');
             let coincidencia = 0;
-            
+
             tabs.forEach(x => {
                 let placa = x.id.substring(3, x.id.length);
                 if (placa == Car.value) {
@@ -439,7 +443,7 @@
             // }, {
             //     vehiculos
             // });
-
+            console.log(vehiculos);
 
             $.ajax({
                 url: "{{ route('proyecto.saveProyecto') }}",
@@ -456,6 +460,30 @@
                     vehiculos: vehiculos
                 }
             }).done(function(data) {
+
+
+                if (data >= 1) {
+                    document.getElementById('idnombreproyecto').value = "";
+                    document.getElementById('cboClientes').selectedIndex = 0;
+                    document.getElementById('cboDepartamento').value = '-- Todos --';
+                    document.getElementById('cboProvincia').value = '-- Todos --';
+                    document.getElementById('cboDistrito').value = '-- Todos --';
+                    document.getElementById('idfechaini').value = GetDate();
+                    document.getElementById('idfechafin').value = '';
+                    document.getElementById('fechaindefinida').checked = false;
+                } else {
+                    setTimeout(function() {
+                        toastr.options = {
+                            closeButton: true,
+                            showMethod: 'slideDown',
+                            timeOut: 3000
+                        };
+                        toastr.danger('¡Hubo un error al registrar proyecto!',
+                            'Registro de proyecto');
+
+                    }, 500);
+                }
+
 
                 console.log(data);
             });

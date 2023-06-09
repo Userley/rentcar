@@ -25,7 +25,6 @@
                 Proyecto</button></a>
     </div>
     <hr>
-    {{$lstProyectos}}
     <div class="row">
         <div class="col-md-12">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -240,31 +239,24 @@
 
 <script>
     @section('ready')
-        $('#loading-example-btn').click(function() {
-            btn = $(this);
-            simpleLoad(btn, true)
-
-            // Ajax example
-            //                $.ajax().always(function () {
-            //                    simpleLoad($(this), false)
-            //                });
-
-            simpleLoad(btn, false)
-        });
+        CargaInicial();
     @endsection
 
 
     @section('functions')
-        function simpleLoad(btn, state) {
-            if (state) {
-                btn.children().addClass('fa-spin');
-                btn.contents().last().replaceWith(" Loading");
-            } else {
-                setTimeout(function() {
-                    btn.children().removeClass('fa-spin');
-                    btn.contents().last().replaceWith(" Refresh");
-                }, 2000);
-            }
+
+
+        const CargaInicial = () => {
+            $.ajax({
+                url: "{{ route('proyecto.getProyectos') }}",
+                method: 'GET',
+                data: {
+                    _token: $("input[name='_token']").val()
+                }
+            }).done(function(data) {
+                let json = data;
+                console.log(json);
+            });
         }
     @endsection
 </script>

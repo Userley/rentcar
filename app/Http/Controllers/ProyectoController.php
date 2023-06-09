@@ -15,6 +15,20 @@ class ProyectoController extends Controller
 {
     public function index()
     {
+
+        return view('proyecto.index');
+    }
+
+    public function crear()
+    {
+        $Vehiculos = Vehiculo::all();
+        $Departamentos = Departamento::all();
+        $Clientes = Cliente::all();
+        return view('proyecto.crear', compact('Departamentos', 'Clientes', 'Vehiculos'));
+    }
+
+    public function getProyectos()
+    {
         $Proyectos = Proyecto::query()->select(
             'proyecto.idproyecto',
             'proyecto.estado',
@@ -50,26 +64,7 @@ class ProyectoController extends Controller
             array_push($lstProyectos, json_encode($obj));
         }
 
-        if (count($Proyectos) <= 0) {
-            $lstProyectos = "[]";
-        }
-
-        return view('proyecto.index', compact("lstProyectos"));
-    }
-
-    public function crear()
-    {
-        $Vehiculos = Vehiculo::all();
-        $Departamentos = Departamento::all();
-        $Clientes = Cliente::all();
-        return view('proyecto.crear', compact('Departamentos', 'Clientes', 'Vehiculos'));
-    }
-
-    public function getProyectos()
-    {
-        $Proyectos = Proyecto::all();
-
-        return response($Proyectos, 200)->header('Content-type', 'text/plain');
+        return response($lstProyectos, 200)->header('Content-type', 'text/plain');
     }
 
 

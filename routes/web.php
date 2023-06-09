@@ -67,6 +67,8 @@ Route::controller(ProyectoController::class)->group(function () {
     Route::get('proyecto/crear', 'crear');
     Route::get('proyecto/getProvincias', 'getProvincias')->name('proyecto.getProvincias');
     Route::get('proyecto/getDistritos', 'getDistritos')->name('proyecto.getDistritos');
+
+    Route::get('proyecto/getProyectos', 'getProyectos')->name('proyecto.getProyectos');
     // Route::get('contactos/{id}', 'show');
     Route::post('proyecto/saveProyecto', 'saveProyecto')->name('proyecto.saveProyecto');
 });
