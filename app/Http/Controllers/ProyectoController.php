@@ -15,8 +15,68 @@ class ProyectoController extends Controller
 {
     public function index()
     {
+        $Proyectos = Proyecto::query()->select(
+            'proyecto.idproyecto',
+            'proyecto.estado',
+            'cliente.imagen as Cliente',
+            'proyecto.descripcion as Proyecto',
+            'departamento.descripcion as Departamento',
+            'provincia.descripcion as Provincia',
+            'distrito.descripcion as Distrito',
+            'proyecto.fechaini',
+            'proyecto.fechafin'
+        )
+            ->join('cliente', 'cliente.idcliente', 'proyecto.idcliente')
+            ->join('departamento', 'departamento.iddepartamento', 'proyecto.iddepartamento')
+            ->join('provincia', 'provincia.idprovincia', 'proyecto.idprovincia')
+            ->join('distrito', 'distrito.iddistrito', 'proyecto.iddistrito')->paginate(10);
 
-        return view('proyecto.index');
+        $lstProyectos =  array();
+        for ($i = 0; $i < count($Proyectos); $i++) {
+
+            $DetalleProyecto = DetalleProyecto::query()->where('idproyecto', $Proyectos[$i]->idproyecto)->get();
+            $lstDetalleProyectos =  array();
+
+            for ($j = 0; $j < count($DetalleProyecto); $j++) {
+
+                $DetalleProyectoImagenes = DetalleProyectoImages::query()->where('iddetalleproyecto', $DetalleProyecto[$j]->iddetalleproyecto)->get();
+                $lstimagesDetalleProyectos =  array();
+
+                for ($k = 0; $k < count($DetalleProyectoImagenes); $k++) {
+
+                    $objImgDet = array(
+                        'iddetalleproyectoimage' => $DetalleProyectoImagenes[$k]->iddetalleproyectoimage,
+                        'nombreimagen' => $DetalleProyectoImagenes[$k]->nombreimagen,
+                        'imagen' => $DetalleProyectoImagenes[$k]->imagen
+                    );
+                    array_push($lstimagesDetalleProyectos, $objImgDet);
+                }
+
+                $objDet = array(
+                    'iddetalleproyecto' => $DetalleProyecto[$j]->iddetalleproyecto,
+                    'estado' => $DetalleProyecto[$j]->estado,
+                    'idvehiculo' => $DetalleProyecto[$j]->idvehiculo,
+                    'imagenes' => $lstimagesDetalleProyectos
+                );
+                array_push($lstDetalleProyectos, $objDet);
+            }
+
+            $obj = array(
+                'idproyecto' => $Proyectos[$i]->idproyecto,
+                'estado' => $Proyectos[$i]->estado,
+                'cliente' => $Proyectos[$i]->Cliente,
+                'proyecto' => $Proyectos[$i]->Proyecto,
+                'departamento' => $Proyectos[$i]->Departamento,
+                'provincia' => $Proyectos[$i]->Provincia,
+                'distrito' => $Proyectos[$i]->Distrito,
+                'fechaini' => $Proyectos[$i]->fechaini,
+                'fechafin' => $Proyectos[$i]->fechafin,
+                'autos' =>  $lstDetalleProyectos
+            );
+            array_push($lstProyectos, $obj);
+        }
+
+        return view('proyecto.index', compact('lstProyectos','Proyectos'));
     }
 
     public function crear()
@@ -43,10 +103,37 @@ class ProyectoController extends Controller
             ->join('cliente', 'cliente.idcliente', 'proyecto.idcliente')
             ->join('departamento', 'departamento.iddepartamento', 'proyecto.iddepartamento')
             ->join('provincia', 'provincia.idprovincia', 'proyecto.idprovincia')
-            ->join('distrito', 'distrito.iddistrito', 'proyecto.iddistrito')->paginate(10);
+            ->join('distrito', 'distrito.iddistrito', 'proyecto.iddistrito')->paginate(1);
 
         $lstProyectos =  array();
         for ($i = 0; $i < count($Proyectos); $i++) {
+
+            $DetalleProyecto = DetalleProyecto::query()->where('idproyecto', $Proyectos[$i]->idproyecto)->get();
+            $lstDetalleProyectos =  array();
+
+            for ($j = 0; $j < count($DetalleProyecto); $j++) {
+
+                $DetalleProyectoImagenes = DetalleProyectoImages::query()->where('iddetalleproyecto', $DetalleProyecto[$j]->iddetalleproyecto)->get();
+                $lstimagesDetalleProyectos =  array();
+
+                for ($k = 0; $k < count($DetalleProyectoImagenes); $k++) {
+
+                    $objImgDet = array(
+                        'iddetalleproyectoimage' => $DetalleProyectoImagenes[$k]->iddetalleproyectoimage,
+                        'nombreimagen' => $DetalleProyectoImagenes[$k]->nombreimagen,
+                        'imagen' => $DetalleProyectoImagenes[$k]->imagen
+                    );
+                    array_push($lstimagesDetalleProyectos, $objImgDet);
+                }
+
+                $objDet = array(
+                    'iddetalleproyecto' => $DetalleProyecto[$j]->iddetalleproyecto,
+                    'estado' => $DetalleProyecto[$j]->estado,
+                    'idvehiculo' => $DetalleProyecto[$j]->idvehiculo,
+                    'imagenes' => $lstimagesDetalleProyectos
+                );
+                array_push($lstDetalleProyectos, $objDet);
+            }
 
             $obj = array(
                 'idproyecto' => $Proyectos[$i]->idproyecto,
@@ -58,10 +145,9 @@ class ProyectoController extends Controller
                 'distrito' => $Proyectos[$i]->Distrito,
                 'fechaini' => $Proyectos[$i]->fechaini,
                 'fechafin' => $Proyectos[$i]->fechafin,
-                'procentaje' => '',
-                'autos' => ''
+                'autos' =>  $lstDetalleProyectos
             );
-            array_push($lstProyectos, json_encode($obj));
+            array_push($lstProyectos, $obj);
         }
 
         return response($lstProyectos, 200)->header('Content-type', 'text/plain');

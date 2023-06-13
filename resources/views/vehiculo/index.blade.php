@@ -162,11 +162,11 @@
 
 @endsection
 
-@section('ready')
-
-@endsection
 
 <script>
+    @section('ready')
+    
+    @endsection
     @section('functions')
 
         const Activar = (e) => {

@@ -25,139 +25,134 @@
 
 @section('content')
     @csrf
-    <div class="row">
-        <div class="col-md-12">
-            <div class="ibox float-e-margins animated fadeInRight">
-                <div class="ibox-title">
-                    <h5><i class="fa fa-filter" aria-hidden="true"></i>
-                        Registrar Proyectos</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="ibox-content">
+
+    <div class="ibox float-e-margins animated fadeInRight">
+        <div class="ibox-title">
+            <h5><i class="fa fa-filter" aria-hidden="true"></i>
+                Registrar Proyectos</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-md-12">
+
                     <div class="row">
                         <div class="col-md-12">
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="idnombreproyecto" class="font-weight-bold">Nombre Proyecto:</label>
-                                        <input type="text" name="" id="idnombreproyecto" class="form-control w-50"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="cboClientes" class="font-weight-bold">Cliente:</label>
-                                        <select class="custom-select" name="" id="cboClientes" required>
-                                            @foreach ($Clientes as $Cliente)
-                                                <option value="{{ $Cliente->idcliente }}">{{ $Cliente->nombres }}
-                                                    {{ $Cliente->apellidos }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="cboDepartamento" class="font-weight-bold">Departamento:</label>
-                                        <select class="custom-select" id="cboDepartamento"
-                                            onchange="ObtenerProvincias(event.target.value);" required>
-                                            <option selected>-- Todos --</option>
-                                            @foreach ($Departamentos as $Departamento)
-                                                <option value="{{ $Departamento->iddepartamento }}">
-                                                    {{ $Departamento->descripcion }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="cboProvincia" class="font-weight-bold">Provincia:</label>
-                                        <select class="custom-select" id="cboProvincia"
-                                            onchange="ObtenerDistritos(event.target.value)" required>
-                                            <option selected>-- Todos --</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="cboDistrito" class="font-weight-bold">Distrito:</label>
-                                        <select class="custom-select" id="cboDistrito" required>
-                                            <option selected>-- Todos --</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="idfechaini" class="font-weight-bold">Fecha Inicio:</label>
-                                        <input type="date" name="" id="idfechaini" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group" id="ffinproy">
-                                        <label for="idfechafin" class="font-weight-bold">Fecha Fin:</label>
-                                        <input type="date" name="" id="idfechafin" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input" id="fechaindefinida"
-                                            onchange="valfechafin(event);">
-                                        <label class="form-check-label" for="fechaindefinida">Activo</label>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="idnombreproyecto" class="font-weight-bold">Nombre Proyecto:</label>
+                                <input type="text" name="" id="idnombreproyecto" class="form-control w-50"
+                                    required>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <hr>
-                        </div>
+
                         <div class="col-md-3">
-                            <label for="cbovehiculo" class="font-weight-bold">Asignar Vehículos:</label>
-                            <div class="input-group">
-                                <select name="" id="cbovehiculo" class="custom-select">
-                                    @foreach ($Vehiculos as $Vehiculo)
-                                        <option value="{{ $Vehiculo->idvehiculo }}">{{ $Vehiculo->idvehiculo }}
-                                        </option>
+                            <div class="form-group">
+                                <label for="cboClientes" class="font-weight-bold">Cliente:</label>
+                                <select class="custom-select" name="" id="cboClientes" required>
+                                    @foreach ($Clientes as $Cliente)
+                                        <option value="{{ $Cliente->idcliente }}">{{ $Cliente->nombres }}
+                                            {{ $Cliente->apellidos }}</option>
                                     @endforeach
                                 </select>
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-primary h-100" id="AddCarPro"
-                                        onclick="AddCarPro();"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                </div>
-                                {{-- <div class="input-group-prepend">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cboDepartamento" class="font-weight-bold">Departamento:</label>
+                                <select class="custom-select" id="cboDepartamento"
+                                    onchange="ObtenerProvincias(event.target.value);" required>
+                                    <option selected>-- Todos --</option>
+                                    @foreach ($Departamentos as $Departamento)
+                                        <option value="{{ $Departamento->iddepartamento }}">
+                                            {{ $Departamento->descripcion }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cboProvincia" class="font-weight-bold">Provincia:</label>
+                                <select class="custom-select" id="cboProvincia"
+                                    onchange="ObtenerDistritos(event.target.value)" required>
+                                    <option selected>-- Todos --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="cboDistrito" class="font-weight-bold">Distrito:</label>
+                                <select class="custom-select" id="cboDistrito" required>
+                                    <option selected>-- Todos --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="idfechaini" class="font-weight-bold">Fecha Inicio:</label>
+                                <input type="date" name="" id="idfechaini" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" id="ffinproy">
+                                <label for="idfechafin" class="font-weight-bold">Fecha Fin:</label>
+                                <input type="date" name="" id="idfechafin" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group form-check mt-4">
+                                <input type="checkbox" class="form-check-input" id="fechaindefinida"
+                                    onchange="valfechafin(event);">
+                                <label class="form-check-label" for="fechaindefinida">Indefinido</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ibox float-e-margins animated fadeInRight">
+        <div class="ibox-title">
+            <h5><i class="fa fa-car" aria-hidden="true"></i>
+                Registrar Vehículos</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="cbovehiculo" class="font-weight-bold">Asignar Vehículos:</label>
+                    <div class="input-group w-25">
+                        <select name="" id="cbovehiculo" class="custom-select">
+                            @foreach ($Vehiculos as $Vehiculo)
+                                <option value="{{ $Vehiculo->idvehiculo }}">{{ $Vehiculo->idvehiculo }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-primary h-100" id="AddCarPro"
+                                onclick="AddCarPro();"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                        {{-- <div class="input-group-prepend">
                                     <button type="button" class="btn btn-danger h-100" id="RemoveCarPro"
                                         onclick="RemoveCarPro();"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                 </div> --}}
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="tabs-container">
-                                <ul class="nav nav-tabs" id="litabs">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="tabs-container mt-3">
+                        <ul class="nav nav-tabs" id="litabs">
 
-                                </ul>
-                                <div class="tab-content" id="contenttabs">
-                                </div>
-                            </div>
+                        </ul>
+                        <div class="tab-content" id="contenttabs">
                         </div>
-                        {{-- <div class="col-md-4" style="background-color:rgb(252, 247, 188)"> --}}
-
-                        {{-- <div class="col-md-8">
-                            <table class="w-100 text-center m-0 p-0 table-bordered">
-                                <thead class="thead-success">
-                                    <tr>
-                                        <th>Item</th>
-                                        <th>Placa</th>
-                                        <th>Documentación</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tblVehiculos">
-                                </tbody>
-                            </table>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -184,15 +179,9 @@
             }
 
         }
-        // var elem = document.querySelector('.js-switch');
-        // var switchery = new Switchery(elem, {
-        //     color: '#1AB394'
-        // });
+
 
         const ObtenerProvincias = (id) => {
-
-            console.log(_get('#cbovehiculo').value);
-
             $.ajax({
                 url: "{{ route('provincia.GetProvincias') }}",
                 method: 'Get',
@@ -337,7 +326,7 @@
             reader.onload = function(event) {
                 var base64String = event.target.result;
                 element.innerHTML +=
-                    `<div class="col-md-4"><input type="text" value="${base64String}"" style="display:none"><span class="badge badge-xs badge-danger" onclick="DelImgCar(event);"><i class="fa fa-trash-o fa-sm" aria-hidden="true"></i></span> <i class="fa fa-file-image-o fa-sm" aria-hidden="true"></i><span id="nombreimg"> ${file.name}</span></div>`;
+                    `<div class="col-md-4"><input type="text" value="${base64String}"" style="display:none"><span class="badge badge-xs badge-default" onclick="DelImgCar(event);"><i class="fa fa-trash-o fa-sm" aria-hidden="true"></i></span> <i class="fa fa-file-image-o fa-sm" aria-hidden="true"></i><span id="nombreimg"> ${file.name}</span></div>`;
             };
             reader.readAsDataURL(file);
         }

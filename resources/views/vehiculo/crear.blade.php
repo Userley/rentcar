@@ -126,28 +126,28 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-5">
+                        <div class="col-md-5">
                             <div class="form-group">
                                 <label for="txtDocumentoAdd" class="font-weight-bold">Nombre:</label>
                                 <input type="text" name="" class="form-control form-control-sm"
                                     id="txtDocumentoAdd">
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label for="txtDocumentoIni" class="font-weight-bold">Fecha Inicio:</label>
                                 <input type="date" name="" class="form-control form-control-sm"
                                     id="txtDocumentoIni">
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label for="txtDocumentoFin" class="font-weight-bold">Fecha Fin:</label>
                                 <input type="date" name="" class="form-control form-control-sm"
                                     id="txtDocumentoFin">
                             </div>
                         </div>
-                        <div class="col-3 align-bottom">
+                        <div class="col-md-3 align-bottom">
                             <div class="form-group ">
                                 <button type="button" name="" class="btn btn-sm btn-success w-100 mt-4"
                                     onclick="AddDocument();" id="btnDocumentoSave"><i class="fa fa-plus"

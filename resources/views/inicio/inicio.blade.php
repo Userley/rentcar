@@ -209,6 +209,20 @@
             return year + "-" + month + "-" + day;
         };
 
+
+        function FormatDate(fechaString) {
+            const fecha = new Date(fechaString);
+
+            const dia = fecha.getDate();
+            const mes = fecha.getMonth() + 1;
+            const anio = fecha.getFullYear();
+
+            const diaFormateado = dia.toString().padStart(2, '0');
+            const mesFormateado = mes.toString().padStart(2, '0');
+
+            return `${diaFormateado}/${mesFormateado}/${anio}`;
+        }
+
         const round = (value, decimals) => {
             return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
         };

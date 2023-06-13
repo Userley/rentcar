@@ -14,6 +14,20 @@
             </li>
         </ol>
     </div>
+    <style>
+        /* .image-container {
+                    width: 80px;
+                    height: 100px;
+                    overflow: hidden;
+                }
+
+                .image-container img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border: 1px solid rgb(32, 32, 43);
+                } */
+    </style>
 @endsection
 
 @section('content')
@@ -45,6 +59,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
+
             <div class="ibox float-e-margins animated fadeInRight">
                 <div class="ibox-title">
                     <h5><i class="fa fa-cube" aria-hidden="true"></i>
@@ -58,178 +73,82 @@
                 <div class="ibox-content">
 
                     <div class="project-list table-responsive">
-
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="tblproyectos">
                             <tbody>
-
-                                <tr>
-                                    <td class="project-status">
-                                        <span class="label label-default">Anulado</span>
-                                    </td>
-                                    <td class="project-people" style="width: 10px">
-
-                                        <a href=""><img alt="image" class="img-circle"
-                                                src="../resources/img/a2.jpg"></a>
-                                    </td>
-                                    <td class="project-title">
-                                        <a href="project_detail.html">Proyecto Trasnporte Agrupación</a>
-                                        <br />
-                                        <small>La Libertad / Trujillo / Trujillo </small>
-                                        <br />
-                                        <small><strong>Inicio</strong> 14/08/2014 - <strong>Fin</strong>
-                                            14/08/2020</small>
-                                    </td>
-                                    <td class="project-completion">
-                                        <small>Proceso de proyecto: 68%</small>
-                                        <div class="progress progress-mini ">
-                                            <div style="width: 68%;" class="progress-bar" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-
-                                    </td>
-                                    <td class="project-people">
-                                        <span>
-                                            <i class="fa fa-car" aria-hidden="true" alt="FN - 960"></i>
-                                            <span class="badge badge-secondary">3</span>
-                                        </span>
-                                    </td>
-                                    <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye"
-                                                aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="project-status">
-                                        <span class="label label-primary">Activo</span>
-                                    </td>
-                                    <td class="project-people" style="width: 10px">
-
-                                        <a href=""><img alt="image" class="img-circle"
-                                                src="../resources/img/a1.jpg"></a>
-                                    </td>
-                                    <td class="project-title">
-                                        <a href="project_detail.html">Proyecto Minero Arequipa</a>
-                                        <br />
-                                        <small>La Libertad / Trujillo / Trujillo </small>
-                                        <br />
-                                        <small><strong>Inicio</strong> 14/08/2014 - <strong>Fin</strong>
-                                            14/08/2020</small>
-                                    </td>
-                                    <td class="project-completion">
-                                        <small>Proceso de proyecto: 48%</small>
-                                        <div class="progress progress-mini">
-                                            <div style="width: 48%;" class="progress-bar" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td class="project-people">
-                                        <span>
-                                            <i class="fa fa-car" aria-hidden="true" alt="FN - 960"></i>
-                                            <span class="badge badge-secondary">4</span>
-                                        </span>
-                                    </td>
-                                    <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye"
-                                                aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="project-status">
-                                        <span class="label label-default">Anulado</span>
-                                    </td>
-                                    <td class="project-people" style="width: 10px">
-
-                                        <a href=""><img alt="image" class="img-circle"
-                                                src="../resources/img/a2.jpg"></a>
-                                    </td>
-                                    <td class="project-title">
-                                        <a href="project_detail.html">Proyecto Trasnporte Agrupación</a>
-                                        <br />
-                                        <small>La Libertad / Trujillo / Trujillo </small>
-                                        <br />
-                                        <small><strong>Inicio</strong> 14/08/2014 - <strong>Fin</strong>
-                                            14/08/2020</small>
-                                    </td>
-                                    <td class="project-completion">
-                                        <small>Proceso de proyecto: 68%</small>
-                                        <div class="progress progress-mini ">
-                                            <div style="width: 68%;" class="progress-bar" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-
-                                    </td>
-                                    <td class="project-people">
-                                        <span>
-                                            <i class="fa fa-car" aria-hidden="true" alt="FN - 960"></i>
-                                            <span class="badge badge-secondary">3</span>
-                                        </span>
-                                    </td>
-                                    <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye"
-                                                aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="project-status">
-                                        <span class="label label-primary">Activo</span>
-                                    </td>
-                                    <td class="project-people" style="width: 10px">
-
-                                        <a href=""><img alt="image" class="img-circle"
-                                                src="../resources/img/a1.jpg"></a>
-                                    </td>
-                                    <td class="project-title">
-                                        <a href="project_detail.html">Proyecto Minero Arequipa</a>
-                                        <br />
-                                        <small>La Libertad / Trujillo / Trujillo </small>
-                                        <br />
-                                        <small><strong>Inicio</strong> 14/08/2014 - <strong>Fin</strong>
-                                            14/08/2020</small>
-                                    </td>
-                                    <td class="project-completion">
-                                        <small>Proceso de proyecto: 48%</small>
-                                        <div class="progress progress-mini">
-                                            <div style="width: 48%;" class="progress-bar" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td class="project-people">
-                                        <span>
-                                            <i class="fa fa-car" aria-hidden="true" alt="FN - 960"></i>
-                                            <span class="badge badge-secondary">4</span>
-                                        </span>
-                                    </td>
-                                    <td class="project-actions">
-                                        <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye"
-                                                aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                @foreach ($lstProyectos as $proy)
+                                    <tr>
+                                        <td class="project-status">
+                                            <span
+                                                class="label {{ $proy['estado'] == '1' ? 'label-primary' : 'label-default' }}">{{ $proy['estado'] == '1' ? 'Activo' : 'Inactivo' }}</span>
+                                        </td>
+                                        <td class="project-people" style="width: 10px">
+                                            <img alt="image" class="img-circle" src="{{ $proy['cliente'] }}">
+                                        </td>
+                                        <td class="project-title">
+                                            <a href="#">{{ $proy['proyecto'] }}</a>
+                                            <br />
+                                            <small>{{ $proy['departamento'] }} / {{ $proy['provincia'] }} /
+                                                {{ $proy['distrito'] }} </small>
+                                            <br />
+                                            <small><strong>Inicio:</strong>
+                                                {{ date('d/m/Y', strtotime(str_replace('/', '-', $proy['fechaini']))) }} -
+                                                <strong>Fin:</strong>
+                                                {{ date('d/m/Y', strtotime(str_replace('/', '-', $proy['fechafin']))) }}</small>
+                                        </td>
+                                        <td class="project-completion">
+                                            @foreach ($proy['autos'] as $car)
+                                                <span style="font-size: 10px;">{{ $car['idvehiculo'] }}</span><br>
+                                            @endforeach
+                                            {{-- <small>Transcurso de Proyecto: 0%</small>
+                                            <div class="progress progress-mini">
+                                                <div style="width: 0%;" class="progress-bar " aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div> --}}
+                                        </td>
+                                        <td class="project-people">
+                                            <span>
+                                                <i class="fa fa-car" aria-hidden="true" alt="FN - 960"></i>
+                                                <span class="badge badge-secondary">{{ count($proy['autos']) }}</span>
+                                            </span>
+                                        </td>
+                                        <td class="project-actions">
+                                            <button class="btn btn-success btn-sm"
+                                                onclick="showCars('{{ json_encode($proy['autos']) }}');"><i
+                                                    class="fa fa-picture-o" aria-hidden="true"></i></button>
+                                            <button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button>
+                                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
-
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="d-flex justify-content-end" id="ad_data">
+                                            {!! $Proyectos->links('pagination::bootstrap-5') !!}
+                                        </div>
+                                    </td>
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCars" tabindex="-1" role="dialog" aria-labelledby="modalCarsLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCarsLabel"><strong>Imágenes de vehículo</strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
                 </div>
             </div>
         </div>
@@ -239,24 +158,36 @@
 
 <script>
     @section('ready')
-        CargaInicial();
+        document.querySelectorAll('.pagination')[1].classList.add('ml-3');
     @endsection
 
 
     @section('functions')
 
 
-        const CargaInicial = () => {
-            $.ajax({
-                url: "{{ route('proyecto.getProyectos') }}",
-                method: 'GET',
-                data: {
-                    _token: $("input[name='_token']").val()
-                }
-            }).done(function(data) {
-                let json = data;
-                console.log(json);
+        const showCars = (data) => {
+            $('#modalCars .modal-body').html('');
+            let jsonAutos = JSON.parse(data);
+
+            let grilla = `<div class="row">`;
+
+
+            jsonAutos.forEach(auto => {
+                grilla += `<div class="col-md-12">${auto.idvehiculo} <hr></div>`;
+                Array.from(auto.imagenes).forEach(imagen => {
+
+                    grilla += `<div class="col-md-2">`;
+                    grilla += `<div class="image-container">`;
+                    grilla += `<img src="${imagen.imagen}" style="width:80px;">`;
+                    grilla += `</div>`;
+                    grilla += `</div>`;
+                });
             });
+            grilla += `</div>`;
+
+            $('#modalCars .modal-body').append(grilla);
+            $('#modalCars').modal('show');
+
         }
     @endsection
 </script>
