@@ -116,7 +116,7 @@
                                                 onclick="showCars('{{ json_encode($proy['autos']) }}');"><i
                                                     class="fa fa-picture-o" aria-hidden="true"></i></button>
                                             <button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                            <button class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach

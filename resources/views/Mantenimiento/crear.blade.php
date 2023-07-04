@@ -21,7 +21,8 @@
 
 @section('content')
     <div class="d-flex align-content-center">
-        <a href="{{ url('/mantenimiento/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button></a>
+        <a href="{{ url('/mantenimiento/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"
+                    aria-hidden="true"></i> Volver</button></a>
     </div>
 
     <hr>
@@ -50,7 +51,12 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="cboPlaca" class="font-weight-bold">Placa:</label>
-                                        <select name="" id="cboPlaca" class="form-control"></select>
+                                        <select name="" id="cboPlaca" class="form-control">
+                                            @foreach ($Vehiculo as $Vehi)
+                                                <option value="{{ $Vehi->idvehiculo }}">{{ $Vehi->idvehiculo }}</option>
+                                            @endforeach
+
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -119,8 +125,10 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                        <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i> Limpiar</button>
+                        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                            Guardar</button>
+                        <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i>
+                            Limpiar</button>
                     </div>
                 </div>
             </div>
@@ -206,31 +214,31 @@
             </div>
         </div>
     </div>
-@endsection
-
-
-@section('ready')
-
-    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-    var fileName = document.getElementById("imgvehicle").files[0].name;
-    var nextSibling = e.target.nextElementSibling
-    nextSibling.innerText = fileName
-    })
 
 @endsection
 
+<script>
+    @section('ready')
 
-@section('functions')
-
-    const inputFile = document.querySelector('#imgvehicle');
-    const image = document.querySelector('#imagenPrevisualizacion');
-
-    inputFile.addEventListener('input', async (event) => {
-    let imgblob = await comprimirImagen(inputFile.files[0], 25);
-    let srcimg = URL.createObjectURL(imgblob);
-    base64URL = await encodeFileAsBase64URL(imgblob);
-    image.setAttribute('src', base64URL);
-    });
+        document.getElementById("txtFecha").value = GetDate();
+        document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+            var fileName = document.getElementById("imgvehicle").files[0].name;
+            var nextSibling = e.target.nextElementSibling
+            nextSibling.innerText = fileName
+        })
+    @endsection
 
 
-@endsection
+    @section('functions')
+
+        const inputFile = document.querySelector('#imgvehicle');
+        const image = document.querySelector('#imagenPrevisualizacion');
+
+        inputFile.addEventListener('input', async (event) => {
+            let imgblob = await comprimirImagen(inputFile.files[0], 25);
+            let srcimg = URL.createObjectURL(imgblob);
+            base64URL = await encodeFileAsBase64URL(imgblob);
+            image.setAttribute('src', base64URL);
+        });
+    @endsection
+</script>

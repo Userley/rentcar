@@ -17,6 +17,13 @@
 @endsection
 
 @section('content')
+@csrf
+<div class="d-flex align-content-center">
+    <a href="{{ url('/mantenimiento/crear/') }}"> <button class="btn btn-sm btn-success"> <i class="fa fa-plus"
+                aria-hidden="true"></i> Nuevo Mantenimiento</button></a>
+</div>
+<hr>
+
     <div class="row">
         <div class="col-md-12">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -100,11 +107,9 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group text-center">
-                                <button type="button" style="margin-top: 28px" class="btn btn-primary shadow-sm"><i
+                                <button type="button" style="margin-top: 28px" class="btn btn-primary shadow-sm w-75"><i
                                         class="fa fa-filter" aria-hidden="true"></i> Filtrar</button>
-                                <a href="{{ url('/mantenimiento/crear/') }}"> <button class="btn btn-success shadow-sm"
-                                        style="margin-top: 28px"><i class="fa fa-plus" aria-hidden="true"></i>
-                                        Nuevo</button></a>
+
                             </div>
                         </div>
                     </div>

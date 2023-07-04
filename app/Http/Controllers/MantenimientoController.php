@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 
 class MantenimientoController extends Controller
@@ -13,6 +14,7 @@ class MantenimientoController extends Controller
 
     public function crear()
     {
-        return view('mantenimiento.crear');
+        $Vehiculo = Vehiculo::all();
+        return view('mantenimiento.crear', compact("Vehiculo"));
     }
 }
