@@ -20,6 +20,7 @@
 @endsection
 
 @section('content')
+    @csrf
     <div class="d-flex align-content-center">
         <a href="{{ url('/mantenimiento/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"
                     aria-hidden="true"></i> Volver</button></a>
@@ -51,7 +52,9 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="cboPlaca" class="font-weight-bold">Placa:</label>
-                                        <select name="" id="cboPlaca" class="form-control">
+                                        <select name="" id="cboPlaca" class="form-control"
+                                            onchange="getDataVehiculo(event);">
+                                            <option value="0">--Select--</option>
                                             @foreach ($Vehiculo as $Vehi)
                                                 <option value="{{ $Vehi->idvehiculo }}">{{ $Vehi->idvehiculo }}</option>
                                             @endforeach
@@ -59,30 +62,28 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="txtMarca" class="font-weight-bold">Marca:</label>
                                         <input type="text" class="form-control" id="txtMarca" disabled>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="txtModelo" class="font-weight-bold">Modelo:</label>
                                         <input type="text" class="form-control" id="txtModelo" disabled>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="txtLugar" class="font-weight-bold">Lugar Asignado:</label>
-                                        <input type="text" class="form-control" id="txtLugar" disabled>
-
-                                    </div>
-                                </div>
-
                                 <div class="col-md-3">
                                     <label for="cboRepuesto" class="font-weight-bold">Repuesto:</label>
                                     <div class="input-group">
-                                        <select name="" id="cboRepuesto" class="form-control"></select>
+                                        <select name="" id="cboRepuesto" class="form-control form-control-sm">
+                                            <option value="0">--Select--</option>
+                                            @foreach ($Repuestos as $Repuesto)
+                                                <option value="{{ $Repuesto->idrepuesto }}">{{ $Repuesto->descripcion }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         <div class="input-group-prepend" data-toggle="modal" data-target="#RepuestoModal">
                                             <button type="button" class="btn btn-warning"><i class="fa fa-plus"
                                                     aria-hidden="true"></i></button>
@@ -110,7 +111,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="txtKilometraje" class="font-weight-bold">Kilometraje:</label>
-                                        <input type="text" class="form-control" id="txtKilometraje">
+                                        <input type="number" class="form-control" id="txtKilometraje">
                                     </div>
                                 </div>
 
@@ -152,93 +153,63 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveSite">Guardar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveSite"
+                        onclick="saveRepuesto();">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-4">
-
-                            <div class="form-group">
-                                <label for="cboDepartamento">Departamento:</label>
-                                <select class="custom-select" id="cboDepartamento">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="cboProvincia">Provincia:</label>
-                                <select class="custom-select" id="cboProvincia">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="cboDistrito">Distrito:</label>
-                                <select class="custom-select" id="cboDistrito">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveSite">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 @endsection
 
 <script>
     @section('ready')
-
-        document.getElementById("txtFecha").value = GetDate();
-        document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-            var fileName = document.getElementById("imgvehicle").files[0].name;
-            var nextSibling = e.target.nextElementSibling
-            nextSibling.innerText = fileName
-        })
+        $('#txtFecha').val(GetDate());
     @endsection
 
 
     @section('functions')
+        const getDataVehiculo = (e) => {
+            $.ajax({
+                url: "{{ route('mantenimiento.getDataVehiculo') }}",
+                method: 'Get',
+                data: {
+                    '_token': $("input[name='_token']").val(),
+                    'idVehiculo': e.target.value
+                }
+            }).done(function(data) {
+                if (data.length == 0) {
+                    $('#txtMarca').val("");
+                    $('#txtModelo').val("");
+                } else {
+                    let Json = JSON.parse(data);
+                    $('#txtMarca').val(Json.marca);
+                    $('#txtModelo').val(Json.modelo);
+                }
+            });
+        };
 
-        const inputFile = document.querySelector('#imgvehicle');
-        const image = document.querySelector('#imagenPrevisualizacion');
-
-        inputFile.addEventListener('input', async (event) => {
-            let imgblob = await comprimirImagen(inputFile.files[0], 25);
-            let srcimg = URL.createObjectURL(imgblob);
-            base64URL = await encodeFileAsBase64URL(imgblob);
-            image.setAttribute('src', base64URL);
-        });
+        const saveRepuesto = () => {
+            let datar = $('#txtProyectoAdd').val();
+            console.log(datar);
+            $.ajax({
+                url: "{{ route('mantenimiento.saveRepuesto') }}",
+                method: 'Post',
+                data: {
+                    '_token': $("input[name='_token']").val(),
+                    'repuesto': $('#txtProyectoAdd').val()
+                }
+            }).done(function(data) {
+                let JsonData = JSON.parse(data);
+                $('#txtProyectoAdd').val("");
+                $('#cboRepuesto').empty();
+                let optionHtml = `<option value="0">--Select--</option>`;
+                JsonData.forEach(x => {
+                    optionHtml += `<option value="${x.idrepuesto}">${x.descripcion}</option>`
+                });
+                $('#cboRepuesto').append(optionHtml);
+            });
+        }
     @endsection
 </script>

@@ -76,6 +76,9 @@ Route::controller(ProyectoController::class)->group(function () {
 Route::controller(MantenimientoController::class)->group(function () {
     Route::get('mantenimiento', 'index');
     Route::get('mantenimiento/crear', 'crear');
+    Route::get('mantenimiento/getDataVehiculo', 'getDataVehiculo')->name('mantenimiento.getDataVehiculo');
+
+    Route::post('mantenimiento/saveRepuesto', 'saveRepuesto')->name('mantenimiento.saveRepuesto');
     // Route::get('contactos/{id}', 'show');
     // Route::post('contactos', 'save')->name('contactos.save');
 });
