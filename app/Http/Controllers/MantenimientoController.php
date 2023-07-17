@@ -41,12 +41,12 @@ class MantenimientoController extends Controller
             $estado = $Repuesto->save();
 
             if ($estado) {
-                $Repuestos = Repuesto::all()->sortDesc(false);
+                $Repuestos = Repuesto::all();
             }
         } else {
             $Repuestos = [];
         }
 
-        return response($Repuestos, 200)->header('Content-type', 'text/plain');
+        return response(json_decode($Repuestos), 200)->header('Content-type', 'text/plain');
     }
 }

@@ -16,17 +16,17 @@
     </div>
     <style>
         /* .image-container {
-                    width: 80px;
-                    height: 100px;
-                    overflow: hidden;
-                }
+                                    width: 80px;
+                                    height: 100px;
+                                    overflow: hidden;
+                                }
 
-                .image-container img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border: 1px solid rgb(32, 32, 43);
-                } */
+                                .image-container img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    border: 1px solid rgb(32, 32, 43);
+                                } */
     </style>
 @endsection
 
@@ -116,7 +116,8 @@
                                                 onclick="showCars('{{ json_encode($proy['autos']) }}');"><i
                                                     class="fa fa-picture-o" aria-hidden="true"></i></button>
                                             <button class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                                            <button class="btn btn-danger btn-sm"><i class="fa fa-ban"
+                                                    aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -168,24 +169,46 @@
         const showCars = (data) => {
             $('#modalCars .modal-body').html('');
             let jsonAutos = JSON.parse(data);
+            console.log(jsonAutos);
 
-            let grilla = `<div class="row">`;
+            jsonAutos.forEach((auto,ind) => {
 
+                let grilla = '';
+                let items = '';
+                let images = '';
+                grilla += `<h2><strong>Vehículo: ${auto.idvehiculo}</strong></h2><div id="caruserl${ind}" class="carousel slide" data-ride="carousel">
+                           <ol class="carousel-indicators">`;
 
-            jsonAutos.forEach(auto => {
-                grilla += `<div class="col-md-12">${auto.idvehiculo} <hr></div>`;
-                Array.from(auto.imagenes).forEach(imagen => {
+                Array.from(auto.imagenes).forEach((imagen, index) => {
 
-                    grilla += `<div class="col-md-2">`;
-                    grilla += `<div class="image-container">`;
-                    grilla += `<img src="${imagen.imagen}" style="width:80px;">`;
-                    grilla += `</div>`;
-                    grilla += `</div>`;
+                    items +=
+                        `<li data-target="#caruserl${ind}" data-slide-to="${ind}-${index}" class=""></li>`;
+
+                    images += `<div class="carousel-item">
+                                <img class="d-block w-100" src="${imagen.imagen}" alt="${ind}-${index}">
+                                </div>`;
                 });
-            });
-            grilla += `</div>`;
 
-            $('#modalCars .modal-body').append(grilla);
+                grilla += items.replace('class=""', 'class="active"');
+
+                grilla += `</ol>
+                            <div class="carousel-inner">`;
+
+                grilla += images.replace('class="carousel-item"', 'class="carousel-item active"');
+                grilla += `</div>
+                            <a class="carousel-control-prev" href="#caruserl${ind}" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#caruserl${ind}" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div><hr>`;
+                $('#modalCars .modal-body').append(grilla);
+            });
+
+
             $('#modalCars').modal('show');
 
         }

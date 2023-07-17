@@ -192,7 +192,6 @@
 
         const saveRepuesto = () => {
             let datar = $('#txtProyectoAdd').val();
-            console.log(datar);
             $.ajax({
                 url: "{{ route('mantenimiento.saveRepuesto') }}",
                 method: 'Post',
@@ -205,8 +204,8 @@
                 $('#txtProyectoAdd').val("");
                 $('#cboRepuesto').empty();
                 let optionHtml = `<option value="0">--Select--</option>`;
-                JsonData.forEach(x => {
-                    optionHtml += `<option value="${x.idrepuesto}">${x.descripcion}</option>`
+                Array.from(JsonData).forEach(x => {
+                    optionHtml += `<option value="${x.idrepuesto}">${x.descripcion}</option>`;
                 });
                 $('#cboRepuesto').append(optionHtml);
             });
