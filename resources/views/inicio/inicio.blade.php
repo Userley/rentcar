@@ -264,7 +264,7 @@
 
         const validateControls = (container) => {
             let estado = false;
-            let elements = container.querySelectorAll('input,select');
+            let elements = container.querySelectorAll('input,select,textarea');
 
             elements.forEach(x => {
                 let elemDiv = x.closest('.form-group')

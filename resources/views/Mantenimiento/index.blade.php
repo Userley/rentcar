@@ -7,7 +7,7 @@
         <h2>Mantenimiento</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">Prinipal</a>
+                <a href="index.html">Principal</a>
             </li>
             <li class="breadcrumb-item">
                 Mantenimiento

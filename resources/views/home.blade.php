@@ -30,6 +30,9 @@
     @endsection
 
     <script>
+        
+        @section('ready')
+
         // Función para reducir el tamaño y calidad de la foto
         function resizeAndCompressImage(file, maxWidth, maxHeight, quality) {
             return new Promise((resolve, reject) => {
@@ -73,7 +76,6 @@
             });
         }
 
-        @section('ready')
         // Manejador de eventos para el cambio en el campo de entrada de archivo
         document.getElementById('inputFile').addEventListener('change', async (event) => {
             const file = event.target.files[0];
@@ -100,5 +102,9 @@
                 console.error(error);
             }
         });
+
         @endsection;
+
+
+        
     </script>

@@ -7,10 +7,13 @@
         <h2>Proyecto</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">Prinipal</a>
+                <a href="">Principal</a>
             </li>
             <li class="breadcrumb-item">
                 Proyecto
+            </li>
+            <li class="breadcrumb-item">
+                Nuevo
             </li>
         </ol>
         <div class="pull-right">

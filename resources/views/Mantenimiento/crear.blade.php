@@ -3,11 +3,11 @@
 @section('title', 'Vehículo')
 
 @section('header')
-    <div class="col-lg-10">
+    <div class="col-lg-12">
         <h2>Mantenimiento</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">Prinipal</a>
+                <a href="">Principal</a>
             </li>
             <li class="breadcrumb-item">
                 Mantenimiento
@@ -16,18 +16,18 @@
                 Nuevo
             </li>
         </ol>
+        <div class="pull-right">
+            <button class="btn btn-success" id="btnGuardar"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Guardar</button>
+            <a href="{{ url('/mantenimiento/') }}"> <button class="btn btn-primary"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i>
+                    Volver</button></a>
+        </div>
     </div>
 @endsection
 
 @section('content')
     @csrf
-    <div class="d-flex align-content-center">
-        <a href="{{ url('/mantenimiento/') }}"> <button class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"
-                    aria-hidden="true"></i> Volver</button></a>
-    </div>
-
-    <hr>
-
     <div class="row">
         <div class="col-md-12">
             <div class="ibox float-e-margins animated fadeInRight">
@@ -39,22 +39,22 @@
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content frmMantenimiento">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="txtFecha" class="font-weight-bold">Fecha:</label>
-                                        <input type="date" class="form-control" id="txtFecha">
+                                        <input type="date" class="form-control" id="txtFecha" required>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="cboPlaca" class="font-weight-bold">Placa:</label>
                                         <select name="" id="cboPlaca" class="form-control"
-                                            onchange="getDataVehiculo(event);">
-                                            <option value="0">--Select--</option>
+                                            onchange="getDataVehiculo(event);" required>
+                                            {{-- <option value="0">--Select--</option> --}}
                                             @foreach ($Vehiculo as $Vehi)
                                                 <option value="{{ $Vehi->idvehiculo }}">{{ $Vehi->idvehiculo }}</option>
                                             @endforeach
@@ -76,16 +76,17 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="cboRepuesto" class="font-weight-bold">Repuesto:</label>
-                                    <div class="input-group">
-                                        <select name="" id="cboRepuesto" class="form-control form-control-sm">
-                                            <option value="0">--Select--</option>
+                                    <div class="input-group mb-3">
+                                        <select name="" id="cboRepuesto" class="form-control"
+                                            required>
+                                            {{-- <option value="0">--Select--</option> --}}
                                             @foreach ($Repuestos as $Repuesto)
                                                 <option value="{{ $Repuesto->idrepuesto }}">{{ $Repuesto->descripcion }}
                                                 </option>
                                             @endforeach
                                         </select>
                                         <div class="input-group-prepend" data-toggle="modal" data-target="#RepuestoModal">
-                                            <button type="button" class="btn btn-warning"><i class="fa fa-plus"
+                                            <button type="button" class="btn btn-outline-warning h-100"><i class="fa fa-plus"
                                                     aria-hidden="true"></i></button>
                                         </div>
                                     </div>
@@ -93,7 +94,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="txtMarcaRepuesto" class="font-weight-bold">Marca Repuesto:</label>
-                                        <input type="text" class="form-control" id="txtMarcaRepuesto">
+                                        <input type="text" class="form-control" id="txtMarcaRepuesto" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -105,7 +106,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="txtPrecio" class="font-weight-bold">Precio:</label>
-                                        <input type="number" class="form-control" id="txtPrecio">
+                                        <input type="number" class="form-control" id="txtPrecio" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -118,18 +119,11 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txtDescripcion" class="font-weight-bold">Descripción:</label>
-                                        <textarea name="" id="txtDescripcion" class="form-control" cols="1" rows="2"></textarea>
+                                        <textarea name="" id="txtDescripcion" class="form-control" cols="1" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>
-                            Guardar</button>
-                        <button class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i>
-                            Limpiar</button>
                     </div>
                 </div>
             </div>
@@ -165,18 +159,96 @@
 
 <script>
     @section('ready')
-        $('#txtFecha').val(GetDate());
+        document.getElementById('txtFecha').value = GetDate();
+        document.getElementById('btnGuardar').addEventListener('click', saveMantenimiento);
+        let idMarca = document.getElementById('cboPlaca').value;
+
+        document.addEventListener("change", (idMarca) => {
+            getDataVehiculo(idMarca);
+        });
+
+        getDataVehiculo(idMarca);
     @endsection
 
 
     @section('functions')
-        const getDataVehiculo = (e) => {
+
+        const saveMantenimiento = () => {
+            let seccion = document.querySelector('.frmMantenimiento');
+            let val = validateControls(seccion);
+
+            let fecha = document.getElementById('txtFecha').value;
+            let idvehiculo = document.getElementById('cboPlaca').value;
+            let idrepuesto = document.getElementById('cboRepuesto').value;
+            let marca = document.getElementById('txtMarcaRepuesto').value;
+            let sku = document.getElementById('txtSKU').value;
+            let precio = document.getElementById('txtPrecio').value;
+            let kilometraje = document.getElementById('txtKilometraje').value;
+            let descripcion = document.getElementById('txtDescripcion').value;
+
+
+
+            if (!val) {
+                $.ajax({
+                    url: "{{ route('mantenimiento.saveMantenimiento') }}",
+                    method: 'POST',
+                    data: {
+                        '_token': $("input[name='_token']").val(),
+                        'fecha': fecha,
+                        'idvehiculo': idvehiculo,
+                        'idrepuesto': idrepuesto,
+                        'marca': marca,
+                        'sku': sku,
+                        'precio': precio,
+                        'kilometraje': kilometraje,
+                        'descripcion': descripcion
+                    }
+                }).done(function(data) {
+                    if (data == 1) {
+                        console.log(data);
+                        document.getElementById('txtFecha').value;
+                        document.getElementById('cboPlaca').value = GetDate();
+                        document.getElementById('cboRepuesto').selectedIndex = 0;
+                        document.getElementById('txtMarcaRepuesto').value = '';
+                        document.getElementById('txtSKU').value = '';
+                        document.getElementById('txtPrecio').value = '';
+                        document.getElementById('txtKilometraje').value = '';
+                        document.getElementById('txtDescripcion').value = '';
+
+                        setTimeout(function() {
+                            toastr.options = {
+                                closeButton: true,
+                                showMethod: 'slideDown',
+                                timeOut: 3000
+                            };
+                            toastr.success('¡Registro exitoso!',
+                                'Registro de mantenimiento');
+
+                        }, 500);
+                        return;
+                    } else {
+                        setTimeout(function() {
+                            toastr.options = {
+                                closeButton: true,
+                                showMethod: 'slideDown',
+                                timeOut: 3000
+                            };
+                            toastr.warning('Ocurrió un error al registrar',
+                                'Registro de mantenimiento');
+
+                        }, 500);
+                        return;
+                    }
+                });
+            }
+        }
+        const getDataVehiculo = (id) => {
             $.ajax({
                 url: "{{ route('mantenimiento.getDataVehiculo') }}",
                 method: 'Get',
                 data: {
                     '_token': $("input[name='_token']").val(),
-                    'idVehiculo': e.target.value
+                    'idVehiculo': id
                 }
             }).done(function(data) {
                 if (data.length == 0) {
@@ -203,7 +275,7 @@
                 let JsonData = JSON.parse(data);
                 $('#txtProyectoAdd').val("");
                 $('#cboRepuesto').empty();
-                let optionHtml = `<option value="0">--Select--</option>`;
+                let optionHtml = '';
                 Array.from(JsonData).forEach(x => {
                     optionHtml += `<option value="${x.idrepuesto}">${x.descripcion}</option>`;
                 });

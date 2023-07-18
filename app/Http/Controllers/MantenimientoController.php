@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mantenimiento;
 use App\Models\Repuesto;
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
@@ -48,5 +49,25 @@ class MantenimientoController extends Controller
         }
 
         return response(json_decode($Repuestos), 200)->header('Content-type', 'text/plain');
+    }
+
+    public function saveMantenimiento(Request $request)
+    {
+        $status = 0;
+        $Mantenimiento = new Mantenimiento();
+        $Mantenimiento->fecha = $request->fecha;
+        $Mantenimiento->idvehiculo = strval($request->idvehiculo) ;
+        $Mantenimiento->idrepuesto = $request->idrepuesto;
+        $Mantenimiento->marca = strval($request->marca);
+        $Mantenimiento->sku = $request->sku;
+        $Mantenimiento->precio = $request->precio;
+        $Mantenimiento->kilometraje = $request->kilometraje;
+        $Mantenimiento->descripcion = strval($request->descripcion);
+
+        if ($Mantenimiento->save()) {
+            $status = 1;
+        }
+
+        return response($status, 200)->header('Content-type', 'text/plain');
     }
 }
