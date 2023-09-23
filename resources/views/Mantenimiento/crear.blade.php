@@ -52,8 +52,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="cboPlaca" class="font-weight-bold">Placa:</label>
-                                        <select name="" id="cboPlaca" class="form-control"
-                                            onchange="getDataVehiculo(event);" required>
+                                        <select name="" id="cboPlaca" class="form-control" required>
                                             {{-- <option value="0">--Select--</option> --}}
                                             @foreach ($Vehiculo as $Vehi)
                                                 <option value="{{ $Vehi->idvehiculo }}">{{ $Vehi->idvehiculo }}</option>
@@ -66,6 +65,7 @@
                                     <div class="form-group">
                                         <label for="txtMarca" class="font-weight-bold">Marca:</label>
                                         <input type="text" class="form-control" id="txtMarca" disabled>
+                                        <input type="text" class="form-control" id="txtProyecto" hidden>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -77,8 +77,7 @@
                                 <div class="col-md-3">
                                     <label for="cboRepuesto" class="font-weight-bold">Repuesto:</label>
                                     <div class="input-group mb-3">
-                                        <select name="" id="cboRepuesto" class="form-control"
-                                            required>
+                                        <select name="" id="cboRepuesto" class="form-control" required>
                                             {{-- <option value="0">--Select--</option> --}}
                                             @foreach ($Repuestos as $Repuesto)
                                                 <option value="{{ $Repuesto->idrepuesto }}">{{ $Repuesto->descripcion }}
@@ -86,8 +85,8 @@
                                             @endforeach
                                         </select>
                                         <div class="input-group-prepend" data-toggle="modal" data-target="#RepuestoModal">
-                                            <button type="button" class="btn btn-outline-warning h-100"><i class="fa fa-plus"
-                                                    aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-outline-warning h-100"><i
+                                                    class="fa fa-plus" aria-hidden="true"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -161,13 +160,14 @@
     @section('ready')
         document.getElementById('txtFecha').value = GetDate();
         document.getElementById('btnGuardar').addEventListener('click', saveMantenimiento);
-        let idMarca = document.getElementById('cboPlaca').value;
+        let idMarca = document.getElementById('cboPlaca');
 
-        document.addEventListener("change", (idMarca) => {
-            getDataVehiculo(idMarca);
+        idMarca.addEventListener("change", () => {
+            let idselectMarca = idMarca.options[idMarca.selectedIndex].value;
+            getDataVehiculo(idselectMarca);
         });
 
-        getDataVehiculo(idMarca);
+        getDataVehiculo(idMarca.value);
     @endsection
 
 
@@ -179,6 +179,7 @@
 
             let fecha = document.getElementById('txtFecha').value;
             let idvehiculo = document.getElementById('cboPlaca').value;
+            let idproyecto = parseInt(document.getElementById('txtProyecto').value);
             let idrepuesto = document.getElementById('cboRepuesto').value;
             let marca = document.getElementById('txtMarcaRepuesto').value;
             let sku = document.getElementById('txtSKU').value;
@@ -196,6 +197,7 @@
                         '_token': $("input[name='_token']").val(),
                         'fecha': fecha,
                         'idvehiculo': idvehiculo,
+                        'idproyecto': idproyecto,
                         'idrepuesto': idrepuesto,
                         'marca': marca,
                         'sku': sku,
@@ -251,13 +253,15 @@
                     'idVehiculo': id
                 }
             }).done(function(data) {
-                if (data.length == 0) {
-                    $('#txtMarca').val("");
-                    $('#txtModelo').val("");
-                } else {
-                    let Json = JSON.parse(data);
-                    $('#txtMarca').val(Json.marca);
-                    $('#txtModelo').val(Json.modelo);
+
+                let Json = JSON.parse(data);
+                console.log(Json);
+                $('#txtMarca').val("");
+                $('#txtModelo').val("");
+                if (Json) {
+                    $('#txtMarca').val(Json.Vehiculo.marca);
+                    $('#txtModelo').val(Json.Vehiculo.modelo);
+                    $('#txtProyecto').val(Json.IdProyecto || 0);
                 }
             });
         };

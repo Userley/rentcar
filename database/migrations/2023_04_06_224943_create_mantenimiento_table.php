@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('idmantenimiento');
             $table->date("fecha")->nullable(false);
             $table->string("idvehiculo")->nullable(false);
+            $table->integer("idproyecto")->nullable(false);
             $table->integer("idrepuesto")->nullable(false);
             $table->string("marca")->nullable(true);
             $table->string("sku")->nullable(true);

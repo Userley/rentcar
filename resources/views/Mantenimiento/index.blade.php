@@ -17,12 +17,12 @@
 @endsection
 
 @section('content')
-@csrf
-<div class="d-flex align-content-center">
-    <a href="{{ url('/mantenimiento/crear/') }}"> <button class="btn btn-sm btn-success"> <i class="fa fa-plus"
-                aria-hidden="true"></i> Nuevo Mantenimiento</button></a>
-</div>
-<hr>
+    @csrf
+    <div class="d-flex align-content-center">
+        <a href="{{ url('/mantenimiento/crear/') }}"> <button class="btn btn-sm btn-success"> <i class="fa fa-plus"
+                    aria-hidden="true"></i> Nuevo Mantenimiento</button></a>
+    </div>
+    <hr>
 
     <div class="row">
         <div class="col-md-12">
@@ -42,54 +42,10 @@
                             <div class="form-group">
                                 <label for="cboPlaca" class="font-weight-bold">Placa:</label>
                                 <select class="custom-select" id="cboPlaca">
-                                    <option selected>-- Todos --</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="cboMarca" class="font-weight-bold">Marca:</label>
-                                <select class="custom-select" id="cboMarca">
-                                    <option selected>-- Todos --</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="cboProveedor" class="font-weight-bold">Proveedor:</label>
-                                <select class="custom-select" id="cboProveedor">
-                                    <option selected>-- Todos --</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="cboProyecto" class="font-weight-bold">Proyecto:</label>
-                                <select class="custom-select" id="cboProyecto">
-                                    <option selected>-- Todos --</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="cboRepuesto" class="font-weight-bold">Repuesto:</label>
-                                <select class="custom-select" id="cboRepuesto">
-                                    <option selected>-- Todos --</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected value="">-- Todos --</option>
+                                    @foreach ($Vehiculo as $Vehi)
+                                        <option value="{{ $Vehi->idvehiculo }}">{{ $Vehi->idvehiculo }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -107,8 +63,9 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group text-center">
-                                <button type="button" style="margin-top: 28px" class="btn btn-primary shadow-sm w-75"><i
-                                        class="fa fa-filter" aria-hidden="true"></i> Filtrar</button>
+                                <button type="button" style="margin-top: 28px" class="btn btn-primary shadow-sm w-75"
+                                    onclick="getAllMantenimientos();"><i class="fa fa-filter" aria-hidden="true"></i>
+                                    Filtrar</button>
 
                             </div>
                         </div>
@@ -129,144 +86,174 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="ibox-content">
-
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover dataTables-example">
-                                <thead>
+                    <div class="table-responsive">
+                        <table id="lstmantenimiento"
+                            class="table table-sm table-striped table-bordered table-borderless  dataTables-example">
+                            <thead>
+                                <tr class="small">
+                                    <th>PLACA</th>
+                                    <th>PROYECTO</th>
+                                    <th>KILOMETRAJE</th>
+                                    <th>REPUESTO</th>
+                                    <th>MARCA</th>
+                                    <th>CODIGO</th>
+                                    <th>PRECIO</th>
+                                    <th>FECHA</th>
+                                    <th>COMENTARIO</th>
+                                    <th>ACCION</th>
+                                </tr>
+                            </thead>
+                            <tbody class="small">
+                                {{-- @foreach ($Mantenimientos as $Mantenimiento)
                                     <tr>
-                                        <th>ACCION</th>
-                                        <th>PLACA</th>
-                                        <th>PROYECTO</th>
-                                        <th>KILOMETRAJE</th>
-                                        <th>REPUESTO</th>
-                                        <th>MARCA</th>
-                                        <th>CODIGO</th>
-                                        <th>PRECIO</th>
-                                        <th>FECHA</th>
-                                        <th>COMENTARIO</th>
+                                        <td class="text-center font-weight-bold">{{ $Mantenimiento->idvehiculo }}</td>
+                                        <td class="text-center">
+                                            @if (!is_null($Mantenimiento->proyecto))
+                                                {{ $Mantenimiento->proyecto }}
+                                            @else
+                                                --
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if (!is_null($Mantenimiento->kilometraje))
+                                                {{ $Mantenimiento->kilometraje }}
+                                            @else
+                                                --
+                                            @endif
+                                        </td>
+                                        <td class="text-center">{{ $Mantenimiento->repuesto }}</td>
+                                        <td class="text-center">{{ $Mantenimiento->marca }}</td>
+                                        <td class="text-center">
+                                            @if (!is_null($Mantenimiento->sku))
+                                                {{ $Mantenimiento->sku }}
+                                            @else
+                                                --
+                                            @endif
+                                        </td>
+                                        <td class="text-center">{{ $Mantenimiento->precio }}</td>
+                                        <td class="text-center">{{ $Mantenimiento->fecha }}</td>
+                                        <td class="text-center">
+                                            @if (!is_null($Mantenimiento->descripcion))
+                                                {{ $Mantenimiento->descripcion }}
+                                            @else
+                                                --
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-danger"><i class="fa fa-trash-o"
+                                                        aria-hidden="true"></i></button>
+                                                <button class="btn btn-warning"><i class="fa fa-eye"
+                                                        aria-hidden="true"></i></button>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                @endforeach --}}
+                            </tbody>
+                            <tfoot>
 
-
-                                </tbody>
-                                <tfoot>
-
-                                </tfoot>
-                            </table>
-                        </div>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
             </div>
 
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-4">
-
-                                    <div class="form-group">
-                                        <label for="cboDepartamento">Departamento:</label>
-                                        <select class="custom-select" id="cboDepartamento">
-                                            <option selected>-- Todos --/option>
-
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="cboProvincia">Provincia:</label>
-                                        <select class="custom-select" id="cboProvincia">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="cboDistrito">Distrito:</label>
-                                        <select class="custom-select" id="cboDistrito">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                id="saveSite">Guardar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         @endsection
 
+        <script>
+            @section('ready')
 
-        @section('ready')
+                $('.dataTables-example').DataTable({
+                    pageLength: 10,
+                    searching: false,
+                    bLengthChange: false,
+                    responsive: true,
+                    dom: '<"html5buttons"B>lTfgitp',
+                    buttons: [{
+                            extend: 'excel',
+                            title: 'ReporteMantenimientos'
+                        },
+                        {
+                            extend: 'pdf',
+                            title: 'ReporteMantenimientos'
+                        },
 
-            $('.dataTables-example').DataTable({
-            pageLength: 15,
-            searching: false,
-            bLengthChange : false,
-            responsive: true,
-            dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
-                {
-                extend: 'excel',
-                title: 'ReporteMantenimientos'
-                },
-                {
-                extend: 'pdf',
-                title: 'ReporteMantenimientos'
-                },
+                        {
+                            extend: 'print',
+                            customize: function(win) {
+                                $(win.document.body).addClass('white-bg');
+                                $(win.document.body).css('font-size', '10px');
 
-                {
-                extend: 'print',
-                customize: function(win) {
-                $(win.document.body).addClass('white-bg');
-                $(win.document.body).css('font-size', '10px');
-
-                $(win.document.body).find('table')
-                .addClass('compact')
-                .css('font-size', 'inherit');
-                }
-                }
-                ]
+                                $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                            }
+                        }
+                    ]
 
                 });
 
-                document.getElementById('DataTables_Table_0_wrapper').classList.remove('form-inline')
+                // document.getElementById('DataTables_Table_0_wrapper').classList.remove('form-inline')
+
+                getAllMantenimientos();
             @endsection
 
 
             @section('functions')
 
-                {{-- const inputFile = document.querySelector('#imgvehicle');
-    const image = document.querySelector('#imagenPrevisualizacion');
+                const getAllMantenimientos = () => {
 
-    inputFile.addEventListener('input', async (event) => {
-    let imgblob = await comprimirImagen(inputFile.files[0], 25);
-    let srcimg = URL.createObjectURL(imgblob);
-    base64URL = await encodeFileAsBase64URL(imgblob);
-    image.setAttribute('src', base64URL);
-    }); --}}
+                    let idvehiculo = $('#cboPlaca').val() || 0;
+                    let dataIni = $('#txtdateini').val() || 0;
+                    let dataEnd = $('#txtdatefin').val() || 0;
 
+                    $.ajax({
+                        url: "{{ route('mantenimiento.getAllMantenimientos') }}",
+                        method: 'Get',
+                        data: {
+                            '_token': $("input[name='_token']").val(),
+                            'idVehiculo': idvehiculo,
+                            'dateIni': dataIni,
+                            'dateFin': dataEnd,
+                        }
+                    }).done(function(data) {
 
+                        let Json = JSON.parse(data);
+                        console.log(Json);
+                        let html = ``;
+                        Json.forEach(element => {
+
+                            html += `<tr>
+                                        <td class="text-center">${element.idvehiculo}</td>
+                                        <td class="text-center">${element.proyecto||'--'}</td>
+                                        <td class="text-center">${element.kilometraje||'--'}</td>
+                                        <td class="text-center">${element.repuesto}</td>
+                                        <td class="text-center">${element.marca}</td>
+                                        <td class="text-center">${element.sku||'--'}</td>
+                                        <td class="text-center">${element.precio}</td>
+                                        <td class="text-center">${element.fecha}</td>
+                                        <td class="text-center">${element.descripcion||'--'}</td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                <button class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>`;
+                        });
+
+                        $('#lstmantenimiento tbody').html(html);
+                    });
+
+                }
+
+                // const inputFile = document.querySelector('#imgvehicle');
+                // const image = document.querySelector('#imagenPrevisualizacion');
+
+                // inputFile.addEventListener('input', async (event) => {
+                //     let imgblob = await comprimirImagen(inputFile.files[0], 25);
+                //     let srcimg = URL.createObjectURL(imgblob);
+                //     base64URL = await encodeFileAsBase64URL(imgblob);
+                //     image.setAttribute('src', base64URL);
+                // });
             @endsection
+        </script>
