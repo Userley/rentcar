@@ -88,7 +88,7 @@
                 <div class="ibox-content">
                     <div class="table-responsive">
                         <table id="lstmantenimiento"
-                            class="table table-sm table-striped table-bordered table-borderless  dataTables-example">
+                            class="table table-sm table-striped table-bordered table-borderless dataTables-example">
                             <thead>
                                 <tr class="small">
                                     <th>PLACA</th>
@@ -104,50 +104,7 @@
                                 </tr>
                             </thead>
                             <tbody class="small">
-                                {{-- @foreach ($Mantenimientos as $Mantenimiento)
-                                    <tr>
-                                        <td class="text-center font-weight-bold">{{ $Mantenimiento->idvehiculo }}</td>
-                                        <td class="text-center">
-                                            @if (!is_null($Mantenimiento->proyecto))
-                                                {{ $Mantenimiento->proyecto }}
-                                            @else
-                                                --
-                                            @endif
-                                        </td>
-                                        <td class="text-center">
-                                            @if (!is_null($Mantenimiento->kilometraje))
-                                                {{ $Mantenimiento->kilometraje }}
-                                            @else
-                                                --
-                                            @endif
-                                        </td>
-                                        <td class="text-center">{{ $Mantenimiento->repuesto }}</td>
-                                        <td class="text-center">{{ $Mantenimiento->marca }}</td>
-                                        <td class="text-center">
-                                            @if (!is_null($Mantenimiento->sku))
-                                                {{ $Mantenimiento->sku }}
-                                            @else
-                                                --
-                                            @endif
-                                        </td>
-                                        <td class="text-center">{{ $Mantenimiento->precio }}</td>
-                                        <td class="text-center">{{ $Mantenimiento->fecha }}</td>
-                                        <td class="text-center">
-                                            @if (!is_null($Mantenimiento->descripcion))
-                                                {{ $Mantenimiento->descripcion }}
-                                            @else
-                                                --
-                                            @endif
-                                        </td>
-                                        <td class="text-center">
-                                            <div class="btn-group">
-                                                <button class="btn btn-danger"><i class="fa fa-trash-o"
-                                                        aria-hidden="true"></i></button>
-                                                <button class="btn btn-warning"><i class="fa fa-eye"
-                                                        aria-hidden="true"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
+
                             </tbody>
                             <tfoot>
 
@@ -156,104 +113,115 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+@endsection
 
-        @endsection
+<script>
+    @section('ready')
 
-        <script>
-            @section('ready')
+        $('.dataTables-example').DataTable({
+            pageLength: 10,
+            searching: false,
+            bLengthChange: false,
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [{
+                    extend: 'excel',
+                    title: 'ReporteMantenimientos'
+                },
+                {
+                    extend: 'pdf',
+                    title: 'ReporteMantenimientos'
+                }
+            ]
 
-                $('.dataTables-example').DataTable({
-                    pageLength: 10,
-                    searching: false,
-                    bLengthChange: false,
-                    responsive: true,
-                    dom: '<"html5buttons"B>lTfgitp',
-                    buttons: [{
-                            extend: 'excel',
-                            title: 'ReporteMantenimientos'
-                        },
-                        {
-                            extend: 'pdf',
-                            title: 'ReporteMantenimientos'
-                        },
+        });
 
-                        {
-                            extend: 'print',
-                            customize: function(win) {
-                                $(win.document.body).addClass('white-bg');
-                                $(win.document.body).css('font-size', '10px');
+        // document.getElementById('DataTables_Table_0_wrapper').classList.remove('form-inline')
 
-                                $(win.document.body).find('table')
-                                    .addClass('compact')
-                                    .css('font-size', 'inherit');
-                            }
-                        }
-                    ]
+        getAllMantenimientos();
+    @endsection
 
+
+    @section('functions')
+
+        const getAllMantenimientos = () => {
+
+            let idvehiculo = $('#cboPlaca').val() || 0;
+            let dataIni = $('#txtdateini').val() || 0;
+            let dataEnd = $('#txtdatefin').val() || 0;
+
+            let miTabla = $('#lstmantenimiento').DataTable();
+
+            $.ajax({
+                url: "{{ route('mantenimiento.getAllMantenimientos') }}",
+                method: 'Get',
+                data: {
+                    '_token': $("input[name='_token']").val(),
+                    'idVehiculo': idvehiculo,
+                    'dateIni': dataIni,
+                    'dateFin': dataEnd,
+                }
+            }).done(function(data) {
+
+                let Json = JSON.parse(data);
+                console.log(Json);
+                // let html = ``;
+                miTabla.clear().draw();
+
+                Json.forEach(element => {
+
+
+                    miTabla.row.add([
+                        element.idvehiculo,
+                        element.proyecto || '--',
+                        element.kilometraje || '--',
+                        element.repuesto,
+                        element.marca,
+                        element.sku || '--',
+                        element.precio,
+                        element.fecha,
+                        element.descripcion || '--',
+                        `<div class="btn-group">
+                            <button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            <button class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                        </div>`
+                    ]).draw(false);
+
+
+
+                    //     html += `<tr>
+                    //                 <td class="text-center">${element.idvehiculo}</td>
+                    //                 <td class="text-center">${element.proyecto||'--'}</td>
+                    //                 <td class="text-center">${element.kilometraje||'--'}</td>
+                    //                 <td class="text-center">${element.repuesto}</td>
+                    //                 <td class="text-center">${element.marca}</td>
+                    //                 <td class="text-center">${element.sku||'--'}</td>
+                    //                 <td class="text-center">${element.precio}</td>
+                    //                 <td class="text-center">${element.fecha}</td>
+                    //                 <td class="text-center">${element.descripcion||'--'}</td>
+                    //                 <td class="text-center">
+                    //                     <div class="btn-group">
+                    //                         <button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    //                         <button class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                    //                     </div>
+                    //                 </td>
+                    //             </tr>`;
                 });
 
-                // document.getElementById('DataTables_Table_0_wrapper').classList.remove('form-inline')
+                // $('#lstmantenimiento tbody').html(html);
+            });
+        }
 
-                getAllMantenimientos();
-            @endsection
+        // const inputFile = document.querySelector('#imgvehicle');
+        // const image = document.querySelector('#imagenPrevisualizacion');
 
-
-            @section('functions')
-
-                const getAllMantenimientos = () => {
-
-                    let idvehiculo = $('#cboPlaca').val() || 0;
-                    let dataIni = $('#txtdateini').val() || 0;
-                    let dataEnd = $('#txtdatefin').val() || 0;
-
-                    $.ajax({
-                        url: "{{ route('mantenimiento.getAllMantenimientos') }}",
-                        method: 'Get',
-                        data: {
-                            '_token': $("input[name='_token']").val(),
-                            'idVehiculo': idvehiculo,
-                            'dateIni': dataIni,
-                            'dateFin': dataEnd,
-                        }
-                    }).done(function(data) {
-
-                        let Json = JSON.parse(data);
-                        console.log(Json);
-                        let html = ``;
-                        Json.forEach(element => {
-
-                            html += `<tr>
-                                        <td class="text-center">${element.idvehiculo}</td>
-                                        <td class="text-center">${element.proyecto||'--'}</td>
-                                        <td class="text-center">${element.kilometraje||'--'}</td>
-                                        <td class="text-center">${element.repuesto}</td>
-                                        <td class="text-center">${element.marca}</td>
-                                        <td class="text-center">${element.sku||'--'}</td>
-                                        <td class="text-center">${element.precio}</td>
-                                        <td class="text-center">${element.fecha}</td>
-                                        <td class="text-center">${element.descripcion||'--'}</td>
-                                        <td class="text-center">
-                                            <div class="btn-group">
-                                                <button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                                <button class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>`;
-                        });
-
-                        $('#lstmantenimiento tbody').html(html);
-                    });
-
-                }
-
-                // const inputFile = document.querySelector('#imgvehicle');
-                // const image = document.querySelector('#imagenPrevisualizacion');
-
-                // inputFile.addEventListener('input', async (event) => {
-                //     let imgblob = await comprimirImagen(inputFile.files[0], 25);
-                //     let srcimg = URL.createObjectURL(imgblob);
-                //     base64URL = await encodeFileAsBase64URL(imgblob);
-                //     image.setAttribute('src', base64URL);
-                // });
-            @endsection
-        </script>
+        // inputFile.addEventListener('input', async (event) => {
+        //     let imgblob = await comprimirImagen(inputFile.files[0], 25);
+        //     let srcimg = URL.createObjectURL(imgblob);
+        //     base64URL = await encodeFileAsBase64URL(imgblob);
+        //     image.setAttribute('src', base64URL);
+        // });
+    @endsection
+</script>
